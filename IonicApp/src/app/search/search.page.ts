@@ -9,10 +9,14 @@ import { Observable, onErrorResumeNext } from 'rxjs';
 export class SearchPage implements OnInit {
 
  anime :Anime;
+ list : Observable<Anime>;
   constructor(private api: ApiStuffService) { }
 
   ngOnInit() {
-    console.log(this.api.findAnime());
+    this.list = this.api.findAnime();
+ 
+    this.list.subscribe(resp => console.log(resp.title));
+
   }
   getAnime(){}
 }
