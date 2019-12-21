@@ -10,10 +10,14 @@ export class ApiStuffService {
 
   constructor(private http: HttpClient) { }
 
-  findAnime() : Observable<Anime>{
+  findAnimeDetails(id:number) : Observable<Anime>{
     console.log("Got The Stuff");
-    return this.http.get<Anime>("https://api.jikan.moe/v3/anime/1/");
+    return this.http.get<Anime>("https://api.jikan.moe/v3/anime/"+id+"/");
   }
+  searchAnime(title :string): Observable<any>{
+    return this.http.get("https://api.jikan.moe/v3/search/anime?q="+title+"&page=1");
+  }
+
 }
 
 class Anime {

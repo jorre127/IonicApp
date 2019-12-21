@@ -1,31 +1,34 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {ApiStuffService} from '../api-stuff.service';
-import { Observable, onErrorResumeNext } from 'rxjs';
-import {DataService} from '../data.service'
+import { Component, OnInit } from '@angular/core';
+import {DataService} from "../data.service";
+import {ApiStuffService} from "../api-stuff.service"
+import { Observable } from 'rxjs';
+
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.page.html',
-  styleUrls: ['./search.page.scss'],
+  selector: 'app-anime-detail-page',
+  templateUrl: './anime-detail-page.page.html',
+  styleUrls: ['./anime-detail-page.page.scss'],
 })
-export class SearchPage implements OnInit {
+export class AnimeDetailPagePage implements OnInit {
 
-searchInput: string;
+  currentAnime: Anime = new Anime();
+  observable: Observable<any>;
 
- observable : Observable<any>;
- animeList : Array<Anime>;
-  constructor(private api: ApiStuffService, private data:DataService) { }
+  constructor(private data:DataService, private api : ApiStuffService) { }
 
+  id:number;
   ngOnInit() {
+    this.id = this.data.getId();
+    this.observable = this.api.findAnimeDetails(this.id);
+    this.observable.subscribe(result =>{
+    this.currentAnime.title = result.title;
+    this.currentAnime.episodes = result.episodes;
+    this.currentAnime.type = result.type;
+    this.currentAnime.image_url = result.image_url;
+    this.currentAnime.title_japanese = result.title_japanese;
+    this.currentAnime.synopsis = result.synopsis;
+    })
   }
-  search(){
-    this.observable = this.api.searchAnime(this.searchInput);
-    this.observable.subscribe(result =>this.animeList = result.results);
-    console.log(this.searchInput);
-    console.log(this.animeList);
-  }
-  saveId(id:number){
-      this.data.setId(id);
-  }
+
 }
 
 class Anime {

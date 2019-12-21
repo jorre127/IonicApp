@@ -10,7 +10,14 @@
 <ion-content>
 
 <ion-item>
-  <ion-icon name ="search"></ion-icon>
-  <ion-input autofocus = "true" placeholder="Type Anime Name Here"></ion-input>
+  <ion-searchbar [(ngModel)] = "searchInput" autofocus = "true" placeholder="Type Anime Name Here" animated = "true" (ionChange) = "search(searchInput)"></ion-searchbar>
 </ion-item>
+
+<ion-item button (click) = "saveId(anime.mal_id)" *ngFor = "let anime of animeList" [routerLink] = "['/','anime-detail-page']">
+  <ion-avatar slot ="start">
+    <img [src]= "anime.image_url">
+  </ion-avatar>
+{{anime.title}}
+</ion-item>
+
 </ion-content>

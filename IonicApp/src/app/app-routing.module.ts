@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'anime-detail-page',
+    loadChildren: () => import('./anime-detail-page/anime-detail-page.module').then( m => m.AnimeDetailPagePageModule)
   }
 ];
 
