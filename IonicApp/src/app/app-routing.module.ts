@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'anime-detail-page',
     loadChildren: () => import('./anime-detail-page/anime-detail-page.module').then( m => m.AnimeDetailPagePageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   }
 ];
 
