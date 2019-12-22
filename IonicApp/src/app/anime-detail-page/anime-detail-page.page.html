@@ -3,7 +3,6 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref = "/"></ion-back-button>
     </ion-buttons>
-    <ion-title>AnimeDetailPage</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -21,10 +20,12 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item lines="none">
-        <img [src]="currentAnime.image_url">
       </ion-item>
 
       <ion-card>
+        <img [src]="currentAnime.image_url">
+        <ion-card-header>
+        </ion-card-header>
         <ion-card-content>
           <ion-item lines = "none">
             {{currentAnime.synopsis}}
