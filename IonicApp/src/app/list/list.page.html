@@ -11,20 +11,10 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row *ngFor="let row of icons">
-      <ion-col>
-        <ion-card button>
-          <img src = "https://cdn.myanimelist.net/images/anime/4/19644.jpg">
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card button>
-          <img src = "https://cdn.myanimelist.net/images/anime/4/19644.jpg">
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card button>
-          <img src = "https://cdn.myanimelist.net/images/anime/4/19644.jpg">
+    <ion-row>
+      <ion-col *ngFor="let anime of animeList" size = "4">
+        <ion-card button [routerLink] = "['/','anime-detail-page']" (click) = "saveId(anime.mal_id)">
+          <img [src] = "anime.image_url">
         </ion-card>
       </ion-col>
     </ion-row>

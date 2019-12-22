@@ -20,8 +20,6 @@ searchInput: string;
   search(){
     this.observable = this.api.searchAnime(this.searchInput);
     this.observable.subscribe(result =>this.animeList = result.results);
-    console.log(this.searchInput);
-    console.log(this.animeList);
   }
   saveId(id:number){
       this.data.setId(id);

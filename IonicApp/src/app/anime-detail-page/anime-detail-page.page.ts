@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from "../data.service";
 import {ApiStuffService} from "../api-stuff.service"
-import { Observable } from 'rxjs';
+import { Observable, empty } from 'rxjs';
 
 @Component({
   selector: 'app-anime-detail-page',
@@ -10,25 +10,42 @@ import { Observable } from 'rxjs';
 })
 export class AnimeDetailPagePage implements OnInit {
 
+  showAddButton :boolean = true;
   currentAnime: Anime = new Anime();
   observable: Observable<any>;
+  animeList: Array<Anime> = new Array<Anime>();
+  id:number;
 
   constructor(private data:DataService, private api : ApiStuffService) { }
-
-  id:number;
+  
   ngOnInit() {
+    // Getting Details From Anime
     this.id = this.data.getId();
     this.observable = this.api.findAnimeDetails(this.id);
     this.observable.subscribe(result =>{
-    this.currentAnime.title = result.title;
-    this.currentAnime.episodes = result.episodes;
-    this.currentAnime.type = result.type;
-    this.currentAnime.image_url = result.image_url;
-    this.currentAnime.title_japanese = result.title_japanese;
-    this.currentAnime.synopsis = result.synopsis;
+    this.currentAnime = result;
+    this.updateButton();
     })
-  }
 
+    this.animeList = this.data.getAnimeList();
+  }
+  addAnimeToList(){
+    this.data.addAnimeToList(this.currentAnime)
+    this.updateButton();
+  }
+  
+  async updateButton(){
+    if(this.animeList.length>0){
+     this.animeList.forEach(anime=>{
+        if(anime.mal_id == this.currentAnime.mal_id){
+         this.showAddButton = false;
+       }
+      })
+   }
+   else{
+    this.showAddButton = true;
+    }
+  }
 }
 
 class Anime {
