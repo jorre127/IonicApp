@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import {HttpClientModule} from '@angular/common/http'
+import { TapticEngine } from '@ionic-native/taptic-engine/ngx';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {HttpClientModule} from '@angular/common/http'
   providers: [
     StatusBar,
     SplashScreen,
+    TapticEngine,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

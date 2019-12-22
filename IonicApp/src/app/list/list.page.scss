@@ -4,3 +4,9 @@
 .ListItemIcon{
 color:black;
 }
+ion-card{
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    margin: 0 !important;
+  }

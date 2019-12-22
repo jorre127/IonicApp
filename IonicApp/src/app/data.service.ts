@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   id : number;
+  darkMode : boolean;
 
   constructor() { }
 
@@ -14,5 +15,11 @@ export class DataService {
   }
   getId(){
     return this.id;
+  }
+  setDarkMode(bool:boolean){
+    this.darkMode = bool;
+  }
+  getDarkMode(){
+    return this.darkMode;
   }
 }
