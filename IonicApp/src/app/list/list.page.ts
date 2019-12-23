@@ -10,15 +10,13 @@ export class ListPage implements OnInit {
 
   animeList:Array<Anime> = new Array<Anime>();
   listView:Array<boolean> = new Array<boolean>();
+  showBadge:boolean;
 
   constructor( private data:DataService) {}
 
   ngOnInit() {
     this.animeList = this.data.getAnimeList();
     this.listView = this.data.getListView();
-    console.log(this.listView[0]);
-    console.log(this.listView[1]);
-    console.log(this.listView[2]);
   }
   saveId(id:number){
     this.data.setId(id);

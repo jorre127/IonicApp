@@ -15,7 +15,8 @@
     <ion-row>
       <ion-col *ngFor="let anime of animeList" size = "4">
         <ion-card button [routerLink] = "['/','anime-detail-page']" (click) = "saveId(anime.mal_id)">
-          <img [src] = "anime.image_url">
+          <img class="animeImage" [src] = "anime.image_url">
+          <ion-badge *ngIf = "anime.airing" class="animeBadge" color="primary">Airing</ion-badge>
         </ion-card>
       </ion-col>
     </ion-row>
@@ -37,7 +38,7 @@
 </span>
 
 <span *ngIf = "listView[2]">
-  <ion-item Lines = "full"  detail ="false" button (click) = "saveId(anime.mal_id)" *ngFor = "let anime of animeList" [routerLink] = "['/','anime-detail-page']">
+  <ion-item   Lines = "full"  button (click) = "saveId(anime.mal_id)" *ngFor = "let anime of animeList" [routerLink] = "['/','anime-detail-page']">
     <ion-label>
       {{anime.title}}
     </ion-label>

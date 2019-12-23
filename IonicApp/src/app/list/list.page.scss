@@ -2,6 +2,7 @@ ion-card{
     display: flex;
     flex-direction: column;
     width: 100% !important;
+    height:10rem !important;
     margin: 0 !important;
 }
 .smolLabel{
@@ -19,6 +20,11 @@ align-self: center;
 }
 .gameArrow{
     align-self: center;
+}
+.animeBadge{
+    width:100%;
+    position: absolute;
+    top:-0.1rem;
 }
   ion-title{
     font-size: 1.5rem;

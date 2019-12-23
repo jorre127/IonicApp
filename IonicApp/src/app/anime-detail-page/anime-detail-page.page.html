@@ -19,29 +19,41 @@
       </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      <ion-item lines="none">
+      <ion-item class = "detailsItem">
+        <ion-grid class = "detailsGrid">
+          <ion-row>
+            <ion-col class = "pictureCol" size = "4">
+              <img [src]="currentAnime.image_url" class="ion-float-left">
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-icon name="star"></ion-icon>
+                <ion-text class = "scoreText" color = "primary">
+                  {{currentAnime.score}}
+                </ion-text>
+              </ion-item>
+              <ion-item lines = "none">
+                {{currentAnime.type}}({{currentAnime.episodes}}) eps
+               </ion-item>
+               <ion-item lines ="none">
+                 {{currentAnime.status}}
+               </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-item>
-
-      <ion-card>
-        <img [src]="currentAnime.image_url">
-        <ion-card-header>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-item class="synopsis" lines = "none">
+      <ion-item lines="none">
+        <ion-card class = "synopsisCard">
+          <ion-card-header>
+            <ion-card-title>
+              Description
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
             {{currentAnime.synopsis}}
-           </ion-item>
-        </ion-card-content>
-      </ion-card>
-
-      <ion-item lines = "none">
-        Number of episodes: {{currentAnime.episodes}}
-       </ion-item>
-       <ion-item lines = "none">
-        Type: {{currentAnime.type}}
-       </ion-item>
-       <ion-item lines = "none">
-        Score: {{currentAnime.score}}/10
-       </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
     </ion-card-content>
   </ion-card>
 
