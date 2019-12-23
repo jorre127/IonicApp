@@ -20,6 +20,8 @@
         </ion-card>
       </ion-col>
     </ion-row>
+    <ion-text>
+    </ion-text>
   </ion-grid>
 
   <span *ngIf = "listView[1]">
@@ -46,5 +48,9 @@
     <ion-badge class="animeBadgeDetailed" slot="end" *ngIf = "anime.airing" color="primary">Airing</ion-badge>
   </ion-item>
 </span>
+
+<div class ="animeCounter">
+  {{animeList.length}} anime
+</div>
 
 </ion-content>
