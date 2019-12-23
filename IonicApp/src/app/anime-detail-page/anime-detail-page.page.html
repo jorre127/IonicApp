@@ -27,26 +27,20 @@
         <ion-card-header>
         </ion-card-header>
         <ion-card-content>
-          <ion-item lines = "none">
+          <ion-item class="synopsis" lines = "none">
             {{currentAnime.synopsis}}
            </ion-item>
         </ion-card-content>
       </ion-card>
 
       <ion-item lines = "none">
-        {{currentAnime.title}}
-       </ion-item>
-      <ion-item lines = "none">
-       {{currentAnime.title}}
-      </ion-item>
-      <ion-item lines = "none">
-        {{currentAnime.episodes}}
+        Number of episodes: {{currentAnime.episodes}}
        </ion-item>
        <ion-item lines = "none">
-        {{currentAnime.type}}
+        Type: {{currentAnime.type}}
        </ion-item>
        <ion-item lines = "none">
-        {{currentAnime.mal_id}}
+        Score: {{currentAnime.score}}/10
        </ion-item>
     </ion-card-content>
   </ion-card>
