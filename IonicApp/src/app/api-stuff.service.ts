@@ -26,4 +26,7 @@ response:any;
   findUpcomingAnime(): Observable<any>{
     return this.http.get("https://api.jikan.moe/v3/season/later")
   }
+  findSchedule(): Observable<any>{
+    return this.http.get("https://api.jikan.moe/v3/schedule")
+  }
 }

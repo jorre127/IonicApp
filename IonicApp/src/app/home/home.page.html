@@ -43,4 +43,29 @@
     </ion-row>
   </ion-grid>
 
+  <ion-text color="primary">
+    <h1 class = "thisWeekTitle">
+      This Week
+    </h1>
+  </ion-text>
+  <ion-list>
+    <span *ngFor = "let day of daysOfWeek; index as i">
+    <ion-item-divider>
+      {{day}}
+    </ion-item-divider>
+    <ion-item class = "gameItem"  Lines = "full"  detail ="false" button (click) = "saveId(anime.mal_id)" *ngFor = "let anime of schedule[i]" [routerLink] = "['/','anime-detail-page']">
+      <ion-thumbnail class = "gameIcon" slot ="start">
+        <img [src]= "anime.image_url">
+      </ion-thumbnail>
+      <ion-label class = "chonkLabel" position = "stacked">
+        {{anime.title}}
+      </ion-label>
+      <ion-label class = "smolLabel" position = "stacked">
+        {{anime.type}}
+      </ion-label>
+      <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
+    </ion-item>
+    </span>
+  </ion-list>
+
 </ion-content>

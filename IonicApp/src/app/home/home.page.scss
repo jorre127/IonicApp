@@ -33,9 +33,35 @@
   top:15.39rem;
   opacity: 0.6;
 }
+.smolLabel{
+  font-size: 8pt;
+  font-weight: lighter;
+  margin-top: -1rem;
+}
+.chonkLabel{
+  height: max-content !important;
+  font-size: 13pt;
+  font-weight: 400;
+}
+.gameIcon{
+align-self: center;
+}
+.gameArrow{
+  align-self: center;
+}
+.thisWeekTitle{
+  position:relative;
+  top:2.2rem;
+}
 h1{
-  margin-left: 1rem;
+  margin-left: 0.9rem;
 }
 ion-title{
   font-size: 1.5rem;
+}
+ion-item-divider{
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  margin-top:3rem;
+  background:transparent;
 }
