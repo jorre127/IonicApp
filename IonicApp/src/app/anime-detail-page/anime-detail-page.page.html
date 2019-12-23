@@ -12,7 +12,7 @@
     <ion-card-header>
       <ion-card-title>
         {{currentAnime.title}}
-        <ion-button class = "ion-float-right" *ngIf ="showAddButton" strong = "true" (click) = "addAnimeToList()"> +Add</ion-button>
+        <ion-chip class = "ion-float-right addChip" *ngIf ="showAddButton" strong = "true" (click) = "addAnimeToList()">+ ADD </ion-chip>
       </ion-card-title>
       <ion-card-subtitle>
       {{currentAnime.title_japanese}}
@@ -32,6 +32,7 @@
            </ion-item>
         </ion-card-content>
       </ion-card>
+
       <ion-item lines = "none">
         {{currentAnime.title}}
        </ion-item>

@@ -10,6 +10,9 @@ export class DataService {
   animeList:Array<Anime> = new Array<Anime>();
   currentAnime:Anime = new Anime();
 
+  listView:Array<boolean> = [true,false,false];
+  listViewStandard:string;
+
   constructor() { }
 
   setId(id:number){
@@ -35,6 +38,20 @@ export class DataService {
   }
   getCurrentAnime():Anime{
     return this.currentAnime;
+  }
+  setListView(gridview:boolean,detailedListView:boolean,listView:boolean){
+    this.listView[0] = gridview;
+    this.listView[1] = detailedListView;
+    this.listView[2] = listView;
+  }
+  getListView(): Array<boolean>{
+    return this.listView;
+  }
+  setListViewStandard(standard:string){
+    this.listViewStandard = standard;
+  }
+  getListViewStandard():string{
+    return this.listViewStandard;
   }
 }
 class Anime {

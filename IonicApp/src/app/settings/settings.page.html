@@ -14,13 +14,20 @@
     <ion-label slot ="start">Darkmode</ion-label>
     <ion-toggle [(ngModel)] = "toggled" (ionChange)= "toggleDarkmode()" color= "secondary" slot="end"></ion-toggle>
   </ion-item>
-  <ion-item>
-    <ion-label slot ="start">Darkmode</ion-label>
-    <ion-toggle [(ngModel)] = "toggled" (ionChange)= "toggleDarkmode()" color= "secondary" slot="end"></ion-toggle>
-  </ion-item>
-  <ion-item>
-    <ion-label slot ="start">Darkmode</ion-label>
-    <ion-toggle [(ngModel)] = "toggled" (ionChange)= "toggleDarkmode()" color= "secondary" slot="end"></ion-toggle>
-  </ion-item>
+
+  <ion-segment [(ngModel)] = "listMode" (ionChange) ="listModeChanged()">
+    <ion-segment-button value="gridView">
+      <ion-icon name = "grid"></ion-icon>
+      <ion-label>Grid View</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="detailedListView">
+      <ion-icon name = "list-box"></ion-icon>
+      <ion-label>Detailed Text View</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="listView">
+      <ion-icon name = "list"></ion-icon>
+      <ion-label>Text View</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
 </ion-content>

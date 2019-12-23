@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DataService} from "../data.service";
 import {ApiStuffService} from "../api-stuff.service"
 import { Observable, empty } from 'rxjs';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-anime-detail-page',
@@ -16,7 +17,7 @@ export class AnimeDetailPagePage implements OnInit {
   animeList: Array<Anime> = new Array<Anime>();
   id:number;
 
-  constructor(private data:DataService, private api : ApiStuffService) { }
+  constructor(private data:DataService, private api : ApiStuffService, private toastController:ToastController) { }
   
   ngOnInit() {
     // Getting Details From Anime
@@ -32,6 +33,7 @@ export class AnimeDetailPagePage implements OnInit {
   addAnimeToList(){
     this.data.addAnimeToList(this.currentAnime)
     this.updateButton();
+    this.presentToast(this.currentAnime.title+" added to your list")
   }
   
   async updateButton(){
@@ -45,6 +47,13 @@ export class AnimeDetailPagePage implements OnInit {
    else{
     this.showAddButton = true;
     }
+  }
+  async presentToast(message : string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
   }
 }
 

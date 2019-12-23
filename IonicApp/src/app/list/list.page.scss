@@ -1,14 +1,24 @@
-.ListItemText{
-    color: hotpink;
-}
-.ListItemIcon{
-color:black;
-}
 ion-card{
     display: flex;
     flex-direction: column;
     width: 100% !important;
     margin: 0 !important;
+}
+.smolLabel{
+    font-size: 8pt;
+    font-weight: lighter;
+    margin-top: -1rem;
+}
+.chonkLabel{
+    height: max-content !important;
+    font-size: 13pt;
+    font-weight: 400;
+}
+.gameIcon{
+align-self: center;
+}
+.gameArrow{
+    align-self: center;
 }
   ion-title{
     font-size: 1.5rem;
