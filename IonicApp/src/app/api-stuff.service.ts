@@ -19,4 +19,11 @@ response:any;
   searchAnime(title :string): Observable<any>{
     return this.http.get("https://api.jikan.moe/v3/search/anime?q="+title+"&page=1");
   }
+
+  findSeasonalAnime(): Observable<any>{
+    return this.http.get("https://api.jikan.moe/v3/season")
+  }
+  findUpcomingAnime(): Observable<any>{
+    return this.http.get("https://api.jikan.moe/v3/season/later")
+  }
 }

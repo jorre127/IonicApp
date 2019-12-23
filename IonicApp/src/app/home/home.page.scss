@@ -2,15 +2,40 @@
   max-height: 35vh;
   overflow: hidden;
 }
-.forecast_container{
+.seasonalAnimeGrid{
+  height:fit-content;
+}
+.seasonalAnimeRow{
   overflow-x:scroll!important;
   overflow-y: hidden;
   word-wrap: break-word;
   height:20vw;
   font-size:0.8em;
   font-weight:300;
+  height: fit-content;
 }
-
+.seasonalAnimeCol{
+  height: fit-content !important;
+}
+.seasonalAnimeCard{
+  width:100% !important;
+  margin:0 !important;
+  height:16.5rem;
+  box-shadow: none;
+}
+.seasonalAnimeImage{
+  max-width: 100%;
+  height: 16.5rem;
+}
+.seasonalAnimeBadge{
+  width:100%;
+  position:absolute;
+  top:15.39rem;
+  opacity: 0.6;
+}
+h1{
+  margin-left: 1rem;
+}
 ion-title{
   font-size: 1.5rem;
 }

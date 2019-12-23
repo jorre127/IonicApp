@@ -10,28 +10,37 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="welcome-card">
-    <img src="/assets/shapes.svg" alt="" />
-    <ion-card-header>
-      <ion-card-subtitle>Get Started</ion-card-subtitle>
-      <ion-card-title>Welcome to Ionic</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>
-        Now that your app has been created, you'll want to start building out features
-        and components. Check out some of the resources below for next steps.
-      </p>
-    </ion-card-content>
-  </ion-card>
 
-
-  <ion-grid >
-    <ion-row nowrap class="forecast_container">
-      <ion-col size="4" class="forecast_div">
-        <ion-card>
+  <ion-text color="primary">
+    <h1>
+      Seasonal Anime
+    </h1>
+  </ion-text>
+  <ion-grid class="seasonalAnimeGrid">
+    <ion-row nowrap class="seasonalAnimeRow">
+      <ion-col class="seasonalAnimeCol" *ngFor="let anime of seasonalAnimeList" size="6">
+        <ion-card class="seasonalAnimeCard" button (click)="saveId(anime.mal_id)"[routerLink]="['/','anime-detail-page']">
+          <img class="seasonalAnimeImage" [src]="anime.image_url">
+          <ion-badge class="seasonalAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
-  
+
+  <ion-text color="primary">
+    <h1>
+      Upcoming Anime
+    </h1>
+  </ion-text>
+  <ion-grid class="seasonalAnimeGrid">
+    <ion-row nowrap class="seasonalAnimeRow">
+      <ion-col class="seasonalAnimeCol" *ngFor="let anime of upcomingAnimeList" size="6">
+        <ion-card class="seasonalAnimeCard" button (click)="saveId(anime.mal_id)"[routerLink]="['/','anime-detail-page']">
+          <img class="seasonalAnimeImage" [src]="anime.image_url">
+          <ion-badge class="seasonalAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
