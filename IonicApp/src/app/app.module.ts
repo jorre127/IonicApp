@@ -12,15 +12,21 @@ import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http'
 import { TapticEngine } from '@ionic-native/taptic-engine/ngx';
 
+import {ListDetailPagePage} from "src/app/list-detail-page/list-detail-page.page"
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent,ListDetailPagePage],
+  entryComponents: [
+    ListDetailPagePage
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     StatusBar,

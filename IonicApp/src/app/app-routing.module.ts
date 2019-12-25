@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'list-detail-page',
+    loadChildren: () => import('./list-detail-page/list-detail-page.module').then( m => m.ListDetailPagePageModule)
   }
 ];
 

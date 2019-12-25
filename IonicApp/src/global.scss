@@ -26,3 +26,12 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
+.modal
+{
+    .modal-wrapper 
+    {
+        width: 80%;
+        height:80%;
+        border-radius: 1rem;
+    }
+}

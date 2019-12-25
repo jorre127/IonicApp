@@ -2,8 +2,11 @@ ion-card{
     display: flex;
     flex-direction: column;
     width: 100% !important;
-    height:10rem !important;
+    height:16.5rem !important;
     margin: 0 !important;
+}
+img{
+    height: 16.5rem;
 }
 .smolLabel{
     font-size: 8pt;
@@ -27,6 +30,11 @@ align-self: center;
     top:-0.1rem;
     opacity: 0.7;
 }
+.infoIconGrid{
+    height: 100%;
+    width: 100%;
+    align-self: center;
+}
 .animeBadgeDetailed{
     align-self:center;
 }
@@ -35,6 +43,22 @@ align-self: center;
    text-align: center;
    margin-top: 2.5rem;
 }
+.infoIconList{
+    align-self: center;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.infoItemOption{
+    width:2rem;
+}
   ion-title{
     font-size: 1.5rem;
+}
+.infoButton{
+    position: absolute;
+    background-color: #f30756;
+    width: 2rem;
+    height: 2rem;
+    left: 8.5rem;
+    top: 14rem;
 }

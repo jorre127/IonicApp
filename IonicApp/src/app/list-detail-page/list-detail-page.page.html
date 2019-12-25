@@ -1,0 +1,52 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>
+      Watch Status
+    </ion-label>
+    <ion-select [(ngModel)]="watchStatus" interface="popover">
+      <ion-select-option value="Watching">Watching</ion-select-option>
+      <ion-select-option value="Completed">Completed</ion-select-option>
+      <ion-select-option value="On-Hold">On-Hold</ion-select-option>
+      <ion-select-option value="Dropped">Dropped</ion-select-option>
+      <ion-select-option value="Plan To Watch">Plan To Watch</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Score
+    </ion-label>
+    <ion-select [(ngModel)]="score" interface="popover">
+      <ion-select-option value="10 Masterpiece">10 Masterpiece</ion-select-option>
+      <ion-select-option value="9 Great">9 Great</ion-select-option>
+      <ion-select-option value="8 Very Good">8 Very Good</ion-select-option>
+      <ion-select-option value="7 Good">7 Good</ion-select-option>
+      <ion-select-option value="6 Fine">6 Fine</ion-select-option>
+      <ion-select-option value="5 Average">5 Average</ion-select-option>
+      <ion-select-option value="4 Bad">4 Bad</ion-select-option>
+      <ion-select-option value="3 Very Bad">3 Very Bad</ion-select-option>
+      <ion-select-option value="2 Horrible">2 Horrible</ion-select-option>
+      <ion-select-option value="1 Appaling">1 Appalling</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label class="episodeLabel">
+      Episodes
+    </ion-label>
+    <ion-input [(ngModel)]="episodesWatched" type="number" step="1" inputmode="numeric"
+      (ionChange)="checkEpisodesWatched()">
+    </ion-input>
+    /{{anime.episodes}}
+    <ion-icon button (click) ="add()" name="add-circle-outline"></ion-icon>
+  </ion-item>
+  <ion-item class ="buttons" lines="none">
+    <ion-button (click)="dismiss()">
+      Discard
+    </ion-button>
+    <ion-button (click)="save()">
+      Save
+    </ion-button>
+  </ion-item>
+</ion-content>
