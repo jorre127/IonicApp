@@ -25,6 +25,8 @@ export class ListPage implements OnInit {
   showDroppedList:boolean = true;
   showPlanToWatchList:boolean = true;
 
+  arrowStatus:string = "arrow-down";
+
 
   listView:Array<boolean> = new Array<boolean>();
   showBadge:boolean;
@@ -111,9 +113,11 @@ showDropped(){
 showPlanToWatch(){
     if(this.showPlanToWatchList == false){
         this.showPlanToWatchList = true;
+        this.arrowStatus = "arrow-up"
     }
     else{
         this.showPlanToWatchList = false;
+        this.arrowStatus = "arrow-down"
     }
 }
   // add back when alpha.4 is out
