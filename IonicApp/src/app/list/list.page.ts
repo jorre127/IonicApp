@@ -25,11 +25,11 @@ export class ListPage implements OnInit {
   showDroppedList:boolean = true;
   showPlanToWatchList:boolean = true;
 
-  arrowStatusWatching:string = "arrow-down";
-  arrowStatusCompletedList:string = "arrow-down";
-  arrowStatusOnHoldList:string = "arrow-down";
-  arrowStatusDroppedList:string = "arrow-down";
-  arrowStatusPlanToWatchList:string = "arrow-down";
+  arrowStatusWatching:string = "arrow-up";
+  arrowStatusCompletedList:string = "arrow-up";
+  arrowStatusOnHoldList:string = "arrow-up";
+  arrowStatusDroppedList:string = "arrow-up";
+  arrowStatusPlanToWatchList:string = "arrow-up";
 
 
   listView:Array<boolean> = new Array<boolean>();
