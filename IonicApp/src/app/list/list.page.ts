@@ -25,7 +25,11 @@ export class ListPage implements OnInit {
   showDroppedList:boolean = true;
   showPlanToWatchList:boolean = true;
 
-  arrowStatus:string = "arrow-down";
+  arrowStatusWatching:string = "arrow-down";
+  arrowStatusCompletedList:string = "arrow-down";
+  arrowStatusOnHoldList:string = "arrow-down";
+  arrowStatusDroppedList:string = "arrow-down";
+  arrowStatusPlanToWatchList:string = "arrow-down";
 
 
   listView:Array<boolean> = new Array<boolean>();
@@ -81,43 +85,51 @@ export class ListPage implements OnInit {
   showWatching(){
       if(this.showWatchingList == false){
           this.showWatchingList = true;
+          this.arrowStatusWatching = "arrow-up"
       }
       else{
           this.showWatchingList = false;
+          this.arrowStatusWatching = "arrow-down"
       }
   }
   showCompleted(){
     if(this.showCompletedList == false){
         this.showCompletedList = true;
+        this.arrowStatusCompletedList = "arrow-up"
     }
     else{
         this.showCompletedList = false;
+        this.arrowStatusCompletedList = "arrow-down"
     }
 }
 showOnHold(){
     if(this.showOnHoldList == false){
         this.showOnHoldList = true;
+        this.arrowStatusOnHoldList = "arrow-up"
     }
     else{
         this.showOnHoldList = false;
+        this.arrowStatusOnHoldList = "arrow-down"
     }
 }
 showDropped(){
     if(this.showDroppedList == false){
         this.showDroppedList = true;
+        this.arrowStatusDroppedList = "arrow-up"
     }
     else{
         this.showDroppedList = false;
+        this.arrowStatusDroppedList = "arrow-down"
     }
 }
 showPlanToWatch(){
     if(this.showPlanToWatchList == false){
         this.showPlanToWatchList = true;
-        this.arrowStatus = "arrow-up"
+        this.arrowStatusPlanToWatchList = "arrow-up"
     }
     else{
         this.showPlanToWatchList = false;
-        this.arrowStatus = "arrow-down"
+        this.arrowStatusPlanToWatchList = "arrow-down"
     }
 }
   // add back when alpha.4 is out
