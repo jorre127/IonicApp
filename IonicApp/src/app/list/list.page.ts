@@ -41,6 +41,8 @@ export class ListPage implements OnInit {
     this.animeList = this.data.getAnimeList();
     this.listView = this.data.getListView();
 
+    console.log("pipi");
+
     this.animeList.forEach(anime =>{
         if(anime.watchStatus == "Watching"){
             this.watchingList.push(anime);

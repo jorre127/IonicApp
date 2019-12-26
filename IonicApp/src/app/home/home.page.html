@@ -10,61 +10,106 @@
 </ion-header>
 
 <ion-content>
-
   <ion-text color="primary">
     <h1>
       Seasonal Anime
     </h1>
   </ion-text>
-  <ion-grid class="seasonalAnimeGrid">
-    <ion-row nowrap class="seasonalAnimeRow">
-      <ion-col class="seasonalAnimeCol" *ngFor="let anime of seasonalAnimeList" size="6">
-        <ion-card class="seasonalAnimeCard" button (click)="saveId(anime.mal_id)"[routerLink]="['/','anime-detail-page']">
-          <img class="seasonalAnimeImage" [src]="anime.image_url">
-          <ion-badge class="seasonalAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
+  <span *ngIf="seasonalAnimeList">
+    <ion-grid class="seasonalAnimeGrid">
+      <ion-row nowrap class="seasonalAnimeRow">
+        <ion-col class="seasonalAnimeCol" *ngFor="let anime of seasonalAnimeList" size="6">
+          <ion-card class="seasonalAnimeCard" button (click)="saveId(anime.mal_id)"
+            [routerLink]="['/','anime-detail-page']">
+            <img class="seasonalAnimeImage" [src]="anime.image_url">
+            <ion-badge class="seasonalAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </span>
+
+  <span *ngIf="!seasonalAnimeList">
+    <ion-grid class="seasonalAnimeGrid">
+      <ion-row nowrap class="seasonalAnimeRow">
+        <ion-col class="seasonalAnimeCol" size="6">
+          <ion-card class="seasonalAnimeCard">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card>
+        </ion-col>
+        <ion-col class="seasonalAnimeCol" size="6">
+          <ion-card class="seasonalAnimeCard">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </span>
 
   <ion-text color="primary">
     <h1>
       Upcoming Anime
     </h1>
   </ion-text>
+  <span *ngIf ="upcomingAnimeList">
   <ion-grid class="seasonalAnimeGrid">
     <ion-row nowrap class="seasonalAnimeRow">
       <ion-col class="seasonalAnimeCol" *ngFor="let anime of upcomingAnimeList" size="6">
-        <ion-card class="seasonalAnimeCard" button (click)="saveId(anime.mal_id)"[routerLink]="['/','anime-detail-page']">
+        <ion-card class="seasonalAnimeCard" button (click)="saveId(anime.mal_id)"
+          [routerLink]="['/','anime-detail-page']">
           <img class="seasonalAnimeImage" [src]="anime.image_url">
           <ion-badge class="seasonalAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
+  </span>
+
+
+  <span *ngIf="!upcomingAnimeList">
+    <ion-grid class="seasonalAnimeGrid">
+      <ion-row nowrap class="seasonalAnimeRow">
+        <ion-col class="seasonalAnimeCol" size="6">
+          <ion-card class="seasonalAnimeCard">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card>
+        </ion-col>
+        <ion-col class="seasonalAnimeCol" size="6">
+          <ion-card class="seasonalAnimeCard">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </span>
+
 
   <ion-text color="primary">
-    <h1 class = "thisWeekTitle">
+    <h1 class="thisWeekTitle">
       This Week
     </h1>
   </ion-text>
   <ion-list>
-    <span *ngFor = "let day of daysOfWeek; index as i">
-    <ion-item-divider>
-      {{day}}
-    </ion-item-divider>
-    <ion-item class = "gameItem"  Lines = "full"  detail ="false" button (click) = "saveId(anime.mal_id)" *ngFor = "let anime of schedule[i]" [routerLink] = "['/','anime-detail-page']">
-      <ion-thumbnail class = "gameIcon" slot ="start">
-        <img [src]= "anime.image_url">
-      </ion-thumbnail>
-      <ion-label class = "chonkLabel" position = "stacked">
-        {{anime.title}}
-      </ion-label>
-      <ion-label class = "smolLabel" position = "stacked">
-        {{anime.type}}
-      </ion-label>
-      <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
-    </ion-item>
+    <span *ngFor="let day of daysOfWeek; index as i">
+      <ion-item-divider>
+        {{day}}
+      </ion-item-divider>
+      <ion-item class="gameItem" Lines="full" detail="false" button (click)="saveId(anime.mal_id)"
+        *ngFor="let anime of schedule[i]" [routerLink]="['/','anime-detail-page']">
+        <ion-thumbnail class="gameIcon" slot="start">
+          <img [src]="anime.image_url">
+        </ion-thumbnail>
+        <ion-label class="chonkLabel" position="stacked">
+          {{anime.title}}
+        </ion-label>
+        <ion-label color="primary" class="smolLabel" position="stacked">
+          <p *ngIf="anime.producers[0]!=null">
+            {{anime.producers[0].name}}
+          </p>
+        </ion-label>
+        <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
+      </ion-item>
     </span>
   </ion-list>
 

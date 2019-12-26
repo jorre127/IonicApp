@@ -13,7 +13,7 @@ import { Anime } from '../app.component';
 export class AnimeDetailPagePage implements OnInit {
 
   showAddButton:boolean = true;
-  currentAnime: Anime = new Anime();
+  currentAnime: Anime;
   observable: Observable<any>;
   animeList: Array<Anime> = new Array<Anime>();
   id:number;

@@ -15,8 +15,8 @@ export class HomePage implements OnInit {
   ObservableSeasonal:Observable<any>;
   ObservableUpcoming:Observable<any>;
   ObservableSchedule:Observable<any>;
-  seasonalAnimeList:Array<Anime> = new Array<Anime>();
-  upcomingAnimeList:Array<Anime> = new Array<Anime>();
+  seasonalAnimeList:Array<Anime>;
+  upcomingAnimeList:Array<Anime>;
   schedule:Array<Array<Anime>> = new Array<Array<Anime>>();
   daysOfWeek:Array<String> = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 
