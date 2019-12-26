@@ -25,11 +25,11 @@ export class ListPage implements OnInit {
   showDroppedList:boolean = true;
   showPlanToWatchList:boolean = true;
 
-  arrowStatusWatching:string = "arrow-up";
-  arrowStatusCompletedList:string = "arrow-up";
-  arrowStatusOnHoldList:string = "arrow-up";
-  arrowStatusDroppedList:string = "arrow-up";
-  arrowStatusPlanToWatchList:string = "arrow-up";
+  arrowStatusWatching:string = "arrow-down";
+  arrowStatusCompletedList:string = "arrow-down";
+  arrowStatusOnHoldList:string = "arrow-down";
+  arrowStatusDroppedList:string = "arrow-down";
+  arrowStatusPlanToWatchList:string = "arrow-down";
 
 
   listView:Array<boolean> = new Array<boolean>();
@@ -85,51 +85,51 @@ export class ListPage implements OnInit {
   showWatching(){
       if(this.showWatchingList == false){
           this.showWatchingList = true;
-          this.arrowStatusWatching = "arrow-up"
+          this.arrowStatusWatching = "arrow-down"
       }
       else{
           this.showWatchingList = false;
-          this.arrowStatusWatching = "arrow-down"
+          this.arrowStatusWatching = "arrow-forward"
       }
   }
   showCompleted(){
     if(this.showCompletedList == false){
         this.showCompletedList = true;
-        this.arrowStatusCompletedList = "arrow-up"
+        this.arrowStatusCompletedList = "arrow-down"
     }
     else{
         this.showCompletedList = false;
-        this.arrowStatusCompletedList = "arrow-down"
+        this.arrowStatusCompletedList = "arrow-forward"
     }
 }
 showOnHold(){
     if(this.showOnHoldList == false){
         this.showOnHoldList = true;
-        this.arrowStatusOnHoldList = "arrow-up"
+        this.arrowStatusOnHoldList = "arrow-down"
     }
     else{
         this.showOnHoldList = false;
-        this.arrowStatusOnHoldList = "arrow-down"
+        this.arrowStatusOnHoldList = "arrow-forward"
     }
 }
 showDropped(){
     if(this.showDroppedList == false){
         this.showDroppedList = true;
-        this.arrowStatusDroppedList = "arrow-up"
+        this.arrowStatusDroppedList = "arrow-down"
     }
     else{
         this.showDroppedList = false;
-        this.arrowStatusDroppedList = "arrow-down"
+        this.arrowStatusDroppedList = "arrow-forward"
     }
 }
 showPlanToWatch(){
     if(this.showPlanToWatchList == false){
         this.showPlanToWatchList = true;
-        this.arrowStatusPlanToWatchList = "arrow-up"
+        this.arrowStatusPlanToWatchList = "arrow-down"
     }
     else{
         this.showPlanToWatchList = false;
-        this.arrowStatusPlanToWatchList = "arrow-down"
+        this.arrowStatusPlanToWatchList = "arrow-forward"
     }
 }
   // add back when alpha.4 is out
