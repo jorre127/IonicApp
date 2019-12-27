@@ -10,30 +10,6 @@
 </ion-header>
 
 <ion-content>
-
-  <span *ngIf="listView[0]">
-    <ion-item-divider>
-      Everything
-      <ion-icon class="expandArrow" slot="end" name="arrow-down"></ion-icon>
-    </ion-item-divider>
-    <ion-grid>
-      <ion-row>
-        <ion-col *ngFor="let anime of animeList" size="6">
-          <ion-card>
-            <img class="imgCard" button [routerLink]="['/','anime-detail-page']" (click)="saveId(anime.mal_id)"
-              class="animeImage" [src]="anime.image_url">
-            <ion-badge *ngIf="anime.airing" class="animeBadge" color="primary">Airing</ion-badge>
-            <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
-              <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
-            </ion-avatar>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-      <ion-text>
-      </ion-text>
-    </ion-grid>
-  </span>
-
   <span *ngIf="listView[0]">
     <ion-item-divider>
       <h2 color>
@@ -46,7 +22,7 @@
         <ion-col *ngFor="let anime of watchingList" size="6">
           <ion-card>
             <img class="imgCard" button [routerLink]="['/','anime-detail-page']" (click)="saveId(anime.mal_id)"
-              class="animeImage" [src]="anime.image_url">
+              [src]="anime.image_url">
             <ion-badge *ngIf="anime.airing" class="animeBadge" color="primary">Airing</ion-badge>
             <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
               <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
@@ -72,7 +48,7 @@
         <ion-col *ngFor="let anime of completedList" size="6">
           <ion-card>
             <img class="imgCard" button [routerLink]="['/','anime-detail-page']" (click)="saveId(anime.mal_id)"
-              class="animeImage" [src]="anime.image_url">
+              [src]="anime.image_url">
             <ion-badge *ngIf="anime.airing" class="animeBadge" color="primary">Airing</ion-badge>
             <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
               <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
@@ -97,7 +73,7 @@
         <ion-col *ngFor="let anime of onHoldList" size="6">
           <ion-card>
             <img class="imgCard" button [routerLink]="['/','anime-detail-page']" (click)="saveId(anime.mal_id)"
-              class="animeImage" [src]="anime.image_url">
+              [src]="anime.image_url">
             <ion-badge *ngIf="anime.airing" class="animeBadge" color="primary">Airing</ion-badge>
             <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
               <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
@@ -123,7 +99,7 @@
         <ion-col *ngFor="let anime of droppedList" size="6">
           <ion-card>
             <img class="imgCard" button [routerLink]="['/','anime-detail-page']" (click)="saveId(anime.mal_id)"
-              class="animeImage" [src]="anime.image_url">
+              [src]="anime.image_url">
             <ion-badge *ngIf="anime.airing" class="animeBadge" color="primary">Airing</ion-badge>
             <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
               <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
@@ -149,7 +125,7 @@
         <ion-col *ngFor="let anime of planToWatchList" size="6">
           <ion-card>
             <img class="imgCard" button [routerLink]="['/','anime-detail-page']" (click)="saveId(anime.mal_id)"
-              class="animeImage" [src]="anime.image_url">
+              [src]="anime.image_url">
             <ion-badge *ngIf="anime.airing" class="animeBadge" color="primary">Airing</ion-badge>
             <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
               <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>

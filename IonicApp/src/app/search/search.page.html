@@ -9,9 +9,9 @@
 
 <ion-content>
 
-<ion-item>
+
   <ion-searchbar [(ngModel)] = "searchInput" autofocus = "true" placeholder="Search Anime" animated = "true" (ionChange) = "search(searchInput)"></ion-searchbar>
-</ion-item>
+
 
 <ion-item class = "gameItem"  Lines = "full"  detail ="false" button (click) = "saveId(anime.mal_id)" *ngFor = "let anime of animeList" [routerLink] = "['/','anime-detail-page']">
   <ion-thumbnail class = "gameIcon" slot ="start">

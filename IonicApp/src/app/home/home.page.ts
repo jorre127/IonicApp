@@ -34,7 +34,7 @@ export class HomePage implements OnInit {
 
   this.ObservableSchedule = this.api.findSchedule();
   this.ObservableSchedule.subscribe(result=>{
-  this.schedule.push(result.monday)
+  this.schedule.push(result.monday);
   this.schedule.push(result.tuesday);
   this.schedule.push(result.wednesday);
   this.schedule.push(result.thursday);

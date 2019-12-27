@@ -38,7 +38,12 @@
     <ion-input [(ngModel)]="episodesWatched" type="number" step="1" inputmode="numeric"
       (ionChange)="checkEpisodesWatched()">
     </ion-input>
+  <span *ngIf ="anime.episodes">
     /{{anime.episodes}}
+  </span>
+  <span *ngIf= "!anime.episodes">
+    /???
+  </span>
     <ion-icon button (click) ="add()" name="add-circle-outline"></ion-icon>
   </ion-item>
   <ion-item class ="buttons" lines="none">
