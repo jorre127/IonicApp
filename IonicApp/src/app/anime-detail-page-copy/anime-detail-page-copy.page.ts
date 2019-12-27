@@ -7,11 +7,11 @@ import { Anime } from '../app.component';
 import {ListDetailPagePage} from "../list-detail-page/list-detail-page.page"
 
 @Component({
-  selector: 'app-anime-detail-page',
-  templateUrl: './anime-detail-page.page.html',
-  styleUrls: ['./anime-detail-page.page.scss'],
+  selector: 'app-anime-detail-page-copy',
+  templateUrl: './anime-detail-page-copy.page.html',
+  styleUrls: ['./anime-detail-page-copy.page.scss'],
 })
-export class AnimeDetailPagePage implements OnInit {
+export class AnimeDetailPageCopyPage implements OnInit {
 
   showAddButton:boolean = true;
   currentAnime: Anime;

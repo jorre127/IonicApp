@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <span>
+    <ion-grid>
+      <ion-row class="studioAnimeRow">
+        <ion-col class="studioAnimeCol" *ngFor="let anime of studioAnimeList" size="6">
+          <ion-card class="studioAnimeCard" button (click)="saveId(anime.mal_id)"
+            [routerLink]="['/','anime-detail-page']">
+            <img class="studioAnimeImage" [src]="anime.image_url">
+            <ion-badge class="studioAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </span>
+
+</ion-content>

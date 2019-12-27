@@ -16,6 +16,7 @@ import {ListDetailPagePage} from "src/app/list-detail-page/list-detail-page.page
 import { FormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [AppComponent,ListDetailPagePage],
   entryComponents: [

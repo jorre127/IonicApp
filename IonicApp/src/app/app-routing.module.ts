@@ -30,13 +30,22 @@ const routes: Routes = [
   {
     path: 'list-detail-page',
     loadChildren: () => import('./list-detail-page/list-detail-page.module').then( m => m.ListDetailPagePageModule)
+  },
+  {
+    path: 'studio-search',
+    loadChildren: () => import('./studio-search/studio-search.module').then( m => m.StudioSearchPageModule)
+  },
+  {
+    path: 'anime-detail-page-copy',
+    loadChildren: () => import('./anime-detail-page-copy/anime-detail-page-copy.module').then( m => m.AnimeDetailPageCopyPageModule)
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+    RouterModule.forRoot(routes, {
+      onSameUrlNavigation: 'reload'
+    })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

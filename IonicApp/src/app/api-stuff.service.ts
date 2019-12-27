@@ -29,4 +29,7 @@ response:any;
   findSchedule(): Observable<any>{
     return this.http.get("https://api.jikan.moe/v3/schedule")
   }
+  findStudio(id:number){
+    return this.http.get("https://api.jikan.moe/v3/producer/"+id)
+  }
 }

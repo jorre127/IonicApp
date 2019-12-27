@@ -7,6 +7,7 @@ import { Anime } from './app.component';
 export class DataService {
 
   id : number;
+  studioId:number;
   darkMode : boolean;
   animeList:Array<Anime> = new Array<Anime>();
   currentAnime:Anime = new Anime();
@@ -54,4 +55,11 @@ export class DataService {
   getListViewStandard():string{
     return this.listViewStandard;
   }
+  setCurrentStudio(id:number){
+    this.studioId = id;
+  }
+  getCurrentStudio():number{
+    return this.studioId;
+  }
+
 }
