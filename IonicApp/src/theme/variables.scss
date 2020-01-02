@@ -110,11 +110,8 @@ body.dark {
   --ion-item-background-activated: #313131;
 }
 
-@font-face {
-  font-family: 'San Fransico';
-  src: url("/Users/jordy/Desktop/School/Jaar_2/Semester_1/Web_Frameworks/Ionic/IonicApp/IonicApp/src/assets/Fonts/SF-Pro-Display-Bold.ttf");
-}
+@font-face { font-family: "SanFransisco"; src: url(../assets/Fonts/SF-Pro-Display-Bold.ttf); }
 
-* {
-  font-family: 'San Fransico' !important;
+:root {
+  --ion-font-family: "SanFransisco";
 }
