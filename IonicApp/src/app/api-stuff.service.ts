@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { JsonPipe } from '@angular/common';
+import { HTTP } from '@ionic-native/http/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +10,11 @@ export class ApiStuffService {
   
 response:any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private HTTP:HTTP) {}
 
-  findAnimeDetails(id:number) : Observable<any>{
-    return this.http.get("https://api.jikan.moe/v3//anime/"+id+"/");
+  async findAnimeDetails(id:number){
+    const response = await this.HTTP.get("https://api.jikan.moe/v3//anime/"+id+"/",null,null);
+    return response;
   }
 
   searchAnime(title :string): Observable<any>{

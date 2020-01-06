@@ -14,6 +14,7 @@ import { TapticEngine } from '@ionic-native/taptic-engine/ngx';
 
 import {ListDetailPagePage} from "src/app/list-detail-page/list-detail-page.page"
 import { FormsModule } from '@angular/forms';
+import { HTTP } from '@ionic-native/http/ngx';
 
 
 
@@ -33,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     StatusBar,
     SplashScreen,
     TapticEngine,
+    HTTP,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
