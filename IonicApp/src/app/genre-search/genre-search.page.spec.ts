@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { AnimeDetailPageCopyPage } from './anime-detail-page-copy.page';
+import { GenreSearchPage } from './genre-search.page';
 
-describe('AnimeDetailPageCopyPage', () => {
-  let component: AnimeDetailPageCopyPage;
-  let fixture: ComponentFixture<AnimeDetailPageCopyPage>;
+describe('GenreSearchPage', () => {
+  let component: GenreSearchPage;
+  let fixture: ComponentFixture<GenreSearchPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AnimeDetailPageCopyPage ],
+      declarations: [ GenreSearchPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AnimeDetailPageCopyPage);
+    fixture = TestBed.createComponent(GenreSearchPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

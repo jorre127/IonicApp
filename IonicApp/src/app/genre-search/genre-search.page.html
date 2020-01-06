@@ -9,10 +9,10 @@
 
 <ion-content>
 
-  <span *ngIf="studioAnimeList">
+  <span *ngIf="genreAnimeList">
     <ion-grid>
       <ion-row class="studioAnimeRow">
-        <ion-col class="studioAnimeCol" *ngFor="let anime of studioAnimeList" size="6">
+        <ion-col class="studioAnimeCol" *ngFor="let anime of genreAnimeList" size="6">
           <ion-card class="studioAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
             routerDirection="forward">
             <img class="studioAnimeImage" [src]="anime.image_url">
@@ -23,11 +23,11 @@
     </ion-grid>
   </span>
 
-  <span *ngIf="!studioAnimeList">
+  <span *ngIf="!genreAnimeList">
     <ion-grid>
       <ion-row class="studioAnimeRow">
         <ion-col class="studioAnimeCol" *ngFor="let anime of studioAnimeList" size="6">
-          <ion-card class="studioAnimeCard" button>
+          <ion-card class="studioAnimeCard">
             <ion-skeleton-text animated></ion-skeleton-text>
           </ion-card>
         </ion-col>

@@ -42,7 +42,4 @@ export class HomePage implements OnInit {
 			this.schedule.push(result.sunday);
 		});
 	}
-	saveId(id: number) {
-		this.data.setId(id);
-	}
 }

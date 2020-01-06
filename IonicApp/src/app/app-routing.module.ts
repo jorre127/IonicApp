@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },
   {
-    path: 'anime-detail-page',
+    path: 'anime-detail-page/:id',
     loadChildren: () => import('./anime-detail-page/anime-detail-page.module').then( m => m.AnimeDetailPagePageModule)
   },
   {
@@ -32,12 +32,12 @@ const routes: Routes = [
     loadChildren: () => import('./list-detail-page/list-detail-page.module').then( m => m.ListDetailPagePageModule)
   },
   {
-    path: 'studio-search',
+    path: 'studio-search/:id',
     loadChildren: () => import('./studio-search/studio-search.module').then( m => m.StudioSearchPageModule)
   },
   {
-    path: 'anime-detail-page-copy',
-    loadChildren: () => import('./anime-detail-page-copy/anime-detail-page-copy.module').then( m => m.AnimeDetailPageCopyPageModule)
+    path: 'genre-search/:id',
+    loadChildren: () => import('./genre-search/genre-search.module').then( m => m.GenreSearchPageModule)
   }
 ];
 

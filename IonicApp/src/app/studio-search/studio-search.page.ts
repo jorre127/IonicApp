@@ -3,7 +3,9 @@ import { Anime } from '../app.component';
 import { ApiStuffService } from '../api-stuff.service';
 import { Observable } from 'rxjs';
 import { DataService } from '../data.service';
-import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { AnimeDetailPagePage } from '../anime-detail-page/anime-detail-page.page';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'app-studio-search',
@@ -15,10 +17,10 @@ export class StudioSearchPage implements OnInit {
 	studioId: number;
 	observableStudio: Observable<any>;
 
-	constructor(private api: ApiStuffService, private data: DataService, private router: Router) {}
+	constructor(private api: ApiStuffService, private data: DataService, private route:ActivatedRoute) {}
 
 	ngOnInit() {
-		this.studioId = this.data.getCurrentStudio();
+		this.studioId = parseInt(this.route.snapshot.paramMap.get("id"));
 		this.observableStudio = this.api.findStudio(this.studioId);
 		this.observableStudio.subscribe((result) => {
 			this.studioAnimeList = result.anime;

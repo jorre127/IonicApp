@@ -15,6 +15,7 @@ export class ListDetailPagePage implements OnInit {
 
 	constructor(private modal: ModalController, private nav: NavParams) {}
 
+
 	ngOnInit() {
 		this.anime = this.nav.get('anime');
 
