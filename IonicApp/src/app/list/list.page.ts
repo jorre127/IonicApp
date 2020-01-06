@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { Anime } from '../app.component';
 import { ModalController } from '@ionic/angular';
 import { ListDetailPagePage } from '../list-detail-page/list-detail-page.page';
+import { TapticEngine } from '@ionic-native/taptic-engine/ngx';
 
 @Component({
 	selector: 'app-list',
@@ -36,7 +37,7 @@ export class ListPage implements OnInit {
 	listView: Array<boolean> = new Array<boolean>();
 	showBadge: boolean;
 
-	constructor (private data: DataService, private modal: ModalController) {}
+	constructor (private data: DataService, private modal: ModalController, private vibration:TapticEngine) {}
 
 	ngOnInit () {
 		this.animeList = this.data.getAnimeList();
@@ -75,6 +76,9 @@ export class ListPage implements OnInit {
 	}
 
 	async openDetailPage (anime: Anime) {
+		this.vibration.impact({
+			style: 'medium' // light | medium | heavy
+		});
 		const modall = await this.modal.create({
 			component: ListDetailPagePage,
 			showBackdrop: true,

@@ -13,14 +13,14 @@
   <ion-searchbar [(ngModel)] = "searchInput" autofocus = "true" placeholder="Search Anime" animated = "true" (ionChange) = "search()"></ion-searchbar>
 
 
-<ion-item class = "gameItem"  Lines = "full"  detail ="false" button (click) = "saveId(anime.mal_id)" *ngFor = "let anime of animeList" [routerLink] = "['/','anime-detail-page']">
+<ion-item class = "gameItem"  Lines = "full"  detail ="false" button *ngFor = "let anime of animeList" [routerLink] = "['/','anime-detail-page', anime.mal_id]">
   <ion-thumbnail class = "gameIcon" slot ="start">
     <img [src]= "anime.image_url">
   </ion-thumbnail>
   <ion-label class = "chonkLabel" position = "stacked">
     {{anime.title}}
   </ion-label>
-  <ion-label class = "smolLabel" position = "stacked">
+  <ion-label class = "smolLabel" position = "stacked" color="primary">
     {{anime.type}}
   </ion-label>
   <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>

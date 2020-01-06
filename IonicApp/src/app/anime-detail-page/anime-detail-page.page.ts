@@ -25,7 +25,7 @@ export class AnimeDetailPagePage implements OnInit {
 
 	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController,private route:ActivatedRoute) {}
 
-  	/* For Phone
+
 	ngOnInit () {
 		console.log('initialize');
 		// Getting Details From Anime
@@ -38,8 +38,9 @@ export class AnimeDetailPagePage implements OnInit {
 		this.currentAnime = JSON.parse((await response).data);
 		this.updateButton();
   }
-  */
+  
 
+  /* For Testing on Computer
   ngOnInit(){
     this.id = parseInt(this.route.snapshot.paramMap.get("id"));
     this.observable = this.api.findAnimeDetails(this.id);
@@ -49,6 +50,8 @@ export class AnimeDetailPagePage implements OnInit {
     })
     this.animeList = this.data.getAnimeList();
   }
+  */
+
 	addAnimeToList () {
 		this.data.addAnimeToList(this.currentAnime);
 		this.updateButton();

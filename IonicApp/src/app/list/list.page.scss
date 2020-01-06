@@ -59,7 +59,7 @@ align-self: center;
     background-color: #f30756;
     width: 2rem;
     height: 2rem;
-    left: 8.5rem;
+    left: 9rem;
     top: 14rem;
 }
 ion-item-divider{
@@ -71,4 +71,7 @@ ion-item-divider{
 }
 h2{
     color: #f30756;
+}
+ion-thumbnail > img{
+    border-radius:0.15rem;
 }

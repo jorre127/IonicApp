@@ -11,16 +11,19 @@ export class ApiStuffService {
 
 	constructor (private http: HttpClient, private HTTP: HTTP) {}
 
-	/* For Phone
   async findAnimeDetails(id:number){
     const response = await this.HTTP.get("https://api.jikan.moe/v3//anime/"+id+"/",null,null);
     return response;
   }
-  */
+
+
+  /* For testing on Computer
 
 	public findAnimeDetails (id: number): Observable<any> {
 		return this.http.get('https://api.jikan.moe/v3//anime/' + id + '/');
-	}
+  }
+  
+  */
 
 	searchAnime (title: string): Observable<any> {
 		return this.http.get('https://api.jikan.moe/v3/search/anime?q=' + title + '&page=1');

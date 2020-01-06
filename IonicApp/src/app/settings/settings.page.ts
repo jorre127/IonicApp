@@ -30,6 +30,9 @@ export class SettingsPage implements OnInit {
 		});
 	}
 	listModeChanged() {
+		this.vibration.impact({
+			style: 'medium' // light | medium | heavy
+		});
 		this.gridView = false;
 		this.detailedListView = false;
 		this.listView = false;
