@@ -38,6 +38,7 @@
     "jikan-client": "^1.0.0",
     "jikants": "^1.2.13",
     "net": "^1.0.2",
+    "ngx-virtual-scroller": "^3.0.3",
     "rxjs": "~6.5.1",
     "tls": "0.0.1",
     "tslib": "^1.9.0",

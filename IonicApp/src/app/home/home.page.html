@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar class ="shadows">
+  <ion-toolbar class="shadows">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -15,18 +15,14 @@
       Seasonal Anime
     </h1>
   </ion-text>
-
   <span *ngIf="seasonalAnimeList">
     <ion-grid class="seasonalAnimeGrid">
-      <ion-row nowrap class="seasonalAnimeRow">
-        <ion-col class="seasonalAnimeCol" *ngFor="let anime of seasonalAnimeList" size="6">
-          <ion-card class="seasonalAnimeCard" button
-          [routerLink]="['/','anime-detail-page', anime.mal_id]">
+      <virtual-scroller scrollbarHeight = "0" horizontal ="true" #scroll [items]="seasonalAnimeList">
+          <ion-card class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]" *ngFor="let anime of scroll.viewPortItems">
             <img class="seasonalAnimeImage" [src]="anime.image_url">
             <ion-badge class="seasonalAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
           </ion-card>
-        </ion-col>
-      </ion-row>
+      </virtual-scroller>
     </ion-grid>
   </span>
 
@@ -52,17 +48,15 @@
       Upcoming Anime
     </h1>
   </ion-text>
+
   <span *ngIf="upcomingAnimeList">
     <ion-grid class="seasonalAnimeGrid">
-      <ion-row nowrap class="seasonalAnimeRow">
-        <ion-col class="seasonalAnimeCol" *ngFor="let anime of upcomingAnimeList" size="6">
-          <ion-card class="seasonalAnimeCard" button 
-            [routerLink]="['/','anime-detail-page', anime.mal_id]">
+      <virtual-scroller scrollbarHeight = "0" horizontal ="true" #scroll [items]="upcomingAnimeList">
+          <ion-card class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]" *ngFor="let anime of scroll.viewPortItems">
             <img class="seasonalAnimeImage" [src]="anime.image_url">
             <ion-badge class="seasonalAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
           </ion-card>
-        </ion-col>
-      </ion-row>
+      </virtual-scroller>
     </ion-grid>
   </span>
 
@@ -84,7 +78,6 @@
     </ion-grid>
   </span>
 
-
   <ion-text color="primary">
     <h1 class="thisWeekTitle">
       This Week
@@ -92,11 +85,11 @@
   </ion-text>
   <ion-list>
     <span *ngFor="let day of daysOfWeek; index as i">
-      <ion-item-divider >
+      <ion-item-divider>
         {{day}}
       </ion-item-divider>
-      <ion-item class="gameItem shadows" Lines="full" detail="false" button 
-        *ngFor="let anime of schedule[i]" [routerLink]="['/','anime-detail-page', anime.mal_id]">
+      <ion-item class="gameItem shadows" Lines="full" detail="false" button *ngFor="let anime of schedule[i]"
+        [routerLink]="['/','anime-detail-page', anime.mal_id]">
         <ion-thumbnail class="gameIcon" slot="start">
           <img [src]="anime.image_url">
         </ion-thumbnail>
@@ -112,6 +105,4 @@
       </ion-item>
     </span>
   </ion-list>
-
-
 </ion-content>

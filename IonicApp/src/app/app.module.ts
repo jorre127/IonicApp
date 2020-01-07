@@ -16,6 +16,8 @@ import {ListDetailPagePage} from "src/app/list-detail-page/list-detail-page.page
 import { FormsModule } from '@angular/forms';
 import { HTTP } from '@ionic-native/http/ngx';
 
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
+
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { HTTP } from '@ionic-native/http/ngx';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    VirtualScrollerModule
   ],
   providers: [
     StatusBar,

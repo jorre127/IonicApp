@@ -3,6 +3,9 @@ import { ApiStuffService } from '../api-stuff.service';
 import { Observable } from 'rxjs';
 import { DataService } from '../data.service';
 import { Anime } from '../app.component';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
+
+
 
 @Component({
 	selector: 'app-home',
@@ -19,18 +22,28 @@ export class HomePage implements OnInit {
 	schedule: Array<Array<Anime>> = new Array<Array<Anime>>();
 	daysOfWeek: Array<String> = [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ];
 
-	constructor(private api: ApiStuffService, private data: DataService) {}
-	ngOnInit() {
+	responseObject: containsAnime;
+
+	constructor (private api: ApiStuffService) {}
+	ngOnInit () {
+		this.getSeasonalAnime();
+		this.getUpcomingAnime();
+		this.getScheduledAnime();
+	}
+
+	async getSeasonalAnime () {
 		this.ObservableSeasonal = this.api.findSeasonalAnime();
 		this.ObservableSeasonal.subscribe((result) => {
 			this.seasonalAnimeList = result.anime;
 		});
-
+	}
+	async getUpcomingAnime () {
 		this.ObservableUpcoming = this.api.findUpcomingAnime();
 		this.ObservableUpcoming.subscribe((result) => {
 			this.upcomingAnimeList = result.anime;
 		});
-
+	}
+	async getScheduledAnime () {
 		this.ObservableSchedule = this.api.findSchedule();
 		this.ObservableSchedule.subscribe((result) => {
 			this.schedule.push(result.monday);
@@ -42,4 +55,7 @@ export class HomePage implements OnInit {
 			this.schedule.push(result.sunday);
 		});
 	}
+}
+class containsAnime {
+	anime: Array<Anime>;
 }

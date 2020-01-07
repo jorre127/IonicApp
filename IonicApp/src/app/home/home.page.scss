@@ -14,9 +14,15 @@
   height: fit-content;
   padding-bottom:1rem;
 }
+.upcomingAnimeCol{
+  height: fit-content;
+  padding:4.5px;
+  padding-bottom:1rem;
+  
+}
 .seasonalAnimeCard{
-  width:100% !important;
-  margin:0 !important;
+  width:46%;
+  margin:0.5rem!important;
   height:16.5rem;
   filter: drop-shadow(0px 4px 3px var( --ion-shadow));
 }
@@ -24,11 +30,33 @@
   max-width: 100%;
   height: 16.5rem;
 }
+.upcomingAnimeImage{
+  width: 100%;
+  height: 16.5rem;
+  border-radius: 0.5rem;
+  position: relative;;
+  filter: drop-shadow(0px 4px 3px var( --ion-shadow));
+}
 .seasonalAnimeBadge{
   width:100%;
   position:absolute;
   top:15.39rem;
   opacity: 0.6;
+  height:1.3rem;
+}
+.upcomingAnimeBadge{
+  width:100%;
+  position: relative;
+  height:1.3rem;
+  top:-1.4rem;
+  line-height: 2;
+  opacity: 0.6;
+  word-wrap: break-word;
+}
+.upcomingTitle{
+  position: relative;
+  top:-0.3rem;
+
 }
 .smolLabel{
   font-size: 8pt;
@@ -82,4 +110,13 @@ ion-thumbnail > img{
 .shadows{
   box-shadow: -4px -4px 12px 0 var(--ion-highlight-neumorphisme),
   7px 7px 12px 0 rgba(0,0,0,0.15);
+}
+.upcomingAnimeDiv{
+  height: 16rem;
+}
+virtual-scroller {
+  width: 100%;
+  height: 18.5rem;
+  margin-bottom: -25px !important;
+  padding-bottom: 25px !important;
 }

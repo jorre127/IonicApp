@@ -10,10 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
 	selector: 'app-anime-detail-page',
 	templateUrl: './anime-detail-page.page.html',
-	styleUrls:
-		[
-			'./anime-detail-page.page.scss'
-		]
+	styleUrls: [ './anime-detail-page.page.scss' ]
 })
 export class AnimeDetailPagePage implements OnInit {
 	showAddButton: boolean = true;
@@ -23,13 +20,12 @@ export class AnimeDetailPagePage implements OnInit {
 	animeList: Array<Anime> = new Array<Anime>();
 	id: number;
 
-	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController,private route:ActivatedRoute) {}
+	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController, private route: ActivatedRoute) {}
 
-/* For Phone
 	ngOnInit () {
 		console.log('initialize');
 		// Getting Details From Anime
-    this.id = parseInt(this.route.snapshot.paramMap.get("id"));
+		this.id = parseInt(this.route.snapshot.paramMap.get('id'));
 		this.getDetails();
 		this.animeList = this.data.getAnimeList();
 	}
@@ -37,10 +33,9 @@ export class AnimeDetailPagePage implements OnInit {
 		const response = this.api.findAnimeDetails(this.id);
 		this.currentAnime = JSON.parse((await response).data);
 		this.updateButton();
-  }
-  */
-  
+	}
 
+	/*
   ngOnInit(){
     this.id = parseInt(this.route.snapshot.paramMap.get("id"));
     this.observable = this.api.findAnimeDetails(this.id);
@@ -50,6 +45,7 @@ export class AnimeDetailPagePage implements OnInit {
     })
     this.animeList = this.data.getAnimeList();
   }
+  */
 
 	addAnimeToList () {
 		this.data.addAnimeToList(this.currentAnime);
