@@ -4,6 +4,7 @@ ion-card{
     width: 100% !important;
     height:16.5rem !important;
     margin: 0 !important;
+    filter: drop-shadow(0px 4px 3px var( --ion-shadow));
 }
 .imgCard{
     height: 16.5rem;
@@ -65,6 +66,9 @@ align-self: center;
 ion-item-divider{
     margin:none;
     height:4rem;
+    margin-top:1rem;
+    border-radius: 1rem;
+    background-color: var(--ion-color-neumorphisme);
 }
 .expandArrow{
     margin-right:1.5rem;
@@ -75,3 +79,17 @@ h2{
 ion-thumbnail > img{
     border-radius:0.15rem;
 }
+
+* {
+    --ion-background-color: var(--ion-color-neumorphisme);
+    --ion-toolbar-background: var(--ion-color-neumorphisme);
+    --ion-item-background: var(--ion-color-neumorphisme);
+  }
+  .shadows{
+    box-shadow: -4px -4px 12px 0 var(--ion-highlight-neumorphisme),
+    7px 7px 12px 0 rgba(0,0,0,0.15);
+  }
+  .listCol{
+    height: fit-content;
+    padding-bottom:0.5rem;
+  }

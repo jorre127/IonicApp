@@ -14,3 +14,8 @@
 .studioAnimeImage{
     height:16.5rem;
 }
+* {
+    --ion-background-color: var(--ion-color-neumorphisme);
+    --ion-toolbar-background: var(--ion-color-neumorphisme);
+    --ion-item-background: var(--ion-color-neumorphisme);
+  }

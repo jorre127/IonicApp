@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="toolbarShadows">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
@@ -19,8 +19,7 @@
     <ion-note class="subTitle">
       {{currentAnime.title_japanese}}
     </ion-note>
-    <hr>
-    <ion-card class="detailsItem" lines="none">
+    <ion-card class="detailsItem shadows" lines="none">
       <ion-card-content>
         <ion-grid class="detailsGrid">
           <ion-row>
@@ -45,8 +44,7 @@
         </ion-grid>
       </ion-card-content>
     </ion-card>
-    <hr class="secondLine">
-    <ion-card class="synopsisCard synopsisItem">
+    <ion-card class="synopsisCard synopsisItem shadows">
       <ion-card-header class="synopsisTitle">
         <ion-card-title>
           Description
@@ -57,9 +55,8 @@
       </ion-card-content>
     </ion-card>
 
-    <hr class="thirdLine">
 
-    <ion-card class="details">
+    <ion-card class="details shadows">
       <ion-card-header class="synopsisTitle">
         <ion-card-title>
           Details
@@ -160,7 +157,8 @@
                   </ion-text>
                 </ion-col>
                 <ion-col>
-                  <ion-text *ngFor="let producer of currentAnime.producers; let i = index" color="primary" [routerLink]="['/','studio-search',producer.mal_id]">
+                  <ion-text *ngFor="let producer of currentAnime.producers; let i = index" color="primary"
+                    [routerLink]="['/','studio-search',producer.mal_id]">
                     {{producer.name}}<span *ngIf="i != currentAnime.producers.length-1">,</span>
                   </ion-text>
                 </ion-col>
@@ -174,7 +172,8 @@
                   </ion-text>
                 </ion-col>
                 <ion-col>
-                  <ion-text *ngFor="let licensor of currentAnime.licensors; let i = index" color="primary" [routerLink]="['/','studio-search',licensor.mal_id]">
+                  <ion-text *ngFor="let licensor of currentAnime.licensors; let i = index" color="primary"
+                    [routerLink]="['/','studio-search',licensor.mal_id]">
                     {{licensor.name}}<span *ngIf="i != currentAnime.licensors.length-1">,</span>
                   </ion-text>
                 </ion-col>
@@ -188,7 +187,8 @@
                   </ion-text>
                 </ion-col>
                 <ion-col>
-                  <ion-text *ngFor="let studio of currentAnime.studios; let i = index" color="primary" [routerLink]="['/','studio-search',studio.mal_id]">
+                  <ion-text *ngFor="let studio of currentAnime.studios; let i = index" color="primary"
+                    [routerLink]="['/','studio-search',studio.mal_id]">
                     {{studio.name}}<span *ngIf="i != currentAnime.studios.length-1">,</span>
                   </ion-text>
                 </ion-col>
@@ -216,7 +216,8 @@
                   </ion-text>
                 </ion-col>
                 <ion-col>
-                  <ion-text *ngFor="let genre of currentAnime.genres; let i = index" color="primary" [routerLink]="['/','genre-search',genre.mal_id]">
+                  <ion-text *ngFor="let genre of currentAnime.genres; let i = index" color="primary"
+                    [routerLink]="['/','genre-search',genre.mal_id]">
                     {{genre.name}} <span *ngIf="i != currentAnime.genres.length-1">,</span>
                   </ion-text>
                 </ion-col>
@@ -262,10 +263,9 @@
       <ion-skeleton-text animated style="width:60%"></ion-skeleton-text>
     </h1>
     <h2 class="subTitle">
-    <ion-skeleton-text animated style="width:40%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width:40%"></ion-skeleton-text>
     </h2>
-    <hr>
-    <ion-card class="detailsItem" lines="none">
+    <ion-card class="detailsItem shadows" lines="none">
       <ion-card-content>
         <ion-grid class="detailsGrid">
           <ion-row>
@@ -289,8 +289,7 @@
         </ion-grid>
       </ion-card-content>
     </ion-card>
-    <hr class="secondLine">
-    <ion-card class="synopsisCard synopsisItem">
+    <ion-card class="synopsisCard synopsisItem shadows">
       <ion-card-header class="synopsisTitle">
         <ion-card-title>
           <ion-skeleton-text animated style="width:60%"></ion-skeleton-text>
@@ -307,9 +306,8 @@
       </ion-card-content>
     </ion-card>
 
-    <hr class="thirdLine">
 
-    <ion-card class="details">
+    <ion-card class="details shadows">
       <ion-card-header class="synopsisTitle">
         <ion-card-title>
           <ion-skeleton-text animated style="width:60%"></ion-skeleton-text>

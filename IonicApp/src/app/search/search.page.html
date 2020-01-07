@@ -13,7 +13,7 @@
   <ion-searchbar [(ngModel)] = "searchInput" autofocus = "true" placeholder="Search Anime" animated = "true" (ionChange) = "search()"></ion-searchbar>
 
 
-<ion-item class = "gameItem"  Lines = "full"  detail ="false" button *ngFor = "let anime of animeList" [routerLink] = "['/','anime-detail-page', anime.mal_id]">
+<ion-item class = "gameItem shadows"  Lines = "full"  detail ="false" button *ngFor = "let anime of animeList" [routerLink] = "['/','anime-detail-page', anime.mal_id]">
   <ion-thumbnail class = "gameIcon" slot ="start">
     <img [src]= "anime.image_url">
   </ion-thumbnail>
