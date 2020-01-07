@@ -29,8 +29,11 @@
 {
     .modal-wrapper 
     {
-        width: 90%;
-        height:25%;
+        position: absolute;
+        width:100%;
+        bottom:0%;
+        height:40%;
+        overflow: hidden;
         padding:0.6rem;
         border-radius: 1rem;
     }

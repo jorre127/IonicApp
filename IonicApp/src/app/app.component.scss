@@ -1,0 +1,13 @@
+* {
+	--ion-background-color: var(--ion-color-neumorphisme);
+	--ion-toolbar-background: var(--ion-color-neumorphisme);
+	--ion-item-background: var(--ion-color-neumorphisme);
+}
+.shadow {
+	box-shadow: -4px -4px 12px 0 var(--ion-highlight-neumorphisme), 4px 4px 12px 0 rgba(0, 0, 0, 0.15);
+	margin-top: 1rem;
+	margin-left: auto;
+	margin-right: auto;
+	width: 96%;
+	border-radius: 1rem;
+}

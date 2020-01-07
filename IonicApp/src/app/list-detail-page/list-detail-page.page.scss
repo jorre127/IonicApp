@@ -2,19 +2,30 @@ ion-input{
     border-bottom:solid #000000 0.5px;
     text-align: center;
 }
-ion-select{
-    border-bottom:solid black 0.5px;
-}
 .episodeLabel{
     margin-right: 8.5em;
 }
 .buttons{
     width:100%;
-    margin-top:1rem;
+    margin-top:2rem;
 }
 ion-button{
     width: 50%;
     height: 100%;
     margin: 0.6rem;
     font-size: 1rem;
+}
+* {
+    --ion-background-color: var(--ion-color-neumorphisme);
+    --ion-toolbar-background: var(--ion-color-neumorphisme);
+    --ion-item-background: var(--ion-color-neumorphisme);
+
+}
+.shadows{
+    box-shadow: -4px -4px 12px 0 var(--ion-highlight-neumorphisme),
+    10px 10px 12px 0 rgba(0,0,0,0.15);
+    border-radius:1rem;
+    width:96%;
+    margin:auto;
+    margin-top:1rem;
 }
