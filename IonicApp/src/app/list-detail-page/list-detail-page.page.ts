@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { Anime } from '../app.component';
+import { ListPage } from '../list/list.page';
 
 @Component({
 	selector: 'app-list-detail-page',
@@ -13,18 +14,20 @@ export class ListDetailPagePage implements OnInit {
 	watchStatus: string;
 	score: string;
 
-	constructor(private modal: ModalController, private nav: NavParams) {}
+	listpage: ListPage;
 
+	constructor (private modal: ModalController, private nav: NavParams) {}
 
-	ngOnInit() {
+	ngOnInit () {
 		this.anime = this.nav.get('anime');
+		this.listpage = this.nav.get('list');
 
 		this.episodesWatched = this.anime.episodesWatched;
 		this.watchStatus = this.anime.watchStatus;
 		this.score = this.anime.userScoreString;
 	}
 
-	checkEpisodesWatched() {
+	checkEpisodesWatched () {
 		if (this.episodesWatched < 0) {
 			this.episodesWatched = 0;
 		}
@@ -33,19 +36,22 @@ export class ListDetailPagePage implements OnInit {
 		}
 	}
 
-	add() {
+	add () {
 		this.episodesWatched++;
 		this.checkEpisodesWatched();
 	}
 
-	save() {
+	save () {
 		this.anime.episodesWatched = this.episodesWatched;
 		this.anime.watchStatus = this.watchStatus;
 		this.anime.userScoreString = this.score;
+		if (this.listpage != null) {
+			this.listpage.sortAnime();
+		}
 		this.dismiss();
 	}
 
-	dismiss() {
+	dismiss () {
 		// using the injected ModalController this page
 		// can "dismiss" itself and optionally pass back data
 		this.modal.dismiss({

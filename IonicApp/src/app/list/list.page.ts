@@ -8,10 +8,7 @@ import { TapticEngine } from '@ionic-native/taptic-engine/ngx';
 @Component({
 	selector: 'app-list',
 	templateUrl: 'list.page.html',
-	styleUrls:
-		[
-			'list.page.scss'
-		]
+	styleUrls: [ 'list.page.scss' ]
 })
 export class ListPage implements OnInit {
 	animeList: Array<Anime> = new Array<Anime>();
@@ -37,39 +34,13 @@ export class ListPage implements OnInit {
 	listView: Array<boolean> = new Array<boolean>();
 	showBadge: boolean;
 
-	constructor (private data: DataService, private modal: ModalController, private vibration:TapticEngine) {}
+	constructor (private data: DataService, private modal: ModalController, private vibration: TapticEngine) {}
 
 	ngOnInit () {
 		this.animeList = this.data.getAnimeList();
 		this.listView = this.data.getListView();
 
-		console.log('pipi');
-
-		this.animeList.forEach((anime) => {
-			if (anime.watchStatus == 'Watching') {
-				this.watchingList.push(anime);
-			}
-		});
-		this.animeList.forEach((anime) => {
-			if (anime.watchStatus == 'Completed') {
-				this.completedList.push(anime);
-			}
-		});
-		this.animeList.forEach((anime) => {
-			if (anime.watchStatus == 'On-Hold') {
-				this.onHoldList.push(anime);
-			}
-		});
-		this.animeList.forEach((anime) => {
-			if (anime.watchStatus == 'Dropped') {
-				this.droppedList.push(anime);
-			}
-		});
-		this.animeList.forEach((anime) => {
-			if (anime.watchStatus == 'Plan To Watch') {
-				this.planToWatchList.push(anime);
-			}
-		});
+		this.sortAnime();
 	}
 	saveId (id: number) {
 		this.data.setId(id);
@@ -85,11 +56,13 @@ export class ListPage implements OnInit {
 			cssClass: 'modal',
 			componentProps:
 				{
-					anime: anime
+					anime: anime,
+					list: this
 				}
 		});
 		modall.present();
 	}
+
 	showWatching () {
 		if (this.showWatchingList == false) {
 			this.showWatchingList = true;
@@ -139,6 +112,40 @@ export class ListPage implements OnInit {
 			this.showPlanToWatchList = false;
 			this.arrowStatusPlanToWatchList = 'arrow-forward';
 		}
+	}
+
+	public sortAnime () {
+		this.watchingList = [];
+		this.completedList = [];
+		this.onHoldList = [];
+		this.droppedList = [];
+		this.planToWatchList = [];
+
+		this.animeList.forEach((anime) => {
+			if (anime.watchStatus == 'Watching') {
+				this.watchingList.push(anime);
+			}
+		});
+		this.animeList.forEach((anime) => {
+			if (anime.watchStatus == 'Completed') {
+				this.completedList.push(anime);
+			}
+		});
+		this.animeList.forEach((anime) => {
+			if (anime.watchStatus == 'On-Hold') {
+				this.onHoldList.push(anime);
+			}
+		});
+		this.animeList.forEach((anime) => {
+			if (anime.watchStatus == 'Dropped') {
+				this.droppedList.push(anime);
+			}
+		});
+		this.animeList.forEach((anime) => {
+			if (anime.watchStatus == 'Plan To Watch') {
+				this.planToWatchList.push(anime);
+			}
+		});
 	}
 
 	// add back when alpha.4 is out

@@ -90,6 +90,7 @@
                   <ion-text>
                     {{currentAnime.episodes}}
                   </ion-text>
+                  <ion-text *ngIf ="!currentAnime.episodes">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -132,6 +133,7 @@
                   <ion-text color="primary">
                     {{currentAnime.premiered}}
                   </ion-text>
+                  <ion-text *ngIf ="!currentAnime.premiered">?</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -161,6 +163,7 @@
                     [routerLink]="['/','studio-search',producer.mal_id]">
                     {{producer.name}}<span *ngIf="i != currentAnime.producers.length-1">,</span>
                   </ion-text>
+                  <ion-text *ngIf ="currentAnime.producers.length ==0">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -176,6 +179,7 @@
                     [routerLink]="['/','studio-search',licensor.mal_id]">
                     {{licensor.name}}<span *ngIf="i != currentAnime.licensors.length-1">,</span>
                   </ion-text>
+                  <ion-text *ngIf ="currentAnime.licensors.length ==0">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -191,6 +195,7 @@
                     [routerLink]="['/','studio-search',studio.mal_id]">
                     {{studio.name}}<span *ngIf="i != currentAnime.studios.length-1">,</span>
                   </ion-text>
+                  <ion-text *ngIf ="currentAnime.studios.length ==0">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -220,6 +225,7 @@
                     [routerLink]="['/','genre-search',genre.mal_id]">
                     {{genre.name}} <span *ngIf="i != currentAnime.genres.length-1">,</span>
                   </ion-text>
+                  <ion-text *ngIf ="currentAnime.genres.length == 0">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
