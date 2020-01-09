@@ -23,7 +23,7 @@
           <ion-card>
             <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
               (click)="saveId(anime.mal_id)" [src]="anime.image_url">
-            <ion-badge *ngIf="anime.airing" class="animeBadge" color="primary">Airing</ion-badge>
+            <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
             <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
               <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
             </ion-avatar>
@@ -49,7 +49,7 @@
           <ion-card>
             <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
               (click)="saveId(anime.mal_id)" [src]="anime.image_url">
-            <ion-badge *ngIf="anime.airing" class="animeBadge" color="primary">Airing</ion-badge>
+            <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
             <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
               <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
             </ion-avatar>
@@ -74,7 +74,7 @@
           <ion-card>
             <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
               (click)="saveId(anime.mal_id)" [src]="anime.image_url">
-            <ion-badge *ngIf="anime.airing" class="animeBadge" color="primary">Airing</ion-badge>
+            <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
             <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
               <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
             </ion-avatar>
@@ -100,7 +100,7 @@
           <ion-card>
             <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
               (click)="saveId(anime.mal_id)" [src]="anime.image_url">
-            <ion-badge *ngIf="anime.airing" class="animeBadge" color="primary">Airing</ion-badge>
+            <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
             <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
               <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
             </ion-avatar>
@@ -126,7 +126,7 @@
           <ion-card>
             <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
               (click)="saveId(anime.mal_id)" [src]="anime.image_url">
-            <ion-badge *ngIf="anime.airing" class="animeBadge" color="primary">Airing</ion-badge>
+            <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
             <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
               <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
             </ion-avatar>
@@ -163,7 +163,7 @@
           <ion-label class="smolLabel" position="stacked" color="primary">
             {{anime.type}}
           </ion-label>
-          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="primary">Airing</ion-badge>
+          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="success">Airing</ion-badge>
           <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
         </ion-item>
       </ion-item-sliding>
@@ -196,7 +196,7 @@
           <ion-label class="smolLabel" position="stacked" color="primary">
             {{anime.type}}
           </ion-label>
-          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="primary">Airing</ion-badge>
+          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="success">Airing</ion-badge>
           <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
         </ion-item>
       </ion-item-sliding>
@@ -228,7 +228,7 @@
           <ion-label class="smolLabel" position="stacked" color="primary">
             {{anime.type}}
           </ion-label>
-          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="primary">Airing</ion-badge>
+          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="success">Airing</ion-badge>
           <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
         </ion-item>
       </ion-item-sliding>
@@ -261,7 +261,7 @@
           <ion-label class="smolLabel" position="stacked" color="primary">
             {{anime.type}}
           </ion-label>
-          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="primary">Airing</ion-badge>
+          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="success">Airing</ion-badge>
           <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
         </ion-item>
       </ion-item-sliding>
@@ -294,7 +294,7 @@
           <ion-label class="smolLabel" position="stacked" color="primary">
             {{anime.type}}
           </ion-label>
-          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="primary">Airing</ion-badge>
+          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="success">Airing</ion-badge>
           <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
         </ion-item>
       </ion-item-sliding>
@@ -320,7 +320,7 @@
           <ion-label>
             {{anime.title}}
           </ion-label>
-          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="primary">Airing</ion-badge>
+          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="success">Airing</ion-badge>
         </ion-item>
       </ion-item-sliding>
     </span>
@@ -346,7 +346,7 @@
           <ion-label>
             {{anime.title}}
           </ion-label>
-          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="primary">Airing</ion-badge>
+          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="success">Airing</ion-badge>
         </ion-item>
       </ion-item-sliding>
     </span>
@@ -371,7 +371,7 @@
           <ion-label>
             {{anime.title}}
           </ion-label>
-          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="primary">Airing</ion-badge>
+          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="success">Airing</ion-badge>
         </ion-item>
       </ion-item-sliding>
     </span>
@@ -397,7 +397,7 @@
           <ion-label>
             {{anime.title}}
           </ion-label>
-          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="primary">Airing</ion-badge>
+          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="success">Airing</ion-badge>
         </ion-item>
       </ion-item-sliding>
     </span>
@@ -423,7 +423,7 @@
           <ion-label>
             {{anime.title}}
           </ion-label>
-          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="primary">Airing</ion-badge>
+          <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="success">Airing</ion-badge>
         </ion-item>
       </ion-item-sliding>
     </span>
