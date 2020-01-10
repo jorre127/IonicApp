@@ -134,7 +134,39 @@ export class Anime {
               "name": "Cowboy Bebop: Yose Atsume Blues",
               "url": "https://myanimelist.net/anime/4037/Cowboy_Bebop__Yose_Atsume_Blues"
           }
-      ]
+      ],
+      "Alternative version": [
+        {
+            "mal_id": 40054,
+            "type": "anime",
+            "name": "Akira (Shin Anime)",
+            "url": "https://myanimelist.net/anime/40054/Akira_Shin_Anime"
+        }
+    ],
+      "Sequel": [
+        {
+            "mal_id": 1735,
+            "type": "anime",
+            "name": "Naruto: Shippuuden",
+            "url": "https://myanimelist.net/anime/1735/Naruto__Shippuuden"
+        }
+    ],
+    "Spin-off": [
+        {
+            "mal_id": 2520,
+            "type": "anime",
+            "name": "Dragon Ball Specials",
+            "url": "https://myanimelist.net/anime/2520/Dragon_Ball_Specials"
+        }
+    ],
+    "Prequel": [
+        {
+            "mal_id": 33486,
+            "type": "anime",
+            "name": "Boku no Hero Academia 2nd Season",
+            "url": "https://myanimelist.net/anime/33486/Boku_no_Hero_Academia_2nd_Season"
+        }
+    ]
   }
   "producers": [
       {

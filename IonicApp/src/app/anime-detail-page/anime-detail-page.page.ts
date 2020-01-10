@@ -6,6 +6,7 @@ import { ToastController, ModalController, NavParams } from '@ionic/angular';
 import { Anime } from '../app.component';
 import { ListDetailPagePage } from '../list-detail-page/list-detail-page.page';
 import { ActivatedRoute } from '@angular/router';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 
 @Component({
 	selector: 'app-anime-detail-page',
@@ -17,8 +18,12 @@ export class AnimeDetailPagePage implements OnInit {
 	currentAnime: Anime;
 	currentDetailAnime: Anime;
 	observable: Observable<any>;
+	relatedObservable: Observable<any>;
 	animeList: Array<Anime> = new Array<Anime>();
+	prequelAnimeList: Array<Anime> = new Array<Anime>();
+	sequelAnimeList: Array<Anime> = new Array<Anime>();
 	id: number;
+	relatedId: number;
 
 	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController, private route: ActivatedRoute) {}
 
@@ -37,17 +42,16 @@ export class AnimeDetailPagePage implements OnInit {
 	}
 	*/
 
-	
-  ngOnInit(){
-    this.id = parseInt(this.route.snapshot.paramMap.get("id"));
-    this.observable = this.api.findAnimeDetails(this.id);
-    this.observable.subscribe(result=>{
-      this.currentAnime = result;
-      this.updateButton();
-    })
-	this.animeList = this.data.getAnimeList();
-  }
-  
+	ngOnInit () {
+		this.id = parseInt(this.route.snapshot.paramMap.get('id'));
+		this.observable = this.api.findAnimeDetails(this.id);
+		this.observable.subscribe((result) => {
+			this.currentAnime = result;
+			this.getRelatedDetails();
+			this.updateButton();
+		});
+		this.animeList = this.data.getAnimeList();
+	}
 
 	addAnimeToList () {
 		this.data.addAnimeToList(this.currentAnime);
@@ -92,5 +96,36 @@ export class AnimeDetailPagePage implements OnInit {
 				}
 		});
 		modall.present();
+	}
+
+	async getRelatedDetails () {
+		this.sequelAnimeList = [];
+		this.prequelAnimeList = [];
+		if(this.currentAnime.related.Sequel != null){
+			this.currentAnime.related.Sequel.forEach((anime) => {
+				this.relatedId = anime.mal_id;
+				this.relatedObservable = this.api.findAnimeDetails(this.relatedId);
+				this.relatedObservable.subscribe((result) => {
+					this.sequelAnimeList.push(result);
+					console.log(this.sequelAnimeList);
+				});
+			});
+		}
+		if(this.currentAnime.related.Prequel != null){
+			this.currentAnime.related.Prequel.forEach((anime) => {
+				this.relatedId = anime.mal_id;
+				this.relatedObservable = this.api.findAnimeDetails(this.relatedId);
+				this.relatedObservable.subscribe((result) => {
+					this.prequelAnimeList.push(result);
+					console.log(this.sequelAnimeList);
+				});
+			});
+		}
+	}
+	doRefresh(event){
+		this.getRelatedDetails();
+		setTimeout(() => {
+			event.target.complete();
+		  },1000)
 	}
 }

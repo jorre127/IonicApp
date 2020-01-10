@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AnimeDetailPagePageRoutingModule } from './anime-detail-page-routing.module';
 
 import { AnimeDetailPagePage } from './anime-detail-page.page';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AnimeDetailPagePageRoutingModule
+    AnimeDetailPagePageRoutingModule,
+    VirtualScrollerModule
   ],
   declarations: [AnimeDetailPagePage]
 })

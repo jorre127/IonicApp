@@ -7,8 +7,18 @@
 </ion-header>
 
 <ion-content>
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
 
-  <span *ngIf="currentAnime">
+
+  <span *ngIf="currentAnime" name="details">
     <ion-chip class="ion-float-right addChip" *ngIf="showAddButton" strong="true" (click)="addAnimeToList()">+ ADD
     </ion-chip>
     <ion-chip class="ion-float-right addChip" *ngIf="!showAddButton" strong="true" (click)="openDetailPage()">+ EDIT
@@ -90,7 +100,7 @@
                   <ion-text>
                     {{currentAnime.episodes}}
                   </ion-text>
-                  <ion-text *ngIf ="!currentAnime.episodes">Unknown</ion-text>
+                  <ion-text *ngIf="!currentAnime.episodes">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -133,7 +143,7 @@
                   <ion-text color="primary">
                     {{currentAnime.premiered}}
                   </ion-text>
-                  <ion-text *ngIf ="!currentAnime.premiered">?</ion-text>
+                  <ion-text *ngIf="!currentAnime.premiered">?</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -163,7 +173,7 @@
                     [routerLink]="['/','studio-search',producer.mal_id]">
                     {{producer.name}}<span *ngIf="i != currentAnime.producers.length-1">,</span>
                   </ion-text>
-                  <ion-text *ngIf ="currentAnime.producers.length ==0">Unknown</ion-text>
+                  <ion-text *ngIf="currentAnime.producers.length ==0">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -179,7 +189,7 @@
                     [routerLink]="['/','studio-search',licensor.mal_id]">
                     {{licensor.name}}<span *ngIf="i != currentAnime.licensors.length-1">,</span>
                   </ion-text>
-                  <ion-text *ngIf ="currentAnime.licensors.length ==0">Unknown</ion-text>
+                  <ion-text *ngIf="currentAnime.licensors.length ==0">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -195,7 +205,7 @@
                     [routerLink]="['/','studio-search',studio.mal_id]">
                     {{studio.name}}<span *ngIf="i != currentAnime.studios.length-1">,</span>
                   </ion-text>
-                  <ion-text *ngIf ="currentAnime.studios.length ==0">Unknown</ion-text>
+                  <ion-text *ngIf="currentAnime.studios.length ==0">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -225,7 +235,7 @@
                     [routerLink]="['/','genre-search',genre.mal_id]">
                     {{genre.name}} <span *ngIf="i != currentAnime.genres.length-1">,</span>
                   </ion-text>
-                  <ion-text *ngIf ="currentAnime.genres.length == 0">Unknown</ion-text>
+                  <ion-text *ngIf="currentAnime.genres.length == 0">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -263,7 +273,7 @@
     </ion-card>
   </span>
 
-  <span *ngIf="!currentAnime">
+  <span *ngIf="!currentAnime" name="skeleton">
 
     <h1 class="mainTitle">
       <ion-skeleton-text animated style="width:60%"></ion-skeleton-text>
@@ -500,5 +510,92 @@
         </ul>
       </ion-card-content>
     </ion-card>
+  </span>
+
+  <span name="related">
+    <span *ngIf ="currentAnime" name="sequel">
+      <span *ngIf ="currentAnime.related.Sequel && currentAnime.related.Sequel.length != 0">
+      <ion-card class=" shadows">
+        <ion-card-header class="synopsisTitle">
+          <ion-card-title>
+            Sequels
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="relatedCard">
+          <span *ngIf="sequelAnimeList">
+            <ion-grid class="seasonalAnimeGrid">
+              <virtual-scroller scrollbarHeight="0" horizontal="true" #scroll [items]="sequelAnimeList">
+                <ion-card class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
+                  *ngFor="let anime of scroll.viewPortItems">
+                  <img class="seasonalAnimeImage" [src]="anime.image_url">
+                  <ion-badge class="seasonalAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
+                </ion-card>
+              </virtual-scroller>
+            </ion-grid>
+          </span>
+        </ion-card-content>
+
+        </ion-card>
+
+        <span *ngIf="!sequelAnimeList">
+          <ion-grid class="seasonalAnimeGrid">
+            <ion-row nowrap class="seasonalAnimeRow">
+              <ion-col class="seasonalAnimeCol" size="6">
+                <ion-card class="skeletonCard">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-card>
+              </ion-col>
+              <ion-col class="seasonalAnimeCol" size="6">
+                <ion-card class="skeletonCard">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </span>
+      </span>
+    </span>
+    <span *ngIf ="currentAnime" name="prequel">
+      <span *ngIf ="currentAnime.related.Prequel && currentAnime.related.Prequel.length != 0">
+       <ion-card class=" shadows">
+        <ion-card-header class="synopsisTitle">
+          <ion-card-title>
+            Prequels
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class = "relatedCard">
+          <span *ngIf="prequelAnimeList">
+            <ion-grid class="seasonalAnimeGrid">
+              <virtual-scroller scrollbarHeight="0" horizontal="true" #scroll [items]="prequelAnimeList">
+                <ion-card class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
+                  *ngFor="let anime of scroll.viewPortItems">
+                  <img class="seasonalAnimeImage" [src]="anime.image_url">
+                  <ion-badge class="seasonalAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
+                </ion-card>
+              </virtual-scroller>
+            </ion-grid>
+          </span>
+        </ion-card-content>
+
+        </ion-card>
+
+        <span *ngIf="!prequelAnimeList">
+          <ion-grid class="seasonalAnimeGrid">
+            <ion-row nowrap class="seasonalAnimeRow">
+              <ion-col class="seasonalAnimeCol" size="6">
+                <ion-card class="skeletonCard">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-card>
+              </ion-col>
+              <ion-col class="seasonalAnimeCol" size="6">
+                <ion-card class="skeletonCard">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </span>
+      </span>
+    </span>
   </span>
 </ion-content>
