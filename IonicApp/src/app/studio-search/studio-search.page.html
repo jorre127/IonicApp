@@ -16,7 +16,7 @@
           <ion-card class="studioAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
             routerDirection="forward">
             <img class="studioAnimeImage" [src]="anime.image_url">
-            <ion-badge class="studioAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
+            <div class="badge"><ion-text class="badgeText">{{anime.title}}</ion-text></div>
           </ion-card>
         </ion-col>
       </ion-row>

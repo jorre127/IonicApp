@@ -26,11 +26,11 @@
           <ion-col *ngFor="let anime of watchingList" size="6" class="listCol">
             <ion-card>
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" [src]="anime.image_url">
+                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
-              <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
-                <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
-              </ion-avatar>
+              <div class="badge">
+                <ion-text class="badgeText">{{anime.title}}</ion-text>
+              </div>
             </ion-card>
           </ion-col>
         </ion-row>
@@ -52,11 +52,8 @@
           <ion-col *ngFor="let anime of completedList" size="6" class="listCol">
             <ion-card>
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" [src]="anime.image_url">
+                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
-              <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
-                <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
-              </ion-avatar>
             </ion-card>
           </ion-col>
         </ion-row>
@@ -78,11 +75,8 @@
           <ion-col *ngFor="let anime of onHoldList" size="6" class="listCol">
             <ion-card>
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" [src]="anime.image_url">
+                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
-              <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
-                <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
-              </ion-avatar>
             </ion-card>
           </ion-col>
         </ion-row>
@@ -104,10 +98,9 @@
           <ion-col *ngFor="let anime of droppedList" size="6" class="listCol">
             <ion-card>
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" [src]="anime.image_url">
+                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
               <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
-                <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
               </ion-avatar>
             </ion-card>
           </ion-col>
@@ -130,11 +123,8 @@
           <ion-col *ngFor="let anime of planToWatchList" size="6" class="listCol">
             <ion-card>
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" [src]="anime.image_url">
+                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
-              <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
-                <ion-icon color="light" class="infoIconGrid" name="information"></ion-icon>
-              </ion-avatar>
             </ion-card>
           </ion-col>
         </ion-row>
@@ -190,7 +180,7 @@
       <span *ngIf="showCompletedList">
         <ion-item-sliding *ngFor="let anime of completedList">
           <ion-item-options (ionSwipe)="openDetailPage(anime)" side="start">
-            <ion-item-option expandable  class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
+            <ion-item-option expandable class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
@@ -256,7 +246,7 @@
       <span *ngIf="showDroppedList">
         <ion-item-sliding *ngFor="let anime of droppedList">
           <ion-item-options (ionSwipe)="openDetailPage(anime)" side="start">
-            <ion-item-option expandable  class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
+            <ion-item-option expandable class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
@@ -292,9 +282,9 @@
             <ion-item-option class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
               <ion-icon class="infoIconListDetailed" name="information-circle-outline"></ion-icon>
             </ion-item-option>
-            </ion-item-options>
+          </ion-item-options>
           <ion-item class=" gameItem" Lines="full" detail="false" button (click)="saveId(anime.mal_id)"
-              [routerLink]="['/','anime-detail-page', anime.mal_id]">
+            [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-thumbnail class="gameIcon" slot="start">
               <img [src]="anime.image_url">
             </ion-thumbnail>
@@ -306,7 +296,7 @@
             </ion-label>
             <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing" color="success">Airing</ion-badge>
             <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
-            </ion-item>
+          </ion-item>
         </ion-item-sliding>
       </span>
     </span>
@@ -324,7 +314,7 @@
       <span *ngIf="showWatchingList">
         <ion-item-sliding *ngFor="let anime of watchingList">
           <ion-item-options (ionSwipe)="openDetailPage(anime)" side="start">
-            <ion-item-option expandable  class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
+            <ion-item-option expandable class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
@@ -350,7 +340,7 @@
       <span *ngIf="showCompletedList">
         <ion-item-sliding *ngFor="let anime of completedList">
           <ion-item-options (ionSwipe)="openDetailPage(anime)" side="start">
-            <ion-item-option expandable  class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
+            <ion-item-option expandable class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
@@ -376,7 +366,7 @@
       <span *ngIf="showOnHoldList">
         <ion-item-sliding *ngFor="let anime of onHoldList">
           <ion-item-options (ionSwipe)="openDetailPage(anime)" side="start">
-            <ion-item-option expandable  class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
+            <ion-item-option expandable class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
@@ -402,7 +392,7 @@
       <span *ngIf="showDroppedList">
         <ion-item-sliding *ngFor="let anime of droppedList">
           <ion-item-options (ionSwipe)="openDetailPage(anime)" side="start">
-            <ion-item-option expandable  class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
+            <ion-item-option expandable class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
@@ -428,7 +418,7 @@
       <span *ngIf="showPlanToWatchList">
         <ion-item-sliding *ngFor="let anime of planToWatchList">
           <ion-item-options (ionSwipe)="openDetailPage(anime)" side="start">
-            <ion-item-option expandable  class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
+            <ion-item-option expandable class="infoItemOption" color="primary" (click)="openDetailPage(anime)">
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>

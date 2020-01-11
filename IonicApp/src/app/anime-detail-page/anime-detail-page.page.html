@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  
+
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
@@ -34,7 +34,7 @@
         <ion-grid class="detailsGrid">
           <ion-row>
             <ion-col class="pictureCol" size="5">
-              <img [src]="currentAnime.image_url" class="ion-float-left">
+              <img [src]="currentAnime.image_url" class="detailImg ion-float-left">
             </ion-col>
             <ion-col>
               <ion-item lines="none">

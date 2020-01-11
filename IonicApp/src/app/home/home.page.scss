@@ -1,3 +1,18 @@
+.badge{
+  width:100%;
+  position: relative;
+  top:-1.4rem;
+  background-color: rgba(0, 0, 0, 0.473);
+  backdrop-filter: blur(2px);
+  text-align: center;
+  justify-content: center;
+  border-radius: 0.2rem;
+  color: white;
+  padding:3px;
+}
+.badgeText{
+opacity: 0.7;
+}
 .seasonalAnimeGrid{
   height:fit-content;
 }
@@ -42,22 +57,6 @@
   border-radius: 0.5rem;
   position: relative;;
   filter: drop-shadow(0px 4px 3px var( --ion-shadow));
-}
-.seasonalAnimeBadge{
-  width:100%;
-  position:absolute;
-  top:15.39rem;
-  opacity: 0.6;
-  height:1.3rem;
-}
-.upcomingAnimeBadge{
-  width:100%;
-  position: relative;
-  height:1.3rem;
-  top:-1.4rem;
-  line-height: 2;
-  opacity: 0.6;
-  word-wrap: break-word;
 }
 .upcomingTitle{
   position: relative;
