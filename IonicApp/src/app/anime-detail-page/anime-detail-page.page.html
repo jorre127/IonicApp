@@ -528,7 +528,7 @@
                 <ion-card class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
                   *ngFor="let anime of scroll.viewPortItems">
                   <img class="seasonalAnimeImage" [src]="anime.image_url">
-                  <ion-badge class="seasonalAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
+                  <div class="badge"><ion-text class="badgeText">{{anime.title}}</ion-text></div>
                 </ion-card>
               </virtual-scroller>
             </ion-grid>
@@ -570,7 +570,7 @@
                 <ion-card class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
                   *ngFor="let anime of scroll.viewPortItems">
                   <img class="seasonalAnimeImage" [src]="anime.image_url">
-                  <ion-badge class="seasonalAnimeBadge ion-text-wrap" color="dark">{{anime.title}}</ion-badge>
+                  <div class="badge"><ion-text class="badgeText">{{anime.title}}</ion-text></div>
                 </ion-card>
               </virtual-scroller>
             </ion-grid>

@@ -5,6 +5,8 @@ ion-card{
     height:16.5rem !important;
     margin: 0 !important;
     filter: drop-shadow(0px 4px 3px var( --ion-shadow));
+    box-shadow: -2px -2px 18px 0 rgba(2, 255, 15, 0.3), 
+    2px 2px 18px 0 rgba(0, 255, 13, 0.3)
 }
 .imgCard{
     height: 16.5rem;
