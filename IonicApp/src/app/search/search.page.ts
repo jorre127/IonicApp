@@ -20,7 +20,4 @@ export class SearchPage implements OnInit {
 		this.observable = this.api.searchAnime(this.searchInput);
 		this.observable.subscribe((result) => (this.animeList = result.results));
 	}
-	saveId(id: number) {
-		this.data.setId(id);
-	}
 }

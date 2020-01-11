@@ -5,6 +5,7 @@ import { ModalController } from '@ionic/angular';
 import { ListDetailPagePage } from '../list-detail-page/list-detail-page.page';
 import { TapticEngine } from '@ionic-native/taptic-engine/ngx';
 import { Storage } from '@ionic/storage';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 
 @Component({
 	selector: 'app-list',

@@ -26,14 +26,13 @@
           <ion-col *ngFor="let anime of watchingList" size="6" class="listCol">
             <ion-card class = "cardNormal" *ngIf ="!anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+               (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
             </ion-card>
             <ion-card class = "cardAiring" *ngIf ="anime.airing">
-              <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+              <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"(press) ="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
@@ -58,14 +57,14 @@
           <ion-col *ngFor="let anime of completedList" size="6" class="listCol">
             <ion-card class = "cardNormal" *ngIf ="!anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+                (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
             </ion-card>
             <ion-card class = "cardAiring" *ngIf ="anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+             (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
@@ -90,14 +89,14 @@
           <ion-col *ngFor="let anime of onHoldList" size="6" class="listCol">
             <ion-card class = "cardNormal" *ngIf ="!anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+               (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
             </ion-card>
             <ion-card class = "cardAiring" *ngIf ="anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+              (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
@@ -122,14 +121,14 @@
           <ion-col *ngFor="let anime of droppedList" size="6" class="listCol">
             <ion-card class = "cardNormal" *ngIf ="!anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+            (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
             </ion-card>
             <ion-card class = "cardAiring" *ngIf ="anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+           (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
@@ -154,14 +153,14 @@
           <ion-col *ngFor="let anime of planToWatchList" size="6" class="listCol">
             <ion-card class = "cardNormal" *ngIf ="!anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+             (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
             </ion-card>
             <ion-card class = "cardAiring" *ngIf ="anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+  (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
@@ -191,7 +190,7 @@
               <ion-icon expandable class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item class="gameItem" Lines="full" detail="false" button (click)="saveId(anime.mal_id)"
+          <ion-item class="gameItem" Lines="full" detail="false" button 
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-thumbnail class="gameIcon" slot="start">
               <img [src]="anime.image_url">
@@ -224,7 +223,7 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item class="gameItem" Lines="full" detail="false" button (click)="saveId(anime.mal_id)"
+          <ion-item class="gameItem" Lines="full" detail="false" button 
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-thumbnail class="gameIcon" slot="start">
               <img [src]="anime.image_url">
@@ -257,7 +256,7 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item class="gameItem" Lines="full" detail="false" button (click)="saveId(anime.mal_id)"
+          <ion-item class="gameItem" Lines="full" detail="false" button 
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-thumbnail class="gameIcon" slot="start">
               <img [src]="anime.image_url">
@@ -290,7 +289,7 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item class="gameItem" Lines="full" detail="false" button (click)="saveId(anime.mal_id)"
+          <ion-item class="gameItem" Lines="full" detail="false" button 
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-thumbnail class="gameIcon" slot="start">
               <img [src]="anime.image_url">
@@ -323,7 +322,7 @@
               <ion-icon class="infoIconListDetailed" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item class=" gameItem" Lines="full" detail="false" button (click)="saveId(anime.mal_id)"
+          <ion-item class=" gameItem" Lines="full" detail="false" button 
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-thumbnail class="gameIcon" slot="start">
               <img [src]="anime.image_url">
@@ -358,7 +357,7 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item Lines="full" button (click)="saveId(anime.mal_id)"
+          <ion-item Lines="full" button 
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-label>
               {{anime.title}}
@@ -384,7 +383,7 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item Lines="full" button (click)="saveId(anime.mal_id)"
+          <ion-item Lines="full" button 
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-label>
               {{anime.title}}
@@ -410,7 +409,7 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item Lines="full" button (click)="saveId(anime.mal_id)"
+          <ion-item Lines="full" button
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-label>
               {{anime.title}}
@@ -436,7 +435,7 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item Lines="full" button (click)="saveId(anime.mal_id)"
+          <ion-item Lines="full" button
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-label>
               {{anime.title}}
@@ -462,7 +461,7 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item Lines="full" button (click)="saveId(anime.mal_id)"
+          <ion-item Lines="full" button 
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-label>
               {{anime.title}}

@@ -26,8 +26,4 @@ export class StudioSearchPage implements OnInit {
 			this.studioAnimeList = result.anime;
 		});
 	}
-
-	saveId(id: number) {
-		this.data.setId(id);
-	}
 }
