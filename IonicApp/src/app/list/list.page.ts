@@ -12,6 +12,7 @@ import { Storage } from '@ionic/storage';
 	styleUrls: [ 'list.page.scss' ]
 })
 export class ListPage implements OnInit {
+
 	static animeList: Array<Anime> = new Array<Anime>();
 
 	watchingList: Array<Anime> = new Array<Anime>();
@@ -33,6 +34,7 @@ export class ListPage implements OnInit {
 	arrowStatusPlanToWatchList: string = 'arrow-down';
 
 	listView: Array<boolean> = new Array<boolean>();
+	listLength: number;
 	showBadge: boolean;
 
 	storageAnimeList:Array<Anime>;
@@ -40,24 +42,16 @@ export class ListPage implements OnInit {
 	constructor (private data: DataService, private modal: ModalController, private vibration: TapticEngine, private storage: Storage) {}
 
 	ngOnInit () {
-		this.getListFromStorage();
+		this.listLength = ListPage.animeList.length;
 		this.listView = this.data.getListView();
 		this.sortAnime();
+		this.getAnimeFromStorage();
 	}
-	async getListFromStorage () {
+
+	async getAnimeFromStorage(){
+		console.log(await this.storage.get('animeList'));
 		this.storageAnimeList = JSON.parse(await this.storage.get('animeList'));
-		if(this.storageAnimeList){
-			this.animeList = this.storageAnimeList;
-		}
-		else{
-			console.log("lijst besta ni");
-			this.animeList = new Array<Anime>();
-		}
-		console.log(this.animeList);
-		this.sortAnime();
-	}
-	saveId (id: number) {
-		this.data.setId(id);
+		console.log(this.storageAnimeList);
 	}
 
 	async openDetailPage (anime: Anime) {
@@ -70,7 +64,7 @@ export class ListPage implements OnInit {
 			cssClass: 'modal',
 			componentProps:
 				{
-					animeList:this.animeList,
+					animeList:ListPage.animeList,
 					anime: anime,
 					list: this
 				}
@@ -136,27 +130,27 @@ export class ListPage implements OnInit {
 		this.droppedList = [];
 		this.planToWatchList = [];
 
-		this.animeList.forEach((anime) => {
+		ListPage.animeList.forEach((anime) => {
 			if (anime.watchStatus == 'Watching') {
 				this.watchingList.push(anime);
 			}
 		});
-		this.animeList.forEach((anime) => {
+		ListPage.animeList.forEach((anime) => {
 			if (anime.watchStatus == 'Completed') {
 				this.completedList.push(anime);
 			}
 		});
-		this.animeList.forEach((anime) => {
+		ListPage.animeList.forEach((anime) => {
 			if (anime.watchStatus == 'On-Hold') {
 				this.onHoldList.push(anime);
 			}
 		});
-		this.animeList.forEach((anime) => {
+		ListPage.animeList.forEach((anime) => {
 			if (anime.watchStatus == 'Dropped') {
 				this.droppedList.push(anime);
 			}
 		});
-		this.animeList.forEach((anime) => {
+		ListPage.animeList.forEach((anime) => {
 			if (anime.watchStatus == 'Plan To Watch') {
 				this.planToWatchList.push(anime);
 			}

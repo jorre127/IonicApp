@@ -52,7 +52,4 @@ export class SettingsPage implements OnInit {
 		}
 		this.data.setListView(this.gridView, this.detailedListView, this.listView);
 	}
-	glow(){
-
-	}
 }

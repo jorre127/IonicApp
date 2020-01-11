@@ -5,6 +5,7 @@ import { Observable, empty } from 'rxjs';
 import { ToastController, ModalController, NavParams } from '@ionic/angular';
 import { Anime } from '../app.component';
 import { ListDetailPagePage } from '../list-detail-page/list-detail-page.page';
+import { ListPage} from '../list/list.page'
 import { ActivatedRoute } from '@angular/router';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 import { IonicStorageModule } from '@ionic/storage';
@@ -18,11 +19,8 @@ import { Storage } from '@ionic/storage';
 export class AnimeDetailPagePage implements OnInit {
 	showAddButton: boolean = true;
 	currentAnime: Anime;
-	tempAnime: Anime;
-	currentDetailAnime: Anime;
 	observable: Observable<any>;
 	relatedObservable: Observable<any>;
-	animeList: Array<Anime> = new Array<Anime>();
 	prequelAnimeList: Array<Anime> = new Array<Anime>();
 	sequelAnimeList: Array<Anime> = new Array<Anime>();
 	id: number;
@@ -54,19 +52,19 @@ export class AnimeDetailPagePage implements OnInit {
 			this.getRelatedDetails();
 			this.updateButton();
 		});
-		this.animeList = this.data.getAnimeList();
 	}
 	addAnimeToList () {
-		this.data.addAnimeToList(this.currentAnime);
-		this.storage.set("animeList",JSON.stringify(this.data.animeList));
+		ListPage.animeList.push(this.currentAnime);
+		this.storage.set("animeList",JSON.stringify(ListPage.animeList));
+		console.log(this.storage);
 		this.updateButton();
 		this.presentToast(this.currentAnime.title + ' added to your list');
 		this.openDetailPage();
 	}
 
 	async updateButton () {
-		if (this.animeList.length > 0) {
-			this.animeList.forEach((anime) => {
+		if (ListPage.animeList.length > 0) {
+			ListPage.animeList.forEach((anime) => {
 				if (anime.mal_id == this.currentAnime.mal_id) {
 					this.showAddButton = false;
 				}
@@ -83,7 +81,6 @@ export class AnimeDetailPagePage implements OnInit {
 		});
 		toast.present();
 	}
-
 	async openDetailPage () {
 		const modall = await this.modal.create({
 			component: ListDetailPagePage,
