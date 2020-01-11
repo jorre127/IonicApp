@@ -1,15 +1,25 @@
-ion-card{
+.cardNormal{
     display: flex;
     flex-direction: column;
     width: 100% !important;
     height:16.5rem !important;
     margin: 0 !important;
     filter: drop-shadow(0px 4px 3px var( --ion-shadow));
-    box-shadow: -2px -2px 18px 0 rgba(2, 255, 15, 0.3), 
-    2px 2px 18px 0 rgba(0, 255, 13, 0.3)
+}
+.cardAiring{
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    height:16.5rem !important;
+    margin: 0 !important;
+    filter: drop-shadow(0px 4px 3px var( --ion-shadow));
+    box-shadow: -1px -1px 4px 0 rgba(2, 255, 15, 1), 
+    1px 1px 4px 0 rgba(0, 255, 13, 1)
 }
 .imgCard{
+    max-width: 100%;
     height: 16.5rem;
+    height: 100%;
 }
 .smolLabel{
     font-size: 8pt;
@@ -99,8 +109,8 @@ ion-thumbnail > img{
 }
 .badge{
     width:100%;
-    position: relative;
-    top:-1.4rem;
+    position: absolute;
+    top: 15.1rem;
     background-color: rgba(0, 0, 0, 0.473);
     backdrop-filter: blur(2px);
     text-align: center;

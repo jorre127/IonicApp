@@ -7,6 +7,8 @@ import { Anime } from '../app.component';
 import { ListDetailPagePage } from '../list-detail-page/list-detail-page.page';
 import { ActivatedRoute } from '@angular/router';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
+import { IonicStorageModule } from '@ionic/storage';
+import { Storage } from '@ionic/storage';
 
 @Component({
 	selector: 'app-anime-detail-page',
@@ -16,6 +18,7 @@ import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 export class AnimeDetailPagePage implements OnInit {
 	showAddButton: boolean = true;
 	currentAnime: Anime;
+	tempAnime: Anime;
 	currentDetailAnime: Anime;
 	observable: Observable<any>;
 	relatedObservable: Observable<any>;
@@ -25,8 +28,9 @@ export class AnimeDetailPagePage implements OnInit {
 	id: number;
 	relatedId: number;
 
-	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController, private route: ActivatedRoute) {}
+	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController, private route: ActivatedRoute, private storage: Storage) {}
 
+	
 	/*
 	ngOnInit () {
 		console.log('initialize');
@@ -52,9 +56,9 @@ export class AnimeDetailPagePage implements OnInit {
 		});
 		this.animeList = this.data.getAnimeList();
 	}
-
 	addAnimeToList () {
 		this.data.addAnimeToList(this.currentAnime);
+		this.storage.set("animeList",JSON.stringify(this.data.animeList));
 		this.updateButton();
 		this.presentToast(this.currentAnime.title + ' added to your list');
 		this.openDetailPage();
@@ -81,18 +85,13 @@ export class AnimeDetailPagePage implements OnInit {
 	}
 
 	async openDetailPage () {
-		this.animeList.forEach((anime) => {
-			if (anime.mal_id == this.currentAnime.mal_id) {
-				this.currentDetailAnime = anime;
-			}
-		});
 		const modall = await this.modal.create({
 			component: ListDetailPagePage,
 			showBackdrop: true,
 			cssClass: 'modal',
 			componentProps:
 				{
-					anime: this.currentDetailAnime
+					anime: this.currentAnime
 				}
 		});
 		modall.present();
@@ -107,7 +106,6 @@ export class AnimeDetailPagePage implements OnInit {
 				this.relatedObservable = this.api.findAnimeDetails(this.relatedId);
 				this.relatedObservable.subscribe((result) => {
 					this.sequelAnimeList.push(result);
-					console.log(this.sequelAnimeList);
 				});
 			});
 		}
@@ -117,10 +115,31 @@ export class AnimeDetailPagePage implements OnInit {
 				this.relatedObservable = this.api.findAnimeDetails(this.relatedId);
 				this.relatedObservable.subscribe((result) => {
 					this.prequelAnimeList.push(result);
-					console.log(this.sequelAnimeList);
 				});
 			});
 		}
+
+	/*
+	async getRelatedDetails () {
+		this.sequelAnimeList = [];
+		this.prequelAnimeList = [];
+		if(this.currentAnime.related.Sequel != null){
+			this.currentAnime.related.Sequel.forEach(async (anime) => {
+				this.relatedId = anime.mal_id;
+				const response = this.api.findAnimeDetails(this.relatedId);
+				this.tempAnime = JSON.parse((await response).data);
+				this.sequelAnimeList.push(this.tempAnime);
+			});
+		}
+		if(this.currentAnime.related.Prequel != null){
+			this.currentAnime.related.Prequel.forEach(async (anime) => {
+				this.relatedId = anime.mal_id;
+				const response = this.api.findAnimeDetails(this.relatedId);
+				this.tempAnime = JSON.parse((await response).data);
+				this.prequelAnimeList.push(this.tempAnime);
+			});
+		}
+		*/
 	}
 	doRefresh(event){
 		this.getRelatedDetails();

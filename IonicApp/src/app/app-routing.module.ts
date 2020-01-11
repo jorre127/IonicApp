@@ -38,6 +38,14 @@ const routes: Routes = [
   {
     path: 'genre-search/:id',
     loadChildren: () => import('./genre-search/genre-search.module').then( m => m.GenreSearchPageModule)
+  },
+  {
+    path: 'season-search/:premiered',
+    loadChildren: () => import('./season-search/season-search.module').then( m => m.SeasonSearchPageModule)
+  },
+  {
+    path: 'top-anime/:type',
+    loadChildren: () => import('./top-anime/top-anime.module').then( m => m.TopAnimePageModule)
   }
 ];
 

@@ -1,0 +1,49 @@
+.studioAnimeBadge{
+    width:100%;
+    position:absolute;
+    top:15.39rem;
+    opacity: 0.6;
+  }
+  ion-card{
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    height:16.5rem !important;
+    margin: 0 !important;
+}
+.studioAnimeCol{
+  height: fit-content;
+  padding-bottom:0.5rem;
+
+}
+.studioAnimeCard{
+  filter: drop-shadow(0px 4px 3px var( --ion-shadow));
+
+}
+.studioAnimeImage{
+    height:16.5rem;
+}
+* {
+  --ion-background-color: var(--ion-color-neumorphisme);
+  --ion-toolbar-background: var(--ion-color-neumorphisme);
+  --ion-item-background: var(--ion-color-neumorphisme);
+}
+.toolbarShadows{
+  box-shadow: -4px -4px 12px 0 var(--ion-highlight-neumorphisme),
+  4px 4px 12px 0 rgba(0,0,0,0.15);
+}
+.badge{
+  width:100%;
+  position: relative;
+  top:-1.4rem;
+  background-color: rgba(0, 0, 0, 0.473);
+  backdrop-filter: blur(2px);
+  text-align: center;
+  justify-content: center;
+  border-radius: 0.2rem;
+  color: white;
+  padding:3px;
+}
+.badgeText{
+opacity: 0.7;
+}

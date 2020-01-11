@@ -80,6 +80,8 @@
   --ion-highlight-neumorphisme: #FFFFFF;
 
   --ion-shadow:#5e5e5e;
+
+  --darkList:rgba(189, 189, 189, 0.356);
 }
 
 body.dark {
@@ -118,6 +120,8 @@ body.dark {
   --ion-highlight-neumorphisme: rgb(87, 86, 86,0.3);
   
   --ion-shadow:#1f1e1e;
+
+  --darkList:rgba(82, 80, 80, 0.356);
 }
 
 @font-face { font-family: "SanFransisco"; src: url(../assets/Fonts/SF-Pro-Display-Bold.ttf); }

@@ -18,12 +18,16 @@ import { HTTP } from '@ionic-native/http/ngx';
 
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 
+import {FilterPopoverComponent} from"../app/filter-popover/filter-popover.component"
+import { IonicStorageModule } from '@ionic/storage';
+
 
 
 @NgModule({
-  declarations: [AppComponent,ListDetailPagePage],
+  declarations: [AppComponent,ListDetailPagePage,FilterPopoverComponent],
   entryComponents: [
-    ListDetailPagePage
+    ListDetailPagePage,
+    FilterPopoverComponent
   ],
   imports: [
     BrowserModule,
@@ -31,13 +35,15 @@ import { VirtualScrollerModule } from 'ngx-virtual-scroller';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    VirtualScrollerModule
+    VirtualScrollerModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,
     SplashScreen,
     TapticEngine,
     HTTP,
+    IonicStorageModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

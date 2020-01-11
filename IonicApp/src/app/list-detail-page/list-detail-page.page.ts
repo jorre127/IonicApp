@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { Anime } from '../app.component';
 import { ListPage } from '../list/list.page';
+import { DataService } from '../data.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
 	selector: 'app-list-detail-page',
@@ -10,16 +12,18 @@ import { ListPage } from '../list/list.page';
 })
 export class ListDetailPagePage implements OnInit {
 	anime: Anime;
+	animeList:Array<Anime>;
 	episodesWatched: number;
 	watchStatus: string;
 	score: string;
 
 	listpage: ListPage;
 
-	constructor (private modal: ModalController, private nav: NavParams) {}
+	constructor (private modal: ModalController, private nav: NavParams, private data:DataService,private storage:Storage) {}
 
 	ngOnInit () {
 		this.anime = this.nav.get('anime');
+		this.animeList = this.nav.get('animeList');
 		this.listpage = this.nav.get('list');
 
 		this.episodesWatched = this.anime.episodesWatched;
@@ -48,6 +52,7 @@ export class ListDetailPagePage implements OnInit {
 		if (this.listpage != null) {
 			this.listpage.sortAnime();
 		}
+		this.storage.set("animeList",JSON.stringify(this.animeList));
 		this.dismiss();
 	}
 

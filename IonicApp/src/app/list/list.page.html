@@ -24,10 +24,16 @@
       <ion-grid *ngIf="showWatchingList">
         <ion-row>
           <ion-col *ngFor="let anime of watchingList" size="6" class="listCol">
-            <ion-card>
+            <ion-card class = "cardNormal" *ngIf ="!anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
                 (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
-              <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
+              <div class="badge">
+                <ion-text class="badgeText">{{anime.title}}</ion-text>
+              </div>
+            </ion-card>
+            <ion-card class = "cardAiring" *ngIf ="anime.airing">
+              <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
+                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
@@ -50,10 +56,19 @@
       <ion-grid *ngIf="showCompletedList">
         <ion-row>
           <ion-col *ngFor="let anime of completedList" size="6" class="listCol">
-            <ion-card>
+            <ion-card class = "cardNormal" *ngIf ="!anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
                 (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
-              <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
+              <div class="badge">
+                <ion-text class="badgeText">{{anime.title}}</ion-text>
+              </div>
+            </ion-card>
+            <ion-card class = "cardAiring" *ngIf ="anime.airing">
+              <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
+                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+              <div class="badge">
+                <ion-text class="badgeText">{{anime.title}}</ion-text>
+              </div>
             </ion-card>
           </ion-col>
         </ion-row>
@@ -73,10 +88,19 @@
       <ion-grid *ngIf="showOnHoldList">
         <ion-row>
           <ion-col *ngFor="let anime of onHoldList" size="6" class="listCol">
-            <ion-card>
+            <ion-card class = "cardNormal" *ngIf ="!anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
                 (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
-              <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
+              <div class="badge">
+                <ion-text class="badgeText">{{anime.title}}</ion-text>
+              </div>
+            </ion-card>
+            <ion-card class = "cardAiring" *ngIf ="anime.airing">
+              <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
+                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+              <div class="badge">
+                <ion-text class="badgeText">{{anime.title}}</ion-text>
+              </div>
             </ion-card>
           </ion-col>
         </ion-row>
@@ -96,12 +120,19 @@
       <ion-grid *ngIf="showDroppedList">
         <ion-row>
           <ion-col *ngFor="let anime of droppedList" size="6" class="listCol">
-            <ion-card>
+            <ion-card class = "cardNormal" *ngIf ="!anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
                 (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
-              <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
-              <ion-avatar color="primary" class="infoButton" (click)="openDetailPage(anime)">
-              </ion-avatar>
+              <div class="badge">
+                <ion-text class="badgeText">{{anime.title}}</ion-text>
+              </div>
+            </ion-card>
+            <ion-card class = "cardAiring" *ngIf ="anime.airing">
+              <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
+                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+              <div class="badge">
+                <ion-text class="badgeText">{{anime.title}}</ion-text>
+              </div>
             </ion-card>
           </ion-col>
         </ion-row>
@@ -121,10 +152,19 @@
       <ion-grid *ngIf="showPlanToWatchList">
         <ion-row>
           <ion-col *ngFor="let anime of planToWatchList" size="6" class="listCol">
-            <ion-card>
+            <ion-card class = "cardNormal" *ngIf ="!anime.airing">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
                 (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
-              <ion-badge *ngIf="anime.airing" class="animeBadge" color="success">Airing</ion-badge>
+              <div class="badge">
+                <ion-text class="badgeText">{{anime.title}}</ion-text>
+              </div>
+            </ion-card>
+            <ion-card class = "cardAiring" *ngIf ="anime.airing">
+              <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
+                (click)="saveId(anime.mal_id)" (press) ="openDetailPage(anime)" [src]="anime.image_url">
+              <div class="badge">
+                <ion-text class="badgeText">{{anime.title}}</ion-text>
+              </div>
             </ion-card>
           </ion-col>
         </ion-row>

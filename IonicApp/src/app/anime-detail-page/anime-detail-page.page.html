@@ -83,7 +83,7 @@
                   </ion-text>
                 </ion-col>
                 <ion-col>
-                  <ion-text color="primary">
+                  <ion-text [routerLink]="['/','top-anime',currentAnime.type]" color="primary">
                     {{currentAnime.type}}
                   </ion-text>
                 </ion-col>
@@ -140,7 +140,8 @@
                   </ion-text>
                 </ion-col>
                 <ion-col>
-                  <ion-text color="primary">
+
+                  <ion-text *ngIf="currentAnime.premiered" color="primary" [routerLink]="['/','season-search',currentAnime.premiered]">
                     {{currentAnime.premiered}}
                   </ion-text>
                   <ion-text *ngIf="!currentAnime.premiered">?</ion-text>
@@ -173,7 +174,6 @@
                     [routerLink]="['/','studio-search',producer.mal_id]">
                     {{producer.name}}<span *ngIf="i != currentAnime.producers.length-1">,</span>
                   </ion-text>
-                  <ion-text *ngIf="currentAnime.producers.length ==0">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -189,7 +189,6 @@
                     [routerLink]="['/','studio-search',licensor.mal_id]">
                     {{licensor.name}}<span *ngIf="i != currentAnime.licensors.length-1">,</span>
                   </ion-text>
-                  <ion-text *ngIf="currentAnime.licensors.length ==0">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -205,7 +204,6 @@
                     [routerLink]="['/','studio-search',studio.mal_id]">
                     {{studio.name}}<span *ngIf="i != currentAnime.studios.length-1">,</span>
                   </ion-text>
-                  <ion-text *ngIf="currentAnime.studios.length ==0">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -235,7 +233,6 @@
                     [routerLink]="['/','genre-search',genre.mal_id]">
                     {{genre.name}} <span *ngIf="i != currentAnime.genres.length-1">,</span>
                   </ion-text>
-                  <ion-text *ngIf="currentAnime.genres.length == 0">Unknown</ion-text>
                 </ion-col>
               </ion-row>
             </li>
@@ -514,7 +511,7 @@
 
   <span name="related">
     <span *ngIf ="currentAnime" name="sequel">
-      <span *ngIf ="currentAnime.related.Sequel && currentAnime.related.Sequel.length != 0">
+      <span *ngIf ="currentAnime.related.Sequel">
       <ion-card class=" shadows">
         <ion-card-header class="synopsisTitle">
           <ion-card-title>
@@ -556,7 +553,7 @@
       </span>
     </span>
     <span *ngIf ="currentAnime" name="prequel">
-      <span *ngIf ="currentAnime.related.Prequel && currentAnime.related.Prequel.length != 0">
+      <span *ngIf ="currentAnime.related.Prequel">
        <ion-card class=" shadows">
         <ion-card-header class="synopsisTitle">
           <ion-card-title>

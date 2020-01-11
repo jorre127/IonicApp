@@ -4,6 +4,7 @@ import { Anime } from '../app.component';
 import { ModalController } from '@ionic/angular';
 import { ListDetailPagePage } from '../list-detail-page/list-detail-page.page';
 import { TapticEngine } from '@ionic-native/taptic-engine/ngx';
+import { Storage } from '@ionic/storage';
 
 @Component({
 	selector: 'app-list',
@@ -11,7 +12,7 @@ import { TapticEngine } from '@ionic-native/taptic-engine/ngx';
 	styleUrls: [ 'list.page.scss' ]
 })
 export class ListPage implements OnInit {
-	animeList: Array<Anime> = new Array<Anime>();
+	static animeList: Array<Anime> = new Array<Anime>();
 
 	watchingList: Array<Anime> = new Array<Anime>();
 	completedList: Array<Anime> = new Array<Anime>();
@@ -34,12 +35,25 @@ export class ListPage implements OnInit {
 	listView: Array<boolean> = new Array<boolean>();
 	showBadge: boolean;
 
-	constructor (private data: DataService, private modal: ModalController, private vibration: TapticEngine) {}
+	storageAnimeList:Array<Anime>;
+
+	constructor (private data: DataService, private modal: ModalController, private vibration: TapticEngine, private storage: Storage) {}
 
 	ngOnInit () {
-		this.animeList = this.data.getAnimeList();
+		this.getListFromStorage();
 		this.listView = this.data.getListView();
-
+		this.sortAnime();
+	}
+	async getListFromStorage () {
+		this.storageAnimeList = JSON.parse(await this.storage.get('animeList'));
+		if(this.storageAnimeList){
+			this.animeList = this.storageAnimeList;
+		}
+		else{
+			console.log("lijst besta ni");
+			this.animeList = new Array<Anime>();
+		}
+		console.log(this.animeList);
 		this.sortAnime();
 	}
 	saveId (id: number) {
@@ -56,6 +70,7 @@ export class ListPage implements OnInit {
 			cssClass: 'modal',
 			componentProps:
 				{
+					animeList:this.animeList,
 					anime: anime,
 					list: this
 				}

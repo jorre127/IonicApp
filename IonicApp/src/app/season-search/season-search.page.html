@@ -6,24 +6,22 @@
     <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
-  <span *ngIf="studioAnimeList">
+  <span *ngIf="seasonAnimeList">
     <ion-grid>
       <ion-row class="studioAnimeRow">
-        <ion-col class="studioAnimeCol" *ngFor="let anime of studioAnimeList" size="6">
+        <ion-col class="studioAnimeCol" *ngFor="let anime of seasonAnimeList" size="6">
           <ion-card class="studioAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
             routerDirection="forward">
             <img class="studioAnimeImage" [src]="anime.image_url">
-          <div class="badge"><ion-text class="badgeText">{{anime.title}}</ion-text></div>
+            <div class="badge"><ion-text class="badgeText">{{anime.title}}</ion-text></div>
           </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>
   </span>
 
-  <span *ngIf="!studioAnimeList">
+  <span *ngIf="!seasonAnimeList">
     <ion-grid>
       <ion-row class="studioAnimeRow">
         <ion-col class="studioAnimeCol" size="6">
@@ -53,5 +51,4 @@
       </ion-row>
     </ion-grid>
   </span>
-
 </ion-content>
