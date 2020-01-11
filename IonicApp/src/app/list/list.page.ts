@@ -12,7 +12,6 @@ import { Storage } from '@ionic/storage';
 	styleUrls: [ 'list.page.scss' ]
 })
 export class ListPage implements OnInit {
-
 	static animeList: Array<Anime> = new Array<Anime>();
 
 	watchingList: Array<Anime> = new Array<Anime>();
@@ -37,21 +36,21 @@ export class ListPage implements OnInit {
 	listLength: number;
 	showBadge: boolean;
 
-	storageAnimeList:Array<Anime>;
+	storageAnimeList: Array<Anime>;
 
 	constructor (private data: DataService, private modal: ModalController, private vibration: TapticEngine, private storage: Storage) {}
 
 	ngOnInit () {
 		this.listLength = ListPage.animeList.length;
 		this.listView = this.data.getListView();
-		this.sortAnime();
 		this.getAnimeFromStorage();
+		this.sortAnime();
 	}
 
-	async getAnimeFromStorage(){
-		console.log(await this.storage.get('animeList'));
-		this.storageAnimeList = JSON.parse(await this.storage.get('animeList'));
-		console.log(this.storageAnimeList);
+	async getAnimeFromStorage () {
+		this.storageAnimeList = await this.storage.get('animeList');
+		ListPage.animeList = this.storageAnimeList;
+		this.sortAnime();
 	}
 
 	async openDetailPage (anime: Anime) {
@@ -64,7 +63,7 @@ export class ListPage implements OnInit {
 			cssClass: 'modal',
 			componentProps:
 				{
-					animeList:ListPage.animeList,
+					animeList: ListPage.animeList,
 					anime: anime,
 					list: this
 				}

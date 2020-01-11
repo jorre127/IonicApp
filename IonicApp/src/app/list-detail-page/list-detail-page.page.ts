@@ -52,7 +52,7 @@ export class ListDetailPagePage implements OnInit {
 		if (this.listpage != null) {
 			this.listpage.sortAnime();
 		}
-		this.storage.set("animeList",JSON.stringify(this.animeList));
+		this.storage.set("animeList",ListPage.animeList);
 		this.dismiss();
 	}
 

@@ -19,6 +19,7 @@ import { Storage } from '@ionic/storage';
 export class AnimeDetailPagePage implements OnInit {
 	showAddButton: boolean = true;
 	currentAnime: Anime;
+	currentDetailAnime:Anime;
 	observable: Observable<any>;
 	relatedObservable: Observable<any>;
 	prequelAnimeList: Array<Anime> = new Array<Anime>();
@@ -55,7 +56,7 @@ export class AnimeDetailPagePage implements OnInit {
 	}
 	addAnimeToList () {
 		ListPage.animeList.push(this.currentAnime);
-		this.storage.set("animeList",JSON.stringify(ListPage.animeList));
+		this.storage.set("animeList",ListPage.animeList);
 		console.log(this.storage);
 		this.updateButton();
 		this.presentToast(this.currentAnime.title + ' added to your list');
@@ -82,13 +83,18 @@ export class AnimeDetailPagePage implements OnInit {
 		toast.present();
 	}
 	async openDetailPage () {
+		ListPage.animeList.forEach(anime=>{
+			if(anime.mal_id == this.currentAnime.mal_id){
+				this.currentDetailAnime = anime;
+			}
+		})
 		const modall = await this.modal.create({
 			component: ListDetailPagePage,
 			showBackdrop: true,
 			cssClass: 'modal',
 			componentProps:
 				{
-					anime: this.currentAnime
+					anime: this.currentDetailAnime
 				}
 		});
 		modall.present();
