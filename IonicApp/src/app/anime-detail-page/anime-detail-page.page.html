@@ -13,11 +13,8 @@
 
 <ion-content>
 
-  <ion-refresher pullFactor="0.4" pullMax = "220" slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="Pull to refresh"
-      refreshingSpinner="circles"
+  <ion-refresher pullFactor="0.4" pullMax="220" slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
@@ -48,11 +45,15 @@
                   {{currentAnime.score}}
                 </ion-text>
               </ion-item>
-              <ion-item lines="none">
+              <ion-item class = "detailItem1"  lines="none">
                 {{currentAnime.type}}({{currentAnime.episodes}}) eps
               </ion-item>
-              <ion-item lines="none">
+              <ion-item class = "detailItem2" lines="none">
                 {{currentAnime.status}}
+              </ion-item>
+              <ion-item class = "detailItem3" *ngIf="lastEpisode" lines="none">
+                Released Episodes:
+                  {{lastEpisode}}
               </ion-item>
             </ion-col>
           </ion-row>
@@ -146,7 +147,8 @@
                 </ion-col>
                 <ion-col>
 
-                  <ion-text *ngIf="currentAnime.premiered" color="primary" [routerLink]="['/','season-search',currentAnime.premiered]">
+                  <ion-text *ngIf="currentAnime.premiered" color="primary"
+                    [routerLink]="['/','season-search',currentAnime.premiered]">
                     {{currentAnime.premiered}}
                   </ion-text>
                   <ion-text *ngIf="!currentAnime.premiered">?</ion-text>
@@ -515,27 +517,29 @@
   </span>
 
   <span name="related">
-    <span *ngIf ="currentAnime" name="sequel">
-      <span *ngIf ="currentAnime.related.Sequel">
-      <ion-card class=" shadows">
-        <ion-card-header class="synopsisTitle">
-          <ion-card-title>
-            Sequels
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content class="relatedCard">
-          <span *ngIf="sequelAnimeList">
-            <ion-grid class="seasonalAnimeGrid">
-              <virtual-scroller scrollbarHeight="0" horizontal="true" #scroll [items]="sequelAnimeList">
-                <ion-card class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                  *ngFor="let anime of scroll.viewPortItems">
-                  <img class="seasonalAnimeImage" [src]="anime.image_url">
-                  <div class="badge"><ion-text class="badgeText">{{anime.title}}</ion-text></div>
-                </ion-card>
-              </virtual-scroller>
-            </ion-grid>
-          </span>
-        </ion-card-content>
+    <span *ngIf="currentAnime" name="sequel">
+      <span *ngIf="currentAnime.related.Sequel">
+        <ion-card class=" shadows">
+          <ion-card-header class="synopsisTitle">
+            <ion-card-title>
+              Sequels
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="relatedCard">
+            <span *ngIf="sequelAnimeList">
+              <ion-grid class="seasonalAnimeGrid">
+                <virtual-scroller scrollbarHeight="0" horizontal="true" #scroll [items]="sequelAnimeList">
+                  <ion-card class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
+                    *ngFor="let anime of scroll.viewPortItems">
+                    <img class="seasonalAnimeImage" [src]="anime.image_url">
+                    <div class="badge">
+                      <ion-text class="badgeText">{{anime.title}}</ion-text>
+                    </div>
+                  </ion-card>
+                </virtual-scroller>
+              </ion-grid>
+            </span>
+          </ion-card-content>
 
         </ion-card>
 
@@ -557,27 +561,29 @@
         </span>
       </span>
     </span>
-    <span *ngIf ="currentAnime" name="prequel">
-      <span *ngIf ="currentAnime.related.Prequel">
-       <ion-card class=" shadows">
-        <ion-card-header class="synopsisTitle">
-          <ion-card-title>
-            Prequels
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content class = "relatedCard">
-          <span *ngIf="prequelAnimeList">
-            <ion-grid class="seasonalAnimeGrid">
-              <virtual-scroller scrollbarHeight="0" horizontal="true" #scroll [items]="prequelAnimeList">
-                <ion-card class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                  *ngFor="let anime of scroll.viewPortItems">
-                  <img class="seasonalAnimeImage" [src]="anime.image_url">
-                  <div class="badge"><ion-text class="badgeText">{{anime.title}}</ion-text></div>
-                </ion-card>
-              </virtual-scroller>
-            </ion-grid>
-          </span>
-        </ion-card-content>
+    <span *ngIf="currentAnime" name="prequel">
+      <span *ngIf="currentAnime.related.Prequel">
+        <ion-card class=" shadows">
+          <ion-card-header class="synopsisTitle">
+            <ion-card-title>
+              Prequels
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="relatedCard">
+            <span *ngIf="prequelAnimeList">
+              <ion-grid class="seasonalAnimeGrid">
+                <virtual-scroller scrollbarHeight="0" horizontal="true" #scroll [items]="prequelAnimeList">
+                  <ion-card class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
+                    *ngFor="let anime of scroll.viewPortItems">
+                    <img class="seasonalAnimeImage" [src]="anime.image_url">
+                    <div class="badge">
+                      <ion-text class="badgeText">{{anime.title}}</ion-text>
+                    </div>
+                  </ion-card>
+                </virtual-scroller>
+              </ion-grid>
+            </span>
+          </ion-card-content>
 
         </ion-card>
 

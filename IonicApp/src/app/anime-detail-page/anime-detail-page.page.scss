@@ -19,11 +19,12 @@
 	padding: 0rem;
 	margin-top: 1rem;
 }
-.detailImg{
+.detailImg {
 	border-radius: 0.3rem;
 }
 .pictureCol {
 	padding: 0rem;
+	height: 13.5rem;
 }
 .scoreText {
 	font-size: 18pt !important;
@@ -131,23 +132,37 @@ virtual-scroller {
 	margin-bottom: -25px !important;
 	padding-bottom: 25px !important;
 }
-.relatedCard{
+.relatedCard {
 	height: fit-content !important;
 	padding-left: 1rem !important;
 	padding-right: 1rem !important;
 }
-.badge{
-	width:100%;
+.badge {
+	width: 100%;
 	position: relative;
-	top:-1.4rem;
+	top: -1.4rem;
 	background-color: rgba(0, 0, 0, 0.473);
 	backdrop-filter: blur(2px);
 	text-align: center;
 	justify-content: center;
 	border-radius: 0.2rem;
 	color: white;
-	padding:3px;
-  }
-  .badgeText{
-  opacity: 0.7;
-  }
+	padding: 3px;
+}
+.badgeText {
+	opacity: 0.7;
+}
+.lastEpisode {
+	color: var(--ion--primary--color);
+	display: inline;
+}
+.detailItem1 {
+	height: 2rem;
+	margin-top: 0.2rem;
+}
+.detailItem2 {
+	height: 2rem;
+}
+.detailItem3 {
+	margin-top: 1.9rem;
+}

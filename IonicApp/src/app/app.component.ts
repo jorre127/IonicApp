@@ -49,6 +49,25 @@ export class AppComponent {
 		});
 	}
 }
+export class Episodes{
+    "request_hash": "request:anime:c3b5c243bf4f5bb79e88226aa4eb303264352b24";
+    "request_cached": true;
+    "request_cache_expiry": 20734;
+    "episodes_last_page": 1;
+    "episodes": [
+        {
+            "episode_id": 1,
+            "title": "A Prince Appears",
+            "title_japanese": "王子様現る",
+            "title_romanji": "Ouji-sama Arawaru ",
+            "aired": "2001-10-10T00:00:00+00:00",
+            "filler": false,
+            "recap": false,
+            "video_url": null,
+            "forum_url": "https://myanimelist.net/forum/?topicid=39261"
+        }
+    ];
+}
 
 export class Anime {
 	watchStatus: string = '';
