@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ApiStuffService } from '../api-stuff.service';
 import { Observable, empty } from 'rxjs';
-import { ToastController, ModalController, NavParams } from '@ionic/angular';
+import { ToastController, ModalController, NavParams, PopoverController } from '@ionic/angular';
 import { Anime, Episodes } from '../app.component';
 import { ListDetailPagePage } from '../list-detail-page/list-detail-page.page';
 import { ListPage } from '../list/list.page';
@@ -12,6 +12,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Storage } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ResourceLoader } from '@angular/compiler';
+import { TitlePopoverComponent } from '../title-popover/title-popover.component';
+import { TapticEngine } from '@ionic-native/taptic-engine/ngx';
 
 @Component({
 	selector: 'app-anime-detail-page',
@@ -39,7 +41,7 @@ export class AnimeDetailPagePage implements OnInit {
 	episodesCheck: Episodes;
 	lastEpisode: number;
 
-	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController, private route: ActivatedRoute, private storage: Storage, private browser: InAppBrowser) {}
+	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController, private route: ActivatedRoute, private storage: Storage, private browser: InAppBrowser, private popoverController: PopoverController, private vibration:TapticEngine) {}
 	/*
 	ngOnInit () {
 		// Getting Details From Anime
@@ -173,8 +175,8 @@ export class AnimeDetailPagePage implements OnInit {
 			if (this.episodesCheck.episodes_last_page == 1) {
 				this.lastEpisode = this.episodesCheck.episodes[this.episodesCheck.episodes.length - 1].episode_id;
 			}
-			else{
-				this.episodesCheckObservable = this.api.findAnimeEpisodes(this.currentAnime.mal_id,this.episodesCheck.episodes_last_page);
+			else {
+				this.episodesCheckObservable = this.api.findAnimeEpisodes(this.currentAnime.mal_id, this.episodesCheck.episodes_last_page);
 				this.episodesCheckObservable.subscribe((result) => {
 					this.episodesCheck = result;
 					console.log(this.episodesCheck);
@@ -182,5 +184,22 @@ export class AnimeDetailPagePage implements OnInit {
 				});
 			}
 		});
+	}
+
+	async presentPopover (ev: any, title: string) {
+		this.vibration.impact({
+			style: 'medium' // light | medium | heavy
+		});
+		const popover = await this.popoverController.create({
+			component: TitlePopoverComponent,
+			event: ev,
+			translucent: false,
+			componentProps:
+				{
+					title: title
+				}
+		});
+
+		await popover.present();
 	}
 }

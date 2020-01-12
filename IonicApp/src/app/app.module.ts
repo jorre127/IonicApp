@@ -19,16 +19,18 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 
 import {FilterPopoverComponent} from"../app/filter-popover/filter-popover.component"
+import {TitlePopoverComponent} from "../app/title-popover/title-popover.component"
 import { IonicStorageModule } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
 
 @NgModule({
-  declarations: [AppComponent,ListDetailPagePage,FilterPopoverComponent],
+  declarations: [AppComponent,ListDetailPagePage,FilterPopoverComponent,TitlePopoverComponent],
   entryComponents: [
     ListDetailPagePage,
-    FilterPopoverComponent
+    FilterPopoverComponent,
+    TitlePopoverComponent
   ],
   imports: [
     BrowserModule,

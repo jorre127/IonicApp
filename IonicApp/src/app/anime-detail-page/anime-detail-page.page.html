@@ -529,7 +529,7 @@
             <span *ngIf="sequelAnimeList">
               <ion-grid class="seasonalAnimeGrid">
                 <virtual-scroller scrollbarHeight="0" horizontal="true" #scroll [items]="sequelAnimeList">
-                  <ion-card class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
+                  <ion-card (press) ="presentPopover ($event, anime.title)" class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
                     *ngFor="let anime of scroll.viewPortItems">
                     <img class="seasonalAnimeImage" [src]="anime.image_url">
                     <div class="badge">
@@ -573,7 +573,7 @@
             <span *ngIf="prequelAnimeList">
               <ion-grid class="seasonalAnimeGrid">
                 <virtual-scroller scrollbarHeight="0" horizontal="true" #scroll [items]="prequelAnimeList">
-                  <ion-card class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
+                  <ion-card (press) ="presentPopover ($event, anime.title)" class="seasonalAnimeCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
                     *ngFor="let anime of scroll.viewPortItems">
                     <img class="seasonalAnimeImage" [src]="anime.image_url">
                     <div class="badge">
