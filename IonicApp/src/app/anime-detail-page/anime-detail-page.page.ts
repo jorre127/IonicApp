@@ -41,9 +41,9 @@ export class AnimeDetailPagePage implements OnInit {
 	episodesCheck: Episodes;
 	lastEpisode: number;
 
+	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController, private route: ActivatedRoute, private storage: Storage, private browser: InAppBrowser, private popoverController: PopoverController, private vibration: TapticEngine) {}
 
-	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController, private route: ActivatedRoute, private storage: Storage, private browser: InAppBrowser, private popoverController: PopoverController, private vibration:TapticEngine) {}
-	
+	/*
 	ngOnInit () {
 		// Getting Details From Anime
 		this.id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -57,7 +57,7 @@ export class AnimeDetailPagePage implements OnInit {
 		this.updateButton();
 		this.getLastEpisode()
 	}
-/*
+*/
 
 	ngOnInit () {
 		this.id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -69,7 +69,7 @@ export class AnimeDetailPagePage implements OnInit {
 			this.getLastEpisode();
 		});
 	}
-	*/
+
 	addAnimeToList () {
 		ListPage.animeList.push(this.currentAnime);
 		this.storage.set('animeList', ListPage.animeList);
@@ -116,14 +116,15 @@ export class AnimeDetailPagePage implements OnInit {
 		modall.present();
 	}
 
-	/*
 	async getRelatedDetails () {
 		this.sequelAnimeList = [];
 		this.prequelAnimeList = [];
 		if (this.currentAnime.related.Sequel != null) {
 			this.currentAnime.related.Sequel.forEach((anime) => {
 				this.relatedId = anime.mal_id;
-				this.relatedObservable = this.api.findAnimeDetails(this.relatedId);
+				setTimeout(() => {
+					this.relatedObservable = this.api.findAnimeDetails(this.relatedId);
+				}, 100);
 				this.relatedObservable.subscribe((result) => {
 					this.sequelAnimeList.push(result);
 				});
@@ -132,21 +133,26 @@ export class AnimeDetailPagePage implements OnInit {
 		if (this.currentAnime.related.Prequel != null) {
 			this.currentAnime.related.Prequel.forEach((anime) => {
 				this.relatedId = anime.mal_id;
-				this.relatedObservable = this.api.findAnimeDetails(this.relatedId);
+				setTimeout(() => {
+					this.relatedObservable = this.api.findAnimeDetails(this.relatedId);
+				},100);
 				this.relatedObservable.subscribe((result) => {
 					this.prequelAnimeList.push(result);
 				});
 			});
 		}
-		*/
 
+		
+		/*
 	async getRelatedDetails () {
 		this.sequelAnimeList = [];
 		this.prequelAnimeList = [];
 		if (this.currentAnime.related.Sequel != null) {
 			this.currentAnime.related.Sequel.forEach(async (anime) => {
 				this.relatedId = anime.mal_id;
-				const response = this.api.findAnimeDetails(this.relatedId);
+				setTimeout(() => {
+					const response = this.api.findAnimeDetails(this.relatedId);
+				},100);
 				this.tempAnime = JSON.parse((await response).data);
 				this.sequelAnimeList.push(this.tempAnime);
 			});
@@ -154,11 +160,15 @@ export class AnimeDetailPagePage implements OnInit {
 		if (this.currentAnime.related.Prequel != null) {
 			this.currentAnime.related.Prequel.forEach(async (anime) => {
 				this.relatedId = anime.mal_id;
-				const response = this.api.findAnimeDetails(this.relatedId);
+				setTimeout(() => {
+					const response = this.api.findAnimeDetails(this.relatedId);
+				},100);
 				this.tempAnime = JSON.parse((await response).data);
 				this.prequelAnimeList.push(this.tempAnime);
 			});
 		}
+		*/
+		
 	}
 	doRefresh (event) {
 		this.getRelatedDetails();
@@ -189,7 +199,7 @@ export class AnimeDetailPagePage implements OnInit {
 		});
 	}
 
-	async presentPopover (ev: any, title: string, stop:boolean = false) {
+	async presentPopover (ev: any, title: string, stop: boolean = false) {
 		this.vibration.impact({
 			style: 'medium' // light | medium | heavy
 		});
