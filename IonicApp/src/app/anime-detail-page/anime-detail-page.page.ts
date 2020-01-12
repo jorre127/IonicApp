@@ -41,6 +41,7 @@ export class AnimeDetailPagePage implements OnInit {
 	episodesCheck: Episodes;
 	lastEpisode: number;
 
+
 	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController, private route: ActivatedRoute, private storage: Storage, private browser: InAppBrowser, private popoverController: PopoverController, private vibration:TapticEngine) {}
 	/*
 	ngOnInit () {
@@ -186,7 +187,7 @@ export class AnimeDetailPagePage implements OnInit {
 		});
 	}
 
-	async presentPopover (ev: any, title: string) {
+	async presentPopover (ev: any, title: string, stop:boolean = false) {
 		this.vibration.impact({
 			style: 'medium' // light | medium | heavy
 		});
@@ -199,7 +200,9 @@ export class AnimeDetailPagePage implements OnInit {
 					title: title
 				}
 		});
-
 		await popover.present();
+		setTimeout(() => {
+			popover.dismiss();
+		}, 2000);
 	}
 }
