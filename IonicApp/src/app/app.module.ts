@@ -20,6 +20,7 @@ import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 
 import {FilterPopoverComponent} from"../app/filter-popover/filter-popover.component"
 import { IonicStorageModule } from '@ionic/storage';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
 
@@ -43,6 +44,7 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     TapticEngine,
     HTTP,
+    InAppBrowser,
     IonicStorageModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

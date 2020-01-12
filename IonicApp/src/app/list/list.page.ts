@@ -42,7 +42,6 @@ export class ListPage implements OnInit {
 	constructor (private data: DataService, private modal: ModalController, private vibration: TapticEngine, private storage: Storage) {}
 
 	ngOnInit () {
-		this.listLength = ListPage.animeList.length;
 		this.listView = this.data.getListView();
 		this.getAnimeFromStorage();
 		this.sortAnime();
@@ -56,7 +55,7 @@ export class ListPage implements OnInit {
 
 	async openDetailPage (anime: Anime) {
 		this.vibration.impact({
-			style: 'medium' // light | medium | heavy
+			style: 'heavy' // light | medium | heavy
 		});
 		const modall = await this.modal.create({
 			component: ListDetailPagePage,
@@ -155,6 +154,7 @@ export class ListPage implements OnInit {
 				this.planToWatchList.push(anime);
 			}
 		});
+		this.listLength = ListPage.animeList.length;
 	}
 
 	// add back when alpha.4 is out

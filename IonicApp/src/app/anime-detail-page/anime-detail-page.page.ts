@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 import { IonicStorageModule } from '@ionic/storage';
 import { Storage } from '@ionic/storage';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
 	selector: 'app-anime-detail-page',
@@ -28,20 +29,23 @@ export class AnimeDetailPagePage implements OnInit {
 	id: number;
 	relatedId: number;
 
-	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController, private route: ActivatedRoute, private storage: Storage) {}
+	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController, private route: ActivatedRoute, private storage: Storage,private browser:InAppBrowser) {}
 
 	ngOnInit () {
 		// Getting Details From Anime
 		this.id = parseInt(this.route.snapshot.paramMap.get('id'));
 		this.getDetails();
+		this.getRelatedDetails();
 	}
 	async getDetails () {
 		const response = this.api.findAnimeDetails(this.id);
 		this.currentAnime = JSON.parse((await response).data);
+		this.getRelatedDetails();
 		this.updateButton();
 	}
 
 	/*
+
 	ngOnInit () {
 		this.id = parseInt(this.route.snapshot.paramMap.get('id'));
 		this.observable = this.api.findAnimeDetails(this.id);
@@ -147,5 +151,9 @@ export class AnimeDetailPagePage implements OnInit {
 		setTimeout(() => {
 			event.target.complete();
 		}, 1000);
+	}
+
+	openMal(url:string){
+		const mal = this.browser.create(url,'_system');
 	}
 }
