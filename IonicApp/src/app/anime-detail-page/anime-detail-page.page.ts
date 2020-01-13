@@ -24,11 +24,13 @@ export class AnimeDetailPagePage implements OnInit {
 	showAddButton: boolean = true;
 
 	currentAnime: Anime;
-	tempAnime: Anime;
+	tempAnimeSequel: Anime;
+	tempAnimePrequel: Anime;
 	currentDetailAnime: Anime;
 
 	observable: Observable<any>;
-	relatedObservable: Observable<any>;
+	relatedObservableSequel: Observable<any>;
+	relatedObservablePrequel: Observable<any>;
 	episodesCheckObservable: Observable<any>;
 	lastEpisodeObservable: Observable<any>;
 
@@ -36,7 +38,8 @@ export class AnimeDetailPagePage implements OnInit {
 	sequelAnimeList: Array<Anime> = new Array<Anime>();
 
 	id: number;
-	relatedId: number;
+	relatedIdSequel: number;
+	relatedIdPrequel: number;
 
 	episodesCheck: Episodes;
 	lastEpisode: number;
@@ -121,54 +124,53 @@ export class AnimeDetailPagePage implements OnInit {
 		this.prequelAnimeList = [];
 		if (this.currentAnime.related.Sequel != null) {
 			this.currentAnime.related.Sequel.forEach((anime) => {
-				this.relatedId = anime.mal_id;
 				setTimeout(() => {
-					this.relatedObservable = this.api.findAnimeDetails(this.relatedId);
-				}, 100);
-				this.relatedObservable.subscribe((result) => {
-					this.sequelAnimeList.push(result);
-				});
+					this.relatedIdSequel = anime.mal_id;
+					this.relatedObservableSequel = this.api.findAnimeDetails(this.relatedIdSequel);
+					this.relatedObservableSequel.subscribe((result) => {
+						this.sequelAnimeList.push(result);
+					});
+				}, 500);
 			});
 		}
 		if (this.currentAnime.related.Prequel != null) {
 			this.currentAnime.related.Prequel.forEach((anime) => {
-				this.relatedId = anime.mal_id;
 				setTimeout(() => {
-					this.relatedObservable = this.api.findAnimeDetails(this.relatedId);
-				},100);
-				this.relatedObservable.subscribe((result) => {
-					this.prequelAnimeList.push(result);
-				});
+					this.relatedIdPrequel = anime.mal_id;
+					this.relatedObservablePrequel = this.api.findAnimeDetails(this.relatedIdPrequel);
+					this.relatedObservablePrequel.subscribe((result) => {
+						this.prequelAnimeList.push(result);
+					});
+				}, 500);
 			});
 		}
 
-		
 		/*
 	async getRelatedDetails () {
 		this.sequelAnimeList = [];
 		this.prequelAnimeList = [];
 		if (this.currentAnime.related.Sequel != null) {
 			this.currentAnime.related.Sequel.forEach(async (anime) => {
-				this.relatedId = anime.mal_id;
 				setTimeout(() => {
+					this.relatedIdPrequel = anime.mal_id;
 					const response = this.api.findAnimeDetails(this.relatedId);
-				},100);
-				this.tempAnime = JSON.parse((await response).data);
-				this.sequelAnimeList.push(this.tempAnime);
+					this.tempAnimeSequel = JSON.parse((await response).data);
+					this.sequelAnimeList.push(this.tempAnime);
+				},500);
 			});
 		}
 		if (this.currentAnime.related.Prequel != null) {
 			this.currentAnime.related.Prequel.forEach(async (anime) => {
-				this.relatedId = anime.mal_id;
 				setTimeout(() => {
+					this.relatedIdSequel = anime.mal_id;
 					const response = this.api.findAnimeDetails(this.relatedId);
-				},100);
-				this.tempAnime = JSON.parse((await response).data);
-				this.prequelAnimeList.push(this.tempAnime);
+					this.tempAnimePrequel = JSON.parse((await response).data);
+					this.prequelAnimeList.push(this.tempAnime);
+				},500);
+
 			});
 		}
 		*/
-		
 	}
 	doRefresh (event) {
 		this.getRelatedDetails();
