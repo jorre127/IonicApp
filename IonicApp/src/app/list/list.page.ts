@@ -45,6 +45,7 @@ export class ListPage implements OnInit {
 		this.listView = this.data.getListView();
 		this.getAnimeFromStorage();
 		this.sortAnime();
+		this.showList();
 	}
 
 	async getAnimeFromStorage () {
@@ -70,55 +71,90 @@ export class ListPage implements OnInit {
 		});
 		modall.present();
 	}
+	async showList(){
+		this.showWatchingList = await this.storage.get('showWatchingList');
+		this.showCompletedList = await this.storage.get('showCompletedList');
+		this.showOnHoldList = await this.storage.get('showOnHoldList');
+		this.showDroppedList = await this.storage.get('showDroppedList');
+		this.showPlanToWatchList = await this.storage.get('showPlanToWatchList');
+
+		this.arrowStatusWatching = await this.storage.get('arrowStatusWatching');
+		this.arrowStatusCompletedList = await this.storage.get('arrowStatusCompletedList');
+		this.arrowStatusOnHoldList = await this.storage.get('arrowStatusOnHoldList');
+		this.arrowStatusDroppedList = await this.storage.get('arrowStatusDroppedList');
+		this.arrowStatusPlanToWatchList = await this.storage.get('arrowStatusPlanToWatchList');
+
+		
+	}
 
 	showWatching () {
 		if (this.showWatchingList == false) {
 			this.showWatchingList = true;
+			this.storage.set('showWatchingList',this.showWatchingList);
 			this.arrowStatusWatching = 'arrow-down';
+			this.storage.set('arrowStatusWatching','arrow-down');
 		}
 		else {
 			this.showWatchingList = false;
+			this.storage.set('showWatchingList',this.showWatchingList);
 			this.arrowStatusWatching = 'arrow-forward';
+			this.storage.set('arrowStatusWatching','arrow-forward');
 		}
 	}
 	showCompleted () {
 		if (this.showCompletedList == false) {
 			this.showCompletedList = true;
+			this.storage.set('showCompletedList',this.showCompletedList);
 			this.arrowStatusCompletedList = 'arrow-down';
+			this.storage.set('arrowStatusCompletedList','arrow-down');
 		}
 		else {
 			this.showCompletedList = false;
+			this.storage.set('showCompletedList',this.showCompletedList);
 			this.arrowStatusCompletedList = 'arrow-forward';
+			this.storage.set('arrowStatusCompletedList','arrow-forward');
 		}
 	}
 	showOnHold () {
 		if (this.showOnHoldList == false) {
 			this.showOnHoldList = true;
+			this.storage.set('showOnHoldList',this.showOnHoldList);
 			this.arrowStatusOnHoldList = 'arrow-down';
+			this.storage.set('arrowStatusOnHoldList','arrow-down');
 		}
 		else {
 			this.showOnHoldList = false;
+			this.storage.set('showOnHoldList',this.showOnHoldList);
 			this.arrowStatusOnHoldList = 'arrow-forward';
+			this.storage.set('arrowStatusOnHoldList','arrow-forward');
 		}
 	}
 	showDropped () {
 		if (this.showDroppedList == false) {
 			this.showDroppedList = true;
+			this.storage.set('showDroppedList',this.showDroppedList);
 			this.arrowStatusDroppedList = 'arrow-down';
+			this.storage.set('arrowStatusDroppedList','arrow-down');
 		}
 		else {
 			this.showDroppedList = false;
+			this.storage.set('showDroppedList',this.showDroppedList);
 			this.arrowStatusDroppedList = 'arrow-forward';
+			this.storage.set('arrowStatusDroppedList','arrow-forward');
 		}
 	}
 	showPlanToWatch () {
 		if (this.showPlanToWatchList == false) {
 			this.showPlanToWatchList = true;
+			this.storage.set('showPlanToWatchList',this.showPlanToWatchList);
 			this.arrowStatusPlanToWatchList = 'arrow-down';
+			this.storage.set('arrowStatusPlanToWatchList','arrow-down');
 		}
 		else {
 			this.showPlanToWatchList = false;
+			this.storage.set('showPlanToWatchList',this.showPlanToWatchList);
 			this.arrowStatusPlanToWatchList = 'arrow-forward';
+			this.storage.set('arrowStatusPlanToWatchList','arrow-forward');
 		}
 	}
 

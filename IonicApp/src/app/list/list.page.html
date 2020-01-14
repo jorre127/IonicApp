@@ -14,11 +14,11 @@
   <span name="Column View">
 
     <span *ngIf="listView[0]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider  button (click)="showWatching()" class="shadows">
         <h2>
-          Watching
+          Watching ({{watchingList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showWatching()" slot="end" [name]="arrowStatusWatching">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusWatching">
         </ion-icon>
       </ion-item-divider>
       <ion-grid *ngIf="showWatchingList">
@@ -45,11 +45,11 @@
     </span>
 
     <span *ngIf="listView[0]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider  button (click)="showCompleted()" class="shadows">
         <h2>
-          Completed
+          Completed ({{completedList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showCompleted()" slot="end" [name]="arrowStatusCompletedList">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusCompletedList">
         </ion-icon>
       </ion-item-divider>
       <ion-grid *ngIf="showCompletedList">
@@ -77,11 +77,11 @@
     </span>
 
     <span *ngIf="listView[0]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider button (click)="showOnHold()" class="shadows">
         <h2>
-          On-Hold
+          On-Hold ({{onHoldList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showOnHold()" slot="end" [name]="arrowStatusOnHoldList">
+        <ion-icon class="expandArrow"  slot="end" [name]="arrowStatusOnHoldList">
         </ion-icon>
       </ion-item-divider>
       <ion-grid *ngIf="showOnHoldList">
@@ -109,11 +109,11 @@
     </span>
 
     <span *ngIf="listView[0]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider button (click)="showDropped()" class="shadows">
         <h2>
-          Dropped
+          Dropped ({{droppedList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showDropped()" slot="end" [name]="arrowStatusDroppedList">
+        <ion-icon class="expandArrow"  slot="end" [name]="arrowStatusDroppedList">
         </ion-icon>
       </ion-item-divider>
       <ion-grid *ngIf="showDroppedList">
@@ -141,11 +141,11 @@
     </span>
 
     <span *ngIf="listView[0]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider button (click)="showPlanToWatch()"  class="shadows">
         <h2>
-          Plan To Watch
+          Plan To Watch ({{planToWatchList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showPlanToWatch()" slot="end" [name]="arrowStatusPlanToWatchList">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusPlanToWatchList">
         </ion-icon>
       </ion-item-divider>
       <ion-grid *ngIf="showPlanToWatchList">
@@ -176,11 +176,11 @@
   <span name="Detailed ListView">
 
     <span *ngIf="listView[1]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider  button (click)="showWatching()" class="shadows">
         <h2>
-          Watching
+          Watching ({{watchingList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showWatching()" slot="end" [name]="arrowStatusWatching">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusWatching">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showWatchingList">
@@ -209,11 +209,11 @@
     </span>
 
     <span *ngIf="listView[1]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider button (click)="showCompleted()" class="shadows">
         <h2>
-          Completed
+          Completed ({{completedList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showCompleted()" slot="end" [name]="arrowStatusCompletedList">
+        <ion-icon class="expandArrow"  slot="end" [name]="arrowStatusCompletedList">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showCompletedList">
@@ -242,11 +242,11 @@
     </span>
 
     <span *ngIf="listView[1]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider button (click)="showOnHold()"  class="shadows">
         <h2>
-          On-Hold
+          On-Hold ({{onHoldList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showOnHold()" slot="end" [name]="arrowStatusOnHoldList">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusOnHoldList">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showOnHoldList">
@@ -275,11 +275,11 @@
     </span>
 
     <span *ngIf="listView[1]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider button (click)="showDropped()"  class="shadows">
         <h2>
-          Dropped
+          Dropped ({{droppedList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showDropped()" slot="end" [name]="arrowStatusDroppedList">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusDroppedList">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showDroppedList">
@@ -308,11 +308,11 @@
     </span>
 
     <span *ngIf="listView[1]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider button (click)="showPlanToWatch()"  class="shadows">
         <h2>
-          Plan To Watch
+          Plan To Watch ({{planToWatchList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showPlanToWatch()" slot="end" [name]="arrowStatusPlanToWatchList">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusPlanToWatchList">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showPlanToWatchList">
@@ -343,11 +343,11 @@
 
   <span name="ListView">
     <span *ngIf="listView[2]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider button (click)="showWatching()" class="shadows">
         <h2>
-          Watching
+          Watching ({{watchingList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showWatching()" slot="end" [name]="arrowStatusWatching">
+        <ion-icon class="expandArrow"  slot="end" [name]="arrowStatusWatching">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showWatchingList">
@@ -369,11 +369,11 @@
     </span>
 
     <span *ngIf="listView[2]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider button (click)="showCompleted()" class="shadows">
         <h2>
-          Completed
+          Completed ({{completedList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showCompleted()" slot="end" [name]="arrowStatusCompletedList">
+        <ion-icon class="expandArrow"  slot="end" [name]="arrowStatusCompletedList">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showCompletedList">
@@ -395,11 +395,11 @@
     </span>
 
     <span *ngIf="listView[2]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider button (click)="showOnHold()"  class="shadows">
         <h2>
-          On-Hold
+          On-Hold ({{onHoldList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showOnHold()" slot="end" [name]="arrowStatusOnHoldList">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusOnHoldList">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showOnHoldList">
@@ -421,11 +421,11 @@
     </span>
 
     <span *ngIf="listView[2]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider button (click)="showDropped()"  class="shadows">
         <h2>
-          Dropped
+          Dropped ({{droppedList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showDropped()" slot="end" [name]="arrowStatusDroppedList">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusDroppedList">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showDroppedList">
@@ -447,11 +447,11 @@
     </span>
 
     <span *ngIf="listView[2]">
-      <ion-item-divider class="shadows">
+      <ion-item-divider button (click)="showPlanToWatch()" class="shadows">
         <h2>
-          Plan To Watch
+          Plan To Watch ({{planToWatchList.length}})
         </h2>
-        <ion-icon class="expandArrow" button (click)="showPlanToWatch()" slot="end" [name]="arrowStatusPlanToWatchList">
+        <ion-icon class="expandArrow"  slot="end" [name]="arrowStatusPlanToWatchList">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showPlanToWatchList">
