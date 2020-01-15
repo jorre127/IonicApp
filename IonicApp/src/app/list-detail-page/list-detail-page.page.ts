@@ -35,8 +35,10 @@ export class ListDetailPagePage implements OnInit {
 		if (this.episodesWatched < 0) {
 			this.episodesWatched = 0;
 		}
-		if (this.episodesWatched > this.anime.total_episodes) {
-			this.episodesWatched = this.anime.total_episodes;
+		if(this.anime.total_episodes != 0){
+			if (this.episodesWatched > this.anime.total_episodes) {
+				this.episodesWatched = this.anime.total_episodes;
+			}
 		}
 	}
 	checkWatchStatus(){
