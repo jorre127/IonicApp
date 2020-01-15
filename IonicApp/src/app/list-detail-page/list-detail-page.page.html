@@ -6,12 +6,12 @@
     <ion-label>
       Watch Status
     </ion-label>
-    <ion-select [(ngModel)]="watchStatus" interface="popover">
-      <ion-select-option value="Watching">Watching</ion-select-option>
-      <ion-select-option value="Completed">Completed</ion-select-option>
-      <ion-select-option value="On-Hold">On-Hold</ion-select-option>
-      <ion-select-option value="Dropped">Dropped</ion-select-option>
-      <ion-select-option value="Plan To Watch">Plan To Watch</ion-select-option>
+    <ion-select [(ngModel)]="watchStatus" type = "number" (ionChange)="checkWatchStatus()" interface="popover">
+      <ion-select-option value="1">Watching</ion-select-option>
+      <ion-select-option value="2">Completed</ion-select-option>
+      <ion-select-option value="3">On-Hold</ion-select-option>
+      <ion-select-option value="4">Dropped</ion-select-option>
+      <ion-select-option value="5">Plan To Watch</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item lines="none" class="shadows">
@@ -19,16 +19,16 @@
       Score
     </ion-label>
     <ion-select [(ngModel)]="score" interface="popover">
-      <ion-select-option value="10 Masterpiece">10 Masterpiece</ion-select-option>
-      <ion-select-option value="9 Great">9 Great</ion-select-option>
-      <ion-select-option value="8 Very Good">8 Very Good</ion-select-option>
-      <ion-select-option value="7 Good">7 Good</ion-select-option>
-      <ion-select-option value="6 Fine">6 Fine</ion-select-option>
-      <ion-select-option value="5 Average">5 Average</ion-select-option>
-      <ion-select-option value="4 Bad">4 Bad</ion-select-option>
-      <ion-select-option value="3 Very Bad">3 Very Bad</ion-select-option>
-      <ion-select-option value="2 Horrible">2 Horrible</ion-select-option>
-      <ion-select-option value="1 Appaling">1 Appalling</ion-select-option>
+      <ion-select-option value="10">10 Masterpiece</ion-select-option>
+      <ion-select-option value="9">9 Great</ion-select-option>
+      <ion-select-option value="8">8 Very Good</ion-select-option>
+      <ion-select-option value="7">7 Good</ion-select-option>
+      <ion-select-option value="6">6 Fine</ion-select-option>
+      <ion-select-option value="5">5 Average</ion-select-option>
+      <ion-select-option value="4">4 Bad</ion-select-option>
+      <ion-select-option value="3">3 Very Bad</ion-select-option>
+      <ion-select-option value="2">2 Horrible</ion-select-option>
+      <ion-select-option value="1">1 Appalling</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item class="shadows" lines="none">
@@ -38,10 +38,10 @@
     <ion-input [(ngModel)]="episodesWatched" type="number" step="1" inputmode="numeric"
       (ionChange)="checkEpisodesWatched()">
     </ion-input>
-    <span *ngIf="anime.episodes">
-      /{{anime.episodes}}
+    <span *ngIf="anime.total_episodes != 0">
+      /{{anime.total_episodes}}
     </span>
-    <span *ngIf="!anime.episodes">
+    <span *ngIf="anime.total_episodes == 0">
       /???
     </span>
     <ion-icon button (click)="add()" name="add-circle-outline"></ion-icon>

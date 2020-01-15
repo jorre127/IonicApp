@@ -68,6 +68,37 @@ export class Episodes{
         }
     ];
 }
+export class MalAnime{
+	mal_id: number;
+	title: string;
+	video_url: "https://myanimelist.net/anime/34572/Black_Clover/video";
+	url: "https://myanimelist.net/anime/34572/Black_Clover";
+	image_url: string;
+	type: "TV";
+	watching_status: number;
+	score: number;
+	watched_episodes: number = 0;
+	total_episodes: number = 0;
+	airing_status: number;
+	season_name: null;
+	season_year: null;
+	has_episode_video: true;
+	has_promo_video: true;
+	has_video: true;
+	is_rewatching: false;
+	tags: null;
+	rating: "PG-13";
+	start_date: "2017-10-03T00:00:00+00:00";
+	end_date: null;
+	watch_start_date: null;
+	watch_end_date: null;
+	days: null;
+	storage: null;
+	priority: "Low";
+	added_to_list: false;
+	studios: [];
+	licensors: [];
+}
 
 export class Anime {
 	watchStatus: string = '';
@@ -78,9 +109,9 @@ export class Anime {
 	request_cache_expiry: 49537;
 	mal_id: 1;
 	url: 'https://myanimelist.net/anime/1/Cowboy_Bebop';
-	image_url: 'https://cdn.myanimelist.net/images/anime/4/19644.jpg';
+	image_url: string;
 	trailer_url: 'https://www.youtube.com/embed/qig4KOK2R2g?enablejsapi=1&wmode=opaque&autoplay=1';
-	title: 'Cowboy Bebop';
+	title: string;
 	title_english: 'Cowboy Bebop';
 	title_japanese: 'カウボーイビバップ';
 	title_synonyms: [];
