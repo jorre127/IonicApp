@@ -3,7 +3,7 @@ import { DataService } from '../data.service';
 import { ApiStuffService } from '../api-stuff.service';
 import { Observable, empty } from 'rxjs';
 import { ToastController, ModalController, NavParams, PopoverController } from '@ionic/angular';
-import { Anime, Episodes } from '../app.component';
+import { Anime, Episodes, MalAnime } from '../app.component';
 import { ListDetailPagePage } from '../list-detail-page/list-detail-page.page';
 import { ListPage } from '../list/list.page';
 import { ActivatedRoute } from '@angular/router';
@@ -26,7 +26,9 @@ export class AnimeDetailPagePage implements OnInit {
 	currentAnime: Anime;
 	tempAnimeSequel: Anime;
 	tempAnimePrequel: Anime;
-	currentDetailAnime: Anime;
+	tempAnimeAdd: MalAnime;
+	currentDetailAnime: MalAnime;
+
 
 	observable: Observable<any>;
 	relatedObservableSequel: Observable<any>;
@@ -74,9 +76,17 @@ export class AnimeDetailPagePage implements OnInit {
 	}
 
 	addAnimeToList () {
-		ListPage.animeList.push(this.currentAnime);
+		this.tempAnimeAdd = new MalAnime();
+		this.tempAnimeAdd.total_episodes = this.currentAnime.episodes;
+		this.tempAnimeAdd.mal_id = this.currentAnime.mal_id;
+		this.tempAnimeAdd.image_url = this.currentAnime.image_url;
+		this.tempAnimeAdd.title = this.currentAnime.title
+		if(this.currentAnime.airing){
+			this.tempAnimeAdd.airing_status = 1;
+		}
+		this.tempAnimeAdd.type = this.currentAnime.type;
+		ListPage.animeList.push(this.tempAnimeAdd);
 		this.storage.set('animeList', ListPage.animeList);
-		console.log(this.storage);
 		this.updateButton();
 		this.presentToast(this.currentAnime.title + ' added to your list');
 		this.openDetailPage();

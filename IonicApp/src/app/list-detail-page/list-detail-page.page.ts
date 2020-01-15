@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
-import { Anime } from '../app.component';
+import { Anime, MalAnime } from '../app.component';
 import { ListPage } from '../list/list.page';
 import { DataService } from '../data.service';
 import { Storage } from '@ionic/storage';
@@ -11,8 +11,8 @@ import { Storage } from '@ionic/storage';
 	styleUrls: [ './list-detail-page.page.scss' ]
 })
 export class ListDetailPagePage implements OnInit {
-	anime: Anime;
-	animeList:Array<Anime>;
+	anime: MalAnime;
+	animeList:Array<MalAnime>;
 	episodesWatched: number;
 	watchStatus: string;
 	score: string;
@@ -26,17 +26,22 @@ export class ListDetailPagePage implements OnInit {
 		this.animeList = this.nav.get('animeList');
 		this.listpage = this.nav.get('list');
 
-		this.episodesWatched = this.anime.episodesWatched;
-		this.watchStatus = this.anime.watchStatus;
-		this.score = this.anime.userScoreString;
+		this.episodesWatched = this.anime.watched_episodes;
+		this.watchStatus = this.anime.watching_status.toString();
+		this.score = this.anime.score.toString();
 	}
 
 	checkEpisodesWatched () {
 		if (this.episodesWatched < 0) {
 			this.episodesWatched = 0;
 		}
-		if (this.episodesWatched > this.anime.episodes) {
-			this.episodesWatched = this.anime.episodes;
+		if (this.episodesWatched > this.anime.total_episodes) {
+			this.episodesWatched = this.anime.total_episodes;
+		}
+	}
+	checkWatchStatus(){
+		if(<number><unknown>this.watchStatus == 2){
+			this.episodesWatched = this.anime.total_episodes;
 		}
 	}
 
@@ -46,9 +51,9 @@ export class ListDetailPagePage implements OnInit {
 	}
 
 	save () {
-		this.anime.episodesWatched = this.episodesWatched;
-		this.anime.watchStatus = this.watchStatus;
-		this.anime.userScoreString = this.score;
+		this.anime.watching_status = <number><unknown>this.watchStatus;
+		this.anime.watched_episodes = this.episodesWatched;
+		this.anime.score = <number><unknown>this.score;
 		if (this.listpage != null) {
 			this.listpage.sortAnime();
 		}
