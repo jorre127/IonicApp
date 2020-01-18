@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 import { Observable } from 'rxjs';
-import { map, tap, retryWhen, delayWhen, delay } from 'rxjs/operators';
+import { map, tap, retryWhen, delayWhen, delay, retry } from 'rxjs/operators';
 
 
 @Injectable({
@@ -15,15 +15,16 @@ export class ApiStuffService {
 
 	
 	async findAnimeDetails (id: number) {
-		const response = await this.HTTP.get('https://api.jikan.moe/v3//anime/' + id + '/', null, null);
+		const response = await (await this.HTTP.get('https://api.jikan.moe/v3//anime/' + id + '/', null, null));
 		return response;
 	}
 	
 	/*
 	public findAnimeDetails (id: number): Observable<any> {
-		return this.http.get('https://api.jikan.moe/v3//anime/' + id + '/');
+		return this.http.get('https://api.jikan.moe/v3//anime/' + id + '/').pipe(retryWhen(errors=>errors.pipe(delay(1000))));
 	}
 	*/
+	
 	
 
 	searchAnime (title: string): Observable<any> {

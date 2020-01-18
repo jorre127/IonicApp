@@ -163,7 +163,7 @@ export class AnimeDetailPagePage implements OnInit {
 		if (this.currentAnime.related.Sequel != null) {
 			this.currentAnime.related.Sequel.forEach(async (anime) => {
 				setTimeout(async() => {
-					this.relatedIdPrequel = anime.mal_id;
+					this.relatedIdSequel = anime.mal_id;
 					const response = this.api.findAnimeDetails(this.relatedIdSequel);
 					this.tempAnimeSequel = JSON.parse((await response).data);
 					this.sequelAnimeList.push(this.tempAnimeSequel);
@@ -173,7 +173,7 @@ export class AnimeDetailPagePage implements OnInit {
 		if (this.currentAnime.related.Prequel != null) {
 			this.currentAnime.related.Prequel.forEach(async (anime) => {
 				setTimeout(async() => {
-					this.relatedIdSequel = anime.mal_id;
+					this.relatedIdPrequel = anime.mal_id;
 					const response = this.api.findAnimeDetails(this.relatedIdPrequel);
 					this.tempAnimePrequel = JSON.parse((await response).data);
 					this.prequelAnimeList.push(this.tempAnimePrequel);

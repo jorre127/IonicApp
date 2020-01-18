@@ -65,7 +65,7 @@ export class ListPage implements OnInit {
 		return new Promise(async function (resolve, reject) {
 			for (let i = 1; i < 5; i++) {
 				dis.malObservable = await dis.api.syncMal(i);
-				dis.malObservable.subscribe((result) => {
+				await dis.malObservable.subscribe((result) => {
 					result.anime.forEach((element) => {
 						dis.tempAnimeList.push(element);
 					});
