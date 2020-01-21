@@ -29,7 +29,6 @@ export class AnimeDetailPagePage implements OnInit {
 	tempAnimeAdd: MalAnime;
 	currentDetailAnime: MalAnime;
 
-
 	observable: Observable<any>;
 	relatedObservableSequel: Observable<any>;
 	relatedObservablePrequel: Observable<any>;
@@ -48,7 +47,6 @@ export class AnimeDetailPagePage implements OnInit {
 
 	constructor (private data: DataService, private api: ApiStuffService, private toastController: ToastController, private modal: ModalController, private route: ActivatedRoute, private storage: Storage, private browser: InAppBrowser, private popoverController: PopoverController, private vibration: TapticEngine) {}
 
-	
 	ngOnInit () {
 		// Getting Details From Anime
 		this.id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -56,14 +54,14 @@ export class AnimeDetailPagePage implements OnInit {
 		this.getRelatedDetails();
 	}
 	async getDetails () {
-		const response = this.api.findAnimeDetails(this.id);
-		this.currentAnime = JSON.parse((await response).data);
+		const response = await this.api.findAnimeDetails(this.id);
+		this.currentAnime = await JSON.parse((await response).data);
 		this.getRelatedDetails();
 		this.updateButton();
-		this.getLastEpisode()
+		this.getLastEpisode();
 	}
 
-/*
+	/*
 	ngOnInit () {
 		this.id = parseInt(this.route.snapshot.paramMap.get('id'));
 		this.observable = this.api.findAnimeDetails(this.id);
@@ -81,8 +79,8 @@ export class AnimeDetailPagePage implements OnInit {
 		this.tempAnimeAdd.total_episodes = this.currentAnime.episodes;
 		this.tempAnimeAdd.mal_id = this.currentAnime.mal_id;
 		this.tempAnimeAdd.image_url = this.currentAnime.image_url;
-		this.tempAnimeAdd.title = this.currentAnime.title
-		if(this.currentAnime.airing){
+		this.tempAnimeAdd.title = this.currentAnime.title;
+		if (this.currentAnime.airing) {
 			this.tempAnimeAdd.airing_status = 1;
 		}
 		this.tempAnimeAdd.type = this.currentAnime.type;
@@ -129,7 +127,7 @@ export class AnimeDetailPagePage implements OnInit {
 		});
 		modall.present();
 	}
-/*
+	/*
 	async getRelatedDetails () {
 		this.sequelAnimeList = [];
 		this.prequelAnimeList = [];
@@ -162,26 +160,20 @@ export class AnimeDetailPagePage implements OnInit {
 		this.prequelAnimeList = [];
 		if (this.currentAnime.related.Sequel != null) {
 			this.currentAnime.related.Sequel.forEach(async (anime) => {
-				setTimeout(async() => {
-					this.relatedIdSequel = anime.mal_id;
-					const response = this.api.findAnimeDetails(this.relatedIdSequel);
-					this.tempAnimeSequel = JSON.parse((await response).data);
-					this.sequelAnimeList.push(this.tempAnimeSequel);
-				},500);
+				this.relatedIdSequel = anime.mal_id;
+				const response = this.api.findAnimeDetails(this.relatedIdSequel);
+				this.tempAnimeSequel = JSON.parse((await response).data);
+				this.sequelAnimeList.push(this.tempAnimeSequel);
 			});
 		}
 		if (this.currentAnime.related.Prequel != null) {
 			this.currentAnime.related.Prequel.forEach(async (anime) => {
-				setTimeout(async() => {
-					this.relatedIdPrequel = anime.mal_id;
-					const response = this.api.findAnimeDetails(this.relatedIdPrequel);
-					this.tempAnimePrequel = JSON.parse((await response).data);
-					this.prequelAnimeList.push(this.tempAnimePrequel);
-				},500);
-
+				this.relatedIdPrequel = anime.mal_id;
+				const response = this.api.findAnimeDetails(this.relatedIdPrequel);
+				this.tempAnimePrequel = JSON.parse((await response).data);
+				this.prequelAnimeList.push(this.tempAnimePrequel);
 			});
 		}
-		
 	}
 	doRefresh (event) {
 		this.getRelatedDetails();

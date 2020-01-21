@@ -19,22 +19,22 @@ export class ListPage implements OnInit {
 	static animeList: Array<MalAnime>;
 
 	watchingList: Array<MalAnime> = new Array<MalAnime>();
-	completedList: Array<MalAnime>= new Array<MalAnime>();
-	onHoldList: Array<MalAnime>= new Array<MalAnime>();
-	droppedList: Array<MalAnime>= new Array<MalAnime>();
-	planToWatchList: Array<MalAnime>= new Array<MalAnime>();
+	completedList: Array<MalAnime> = new Array<MalAnime>();
+	onHoldList: Array<MalAnime> = new Array<MalAnime>();
+	droppedList: Array<MalAnime> = new Array<MalAnime>();
+	planToWatchList: Array<MalAnime> = new Array<MalAnime>();
 
-	showWatchingList: boolean = true;
-	showCompletedList: boolean = true;
-	showOnHoldList: boolean = true;
-	showDroppedList: boolean = true;
-	showPlanToWatchList: boolean = true;
+	showWatchingList: boolean;
+	showCompletedList: boolean;
+	showOnHoldList: boolean;
+	showDroppedList: boolean;
+	showPlanToWatchList: boolean;
 
-	arrowStatusWatching: string = 'arrow-down';
-	arrowStatusCompletedList: string = 'arrow-down';
-	arrowStatusOnHoldList: string = 'arrow-down';
-	arrowStatusDroppedList: string = 'arrow-down';
-	arrowStatusPlanToWatchList: string = 'arrow-down';
+	arrowStatusWatching: string;
+	arrowStatusCompletedList: string;
+	arrowStatusOnHoldList: string;
+	arrowStatusDroppedList: string;
+	arrowStatusPlanToWatchList: string;
 
 	listView: Array<boolean> = new Array<boolean>();
 	listLength: number;
@@ -194,12 +194,12 @@ export class ListPage implements OnInit {
 		}
 	}
 
-	 public async sortAnime () {
-		 this.watchingList =[];
-		 this.completedList =[];
-		 this.onHoldList =[];
-		 this.droppedList =[];
-		 this.planToWatchList =[];
+	public async sortAnime () {
+		this.watchingList = [];
+		this.completedList = [];
+		this.onHoldList = [];
+		this.droppedList = [];
+		this.planToWatchList = [];
 
 		ListPage.animeList.forEach((anime) => {
 			if (anime.watching_status == 1) {
@@ -234,10 +234,10 @@ export class ListPage implements OnInit {
 		this.listLength = ListPage.animeList.length;
 	}
 
-	async loadStatus(){
+	async loadStatus () {
 		this.watchingList = await this.storage.get('watchingList');
 		this.completedList = await this.storage.get('completedList');
-		this.onHoldList= await this.storage.get('onHoldList');
+		this.onHoldList = await this.storage.get('onHoldList');
 		this.droppedList = await this.storage.get('droppedList');
 		this.planToWatchList = await this.storage.get('planToWatchList');
 	}
