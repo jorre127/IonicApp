@@ -8,6 +8,7 @@ import { Storage } from '@ionic/storage';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 import { Observable } from 'rxjs';
 import { ApiStuffService } from '../api-stuff.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
 	selector: 'app-list',
@@ -15,13 +16,13 @@ import { ApiStuffService } from '../api-stuff.service';
 	styleUrls: [ 'list.page.scss' ]
 })
 export class ListPage implements OnInit {
-	static animeList: Array<MalAnime> = new Array<MalAnime>();
+	static animeList: Array<MalAnime>;
 
 	watchingList: Array<MalAnime> = new Array<MalAnime>();
-	completedList: Array<MalAnime> = new Array<MalAnime>();
-	onHoldList: Array<MalAnime> = new Array<MalAnime>();
-	droppedList: Array<MalAnime> = new Array<MalAnime>();
-	planToWatchList: Array<MalAnime> = new Array<MalAnime>();
+	completedList: Array<MalAnime>= new Array<MalAnime>();
+	onHoldList: Array<MalAnime>= new Array<MalAnime>();
+	droppedList: Array<MalAnime>= new Array<MalAnime>();
+	planToWatchList: Array<MalAnime>= new Array<MalAnime>();
 
 	showWatchingList: boolean = true;
 	showCompletedList: boolean = true;
@@ -44,6 +45,8 @@ export class ListPage implements OnInit {
 	malObservable: Observable<any>;
 	tempAnimeList: Array<MalAnime> = new Array<MalAnime>();
 
+	observableList: Array<Observable<containsAnime>>;
+
 	constructor (private data: DataService, private modal: ModalController, private vibration: TapticEngine, private storage: Storage, private api: ApiStuffService) {}
 
 	ngOnInit () {
@@ -52,28 +55,35 @@ export class ListPage implements OnInit {
 	}
 	async setup (event = null) {
 		this.tempAnimeList = [];
+		this.observableList = [];
 		this.showList();
+		this.loadStatus();
 		await this.syncMal();
-		setTimeout(() => {
-			this.getAnimeFromStorage();
-			this.sortAnime();
-			event.target.complete();
-		}, 2000);
+		this.getAnimeFromStorage();
+		event.target.complete();
 	}
 	async syncMal () {
 		let dis = this;
 		return new Promise(async function (resolve, reject) {
 			for (let i = 1; i < 5; i++) {
-				dis.malObservable = await dis.api.syncMal(i);
-				await dis.malObservable.subscribe((result) => {
-					result.anime.forEach((element) => {
-						dis.tempAnimeList.push(element);
-					});
-					console.log(dis.tempAnimeList);
-					dis.storage.set('animeList', dis.tempAnimeList);
-					resolve();
-				});
+				dis.malObservable = dis.api.syncMal(i);
+				dis.observableList.push(dis.malObservable);
 			}
+			forkJoin(dis.observableList).subscribe(
+				(result) => {
+					result.forEach((anime) => {
+						anime.anime.forEach((element) => {
+							dis.tempAnimeList.push(element);
+						});
+						console.log(dis.tempAnimeList);
+					});
+				},
+				(err) => {},
+				() => {
+					resolve();
+					dis.storage.set('animeList', dis.tempAnimeList);
+				}
+			);
 		});
 	}
 	async getAnimeFromStorage () {
@@ -184,12 +194,12 @@ export class ListPage implements OnInit {
 		}
 	}
 
-	public sortAnime () {
-		this.watchingList = [];
-		this.completedList = [];
-		this.onHoldList = [];
-		this.droppedList = [];
-		this.planToWatchList = [];
+	 public async sortAnime () {
+		 this.watchingList =[];
+		 this.completedList =[];
+		 this.onHoldList =[];
+		 this.droppedList =[];
+		 this.planToWatchList =[];
 
 		ListPage.animeList.forEach((anime) => {
 			if (anime.watching_status == 1) {
@@ -216,11 +226,28 @@ export class ListPage implements OnInit {
 				this.planToWatchList.push(anime);
 			}
 		});
+		this.storage.set('watchingList', this.watchingList);
+		this.storage.set('completedList', this.completedList);
+		this.storage.set('onHoldList', this.onHoldList);
+		this.storage.set('droppedList', this.droppedList);
+		this.storage.set('planToWatchList', this.planToWatchList);
 		this.listLength = ListPage.animeList.length;
+	}
+
+	async loadStatus(){
+		this.watchingList = await this.storage.get('watchingList');
+		this.completedList = await this.storage.get('completedList');
+		this.onHoldList= await this.storage.get('onHoldList');
+		this.droppedList = await this.storage.get('droppedList');
+		this.planToWatchList = await this.storage.get('planToWatchList');
 	}
 
 	// add back when alpha.4 is out
 	// navigate(item) {
 	//   this.router.navigate(['/list', JSON.stringify(item)]);
 	// }
+}
+
+class containsAnime {
+	anime: Array<MalAnime>;
 }

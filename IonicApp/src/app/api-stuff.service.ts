@@ -15,7 +15,7 @@ export class ApiStuffService {
 
 	
 	async findAnimeDetails (id: number) {
-		const response = await (await this.HTTP.get('https://api.jikan.moe/v3//anime/' + id + '/', null, null));
+		const response = await (await this.HTTP.get('https://api.jikan.moe/v3//anime/' + id + '/', null, null)).data.pipe(retryWhen(errors=>errors.pipe(delay(1000))));
 		return response;
 	}
 	
