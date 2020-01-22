@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar class="toolbarShadows">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Stats
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <span *ngIf="profile">
+    <ion-card class ="shadows">
+      <ion-card-content>
+        Time Watched: {{profile.anime_stats.days_watched}} days <br>
+        Time Watched: {{profile.anime_stats.days_watched*24}} hours <br>
+        Mean Score: {{profile.anime_stats.mean_score}}<br>
+        Watching: {{profile.anime_stats.watching}}<br>
+        Completed: {{profile.anime_stats.completed}} <br>
+        On-Hold: {{profile.anime_stats.on_hold}} <br>
+        Dropped: {{profile.anime_stats.dropped}} <br>
+        Plan To Watch: {{profile.anime_stats.plan_to_watch}} <br>
+        Total Entries: {{profile.anime_stats.total_entries}} <br>
+        Rewatched: {{profile.anime_stats.rewatched}} <br>
+        Episodes Watched: {{profile.anime_stats.episodes_watched}} <br>
+      </ion-card-content>
+    </ion-card>
+  </span>
+
+</ion-content>

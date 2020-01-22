@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar class="shadows">
+  <ion-toolbar class="toolbarShadows">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -91,7 +91,7 @@
       <ion-item-divider>
         {{day}}
       </ion-item-divider>
-      <ion-item class="gameItem shadows" Lines="full" detail="false" button *ngFor="let anime of schedule[i]"
+      <ion-item class="gameItem shadows" Lines="none" detail="false" button *ngFor="let anime of schedule[i]"
         [routerLink]="['/','anime-detail-page', anime.mal_id]">
         <ion-thumbnail class="gameIcon" slot="start">
           <img [src]="anime.image_url">

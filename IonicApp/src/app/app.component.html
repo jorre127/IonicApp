@@ -9,7 +9,7 @@
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages" >
-            <ion-item [routerDirection]="'root'" [routerLink]="p.url" class="shadow" lines="none">
+            <ion-item [routerDirection]="'root'" [routerLink]="p.url" class="shadows menuItem" lines="none">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label color="primary">
                 {{p.title}}

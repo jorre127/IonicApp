@@ -10,12 +10,12 @@
 
 <ion-content>
 
-  <ion-item class="shadow" lines="none">
+  <ion-item class="shadows settingItem" lines="none">
     <ion-label slot ="start">Darkmode</ion-label>
     <ion-toggle [(ngModel)] = "toggled" (ionChange)= "toggleDarkmode()" color= "primary" slot="end"></ion-toggle>
   </ion-item>
 
-  <ion-segment [(ngModel)] = "listMode" (ionChange) ="listModeChanged()" class="shadow">
+  <ion-segment [(ngModel)] = "listMode" (ionChange) ="listModeChanged()" class="shadows settingItem">
     <ion-segment-button value="gridView">
       <ion-icon name = "grid"></ion-icon>
       <ion-label>Grid View</ion-label>

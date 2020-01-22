@@ -60,6 +60,9 @@ export class ApiStuffService {
 	syncMal(page:number){
 		return this.http.get('https://api.jikan.moe/v3/user/jorre127/animelist/all/'+page).pipe(retryWhen(errors => errors.pipe(delay(1000))))
 	}
+	getUserDetails(){
+		return this.http.get('https://api.jikan.moe/v3/user/jorre127/profile');
+	}
 }
 
 class malRequest{

@@ -46,6 +46,10 @@ const routes: Routes = [
   {
     path: 'top-anime/:type',
     loadChildren: () => import('./top-anime/top-anime.module').then( m => m.TopAnimePageModule)
+  },
+  {
+    path: 'statistics',
+    loadChildren: () => import('./statistics/statistics.module').then( m => m.StatisticsPageModule)
   }
 ];
 

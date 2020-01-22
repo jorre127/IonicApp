@@ -18,8 +18,10 @@
 
   <span name="Column View">
 
+    <div class="fillerDiv"></div>
+
     <span *ngIf="listView[0]">
-      <ion-item-divider  button (click)="showWatching()" class="shadows">
+      <ion-item-divider button (click)="showWatching()" class="shadows">
         <h2>
           Watching ({{watchingList.length}})
         </h2>
@@ -29,15 +31,16 @@
       <ion-grid *ngIf="showWatchingList">
         <ion-row>
           <ion-col *ngFor="let anime of watchingList" size="6" class="listCol">
-            <ion-card class = "cardNormal" *ngIf ="anime.airing_status != 1">
+            <ion-card class="cardNormal" *ngIf="anime.airing_status != 1">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-               (press) ="openDetailPage(anime)" [src]="anime.image_url">
+                (press)="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
             </ion-card>
-            <ion-card class = "cardAiring" *ngIf ="anime.airing_status == 1">
-              <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"(press) ="openDetailPage(anime)" [src]="anime.image_url">
+            <ion-card class="cardAiring" *ngIf="anime.airing_status == 1">
+              <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
+                (press)="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
@@ -48,9 +51,10 @@
         </ion-text>
       </ion-grid>
     </span>
+    <div class="fillerDiv"></div>
 
     <span *ngIf="listView[0]">
-      <ion-item-divider  button (click)="showCompleted()" class="shadows">
+      <ion-item-divider button (click)="showCompleted()" class="shadows">
         <h2>
           Completed ({{completedList.length}})
         </h2>
@@ -60,16 +64,16 @@
       <ion-grid *ngIf="showCompletedList">
         <ion-row>
           <ion-col *ngFor="let anime of completedList" size="6" class="listCol">
-            <ion-card class = "cardNormal" *ngIf ="anime.airing_status != 1">
+            <ion-card class="cardNormal" *ngIf="anime.airing_status != 1">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-                (press) ="openDetailPage(anime)" [src]="anime.image_url">
+                (press)="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
             </ion-card>
-            <ion-card class = "cardAiring" *ngIf ="anime.airing_status == 1">
+            <ion-card class="cardAiring" *ngIf="anime.airing_status == 1">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-             (press) ="openDetailPage(anime)" [src]="anime.image_url">
+                (press)="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
@@ -80,28 +84,29 @@
         </ion-text>
       </ion-grid>
     </span>
+    <div class="fillerDiv"></div>
 
     <span *ngIf="listView[0]">
       <ion-item-divider button (click)="showOnHold()" class="shadows">
         <h2>
           On-Hold ({{onHoldList.length}})
         </h2>
-        <ion-icon class="expandArrow"  slot="end" [name]="arrowStatusOnHoldList">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusOnHoldList">
         </ion-icon>
       </ion-item-divider>
       <ion-grid *ngIf="showOnHoldList">
         <ion-row>
           <ion-col *ngFor="let anime of onHoldList" size="6" class="listCol">
-            <ion-card class = "cardNormal" *ngIf ="anime.airing_status != 1">
+            <ion-card class="cardNormal" *ngIf="anime.airing_status != 1">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-               (press) ="openDetailPage(anime)" [src]="anime.image_url">
+                (press)="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
             </ion-card>
-            <ion-card class = "cardAiring" *ngIf ="anime.airing_status == 1">
+            <ion-card class="cardAiring" *ngIf="anime.airing_status == 1">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-              (press) ="openDetailPage(anime)" [src]="anime.image_url">
+                (press)="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
@@ -112,28 +117,29 @@
         </ion-text>
       </ion-grid>
     </span>
+    <div class="fillerDiv"></div>
 
     <span *ngIf="listView[0]">
       <ion-item-divider button (click)="showDropped()" class="shadows">
         <h2>
           Dropped ({{droppedList.length}})
         </h2>
-        <ion-icon class="expandArrow"  slot="end" [name]="arrowStatusDroppedList">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusDroppedList">
         </ion-icon>
       </ion-item-divider>
       <ion-grid *ngIf="showDroppedList">
         <ion-row>
           <ion-col *ngFor="let anime of droppedList" size="6" class="listCol">
-            <ion-card class = "cardNormal" *ngIf ="anime.airing_status != 1">
+            <ion-card class="cardNormal" *ngIf="anime.airing_status != 1">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-            (press) ="openDetailPage(anime)" [src]="anime.image_url">
+                (press)="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
             </ion-card>
-            <ion-card class = "cardAiring" *ngIf ="anime.airing_status == 1">
+            <ion-card class="cardAiring" *ngIf="anime.airing_status == 1">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-           (press) ="openDetailPage(anime)" [src]="anime.image_url">
+                (press)="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
@@ -144,9 +150,10 @@
         </ion-text>
       </ion-grid>
     </span>
+    <div class="fillerDiv"></div>
 
     <span *ngIf="listView[0]">
-      <ion-item-divider button (click)="showPlanToWatch()"  class="shadows">
+      <ion-item-divider button (click)="showPlanToWatch()" class="shadows">
         <h2>
           Plan To Watch ({{planToWatchList.length}})
         </h2>
@@ -156,16 +163,16 @@
       <ion-grid *ngIf="showPlanToWatchList">
         <ion-row>
           <ion-col *ngFor="let anime of planToWatchList" size="6" class="listCol">
-            <ion-card class = "cardNormal"*ngIf ="anime.airing_status != 1">
+            <ion-card class="cardNormal" *ngIf="anime.airing_status != 1">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-             (press) ="openDetailPage(anime)" [src]="anime.image_url">
+                (press)="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
             </ion-card>
-            <ion-card class = "cardAiring" *ngIf ="anime.airing_status == 1">
+            <ion-card class="cardAiring" *ngIf="anime.airing_status == 1">
               <img class="imgCard" button [routerLink]="['/','anime-detail-page', anime.mal_id]"
-  (press) ="openDetailPage(anime)" [src]="anime.image_url">
+                (press)="openDetailPage(anime)" [src]="anime.image_url">
               <div class="badge">
                 <ion-text class="badgeText">{{anime.title}}</ion-text>
               </div>
@@ -180,8 +187,9 @@
 
   <span name="Detailed ListView">
 
+    <div class="fillerDiv"></div>
     <span *ngIf="listView[1]">
-      <ion-item-divider  button (click)="showWatching()" class="shadows">
+      <ion-item-divider button (click)="showWatching()" class="shadows">
         <h2>
           Watching ({{watchingList.length}})
         </h2>
@@ -195,7 +203,7 @@
               <ion-icon expandable class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item class="gameItem" Lines="full" detail="false" button 
+          <ion-item class="gameItem" Lines="full" detail="false" button
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-thumbnail class="gameIcon" slot="start">
               <img [src]="anime.image_url">
@@ -206,19 +214,21 @@
             <ion-label class="smolLabel" position="stacked" color="primary">
               {{anime.type}}
             </ion-label>
-            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf ="anime.airing_status == 1" color="success">Airing</ion-badge>
+            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing_status == 1" color="success">Airing
+            </ion-badge>
             <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
           </ion-item>
         </ion-item-sliding>
       </span>
     </span>
+    <div class="fillerDiv"></div>
 
     <span *ngIf="listView[1]">
       <ion-item-divider button (click)="showCompleted()" class="shadows">
         <h2>
           Completed ({{completedList.length}})
         </h2>
-        <ion-icon class="expandArrow"  slot="end" [name]="arrowStatusCompletedList">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusCompletedList">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showCompletedList">
@@ -228,7 +238,7 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item class="gameItem" Lines="full" detail="false" button 
+          <ion-item class="gameItem" Lines="full" detail="false" button
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-thumbnail class="gameIcon" slot="start">
               <img [src]="anime.image_url">
@@ -239,15 +249,17 @@
             <ion-label class="smolLabel" position="stacked" color="primary">
               {{anime.type}}
             </ion-label>
-            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf ="anime.airing_status == 1" color="success">Airing</ion-badge>
+            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing_status == 1" color="success">Airing
+            </ion-badge>
             <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
           </ion-item>
         </ion-item-sliding>
       </span>
     </span>
+    <div class="fillerDiv"></div>
 
     <span *ngIf="listView[1]">
-      <ion-item-divider button (click)="showOnHold()"  class="shadows">
+      <ion-item-divider button (click)="showOnHold()" class="shadows">
         <h2>
           On-Hold ({{onHoldList.length}})
         </h2>
@@ -261,7 +273,7 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item class="gameItem" Lines="full" detail="false" button 
+          <ion-item class="gameItem" Lines="full" detail="false" button
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-thumbnail class="gameIcon" slot="start">
               <img [src]="anime.image_url">
@@ -272,15 +284,17 @@
             <ion-label class="smolLabel" position="stacked" color="primary">
               {{anime.type}}
             </ion-label>
-            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf ="anime.airing_status == 1" color="success">Airing</ion-badge>
+            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing_status == 1" color="success">Airing
+            </ion-badge>
             <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
           </ion-item>
         </ion-item-sliding>
       </span>
     </span>
+    <div class="fillerDiv"></div>
 
     <span *ngIf="listView[1]">
-      <ion-item-divider button (click)="showDropped()"  class="shadows">
+      <ion-item-divider button (click)="showDropped()" class="shadows">
         <h2>
           Dropped ({{droppedList.length}})
         </h2>
@@ -294,7 +308,7 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item class="gameItem" Lines="full" detail="false" button 
+          <ion-item class="gameItem" Lines="full" detail="false" button
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-thumbnail class="gameIcon" slot="start">
               <img [src]="anime.image_url">
@@ -305,15 +319,17 @@
             <ion-label class="smolLabel" position="stacked" color="primary">
               {{anime.type}}
             </ion-label>
-            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf ="anime.airing_status == 1" color="success">Airing</ion-badge>
+            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing_status == 1" color="success">Airing
+            </ion-badge>
             <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
           </ion-item>
         </ion-item-sliding>
       </span>
     </span>
+    <div class="fillerDiv"></div>
 
     <span *ngIf="listView[1]">
-      <ion-item-divider button (click)="showPlanToWatch()"  class="shadows">
+      <ion-item-divider button (click)="showPlanToWatch()" class="shadows">
         <h2>
           Plan To Watch ({{planToWatchList.length}})
         </h2>
@@ -327,7 +343,7 @@
               <ion-icon class="infoIconListDetailed" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item class=" gameItem" Lines="full" detail="false" button 
+          <ion-item class=" gameItem" Lines="full" detail="false" button
             [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-thumbnail class="gameIcon" slot="start">
               <img [src]="anime.image_url">
@@ -338,7 +354,8 @@
             <ion-label class="smolLabel" position="stacked" color="primary">
               {{anime.type}}
             </ion-label>
-            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf ="anime.airing_status == 1" color="success">Airing</ion-badge>
+            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing_status == 1" color="success">Airing
+            </ion-badge>
             <ion-icon class="gameArrow" name="ios-arrow-forward" slot="end"></ion-icon>
           </ion-item>
         </ion-item-sliding>
@@ -347,12 +364,13 @@
   </span>
 
   <span name="ListView">
+    <div class="fillerDiv"></div>
     <span *ngIf="listView[2]">
       <ion-item-divider button (click)="showWatching()" class="shadows">
         <h2>
           Watching ({{watchingList.length}})
         </h2>
-        <ion-icon class="expandArrow"  slot="end" [name]="arrowStatusWatching">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusWatching">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showWatchingList">
@@ -362,23 +380,24 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item Lines="full" button 
-            [routerLink]="['/','anime-detail-page', anime.mal_id]">
+          <ion-item Lines="full" button [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-label>
               {{anime.title}}
             </ion-label>
-            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf ="anime.airing_status == 1"color="success">Airing</ion-badge>
+            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing_status == 1" color="success">Airing
+            </ion-badge>
           </ion-item>
         </ion-item-sliding>
       </span>
     </span>
 
+    <div class="fillerDiv"></div>
     <span *ngIf="listView[2]">
       <ion-item-divider button (click)="showCompleted()" class="shadows">
         <h2>
           Completed ({{completedList.length}})
         </h2>
-        <ion-icon class="expandArrow"  slot="end" [name]="arrowStatusCompletedList">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusCompletedList">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showCompletedList">
@@ -388,19 +407,20 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item Lines="full" button 
-            [routerLink]="['/','anime-detail-page', anime.mal_id]">
+          <ion-item Lines="full" button [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-label>
               {{anime.title}}
             </ion-label>
-            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf ="anime.airing_status == 1" color="success">Airing</ion-badge>
+            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing_status == 1" color="success">Airing
+            </ion-badge>
           </ion-item>
         </ion-item-sliding>
       </span>
     </span>
 
+    <div class="fillerDiv"></div>
     <span *ngIf="listView[2]">
-      <ion-item-divider button (click)="showOnHold()"  class="shadows">
+      <ion-item-divider button (click)="showOnHold()" class="shadows">
         <h2>
           On-Hold ({{onHoldList.length}})
         </h2>
@@ -414,19 +434,20 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item Lines="full" button
-            [routerLink]="['/','anime-detail-page', anime.mal_id]">
+          <ion-item Lines="full" button [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-label>
               {{anime.title}}
             </ion-label>
-            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf ="anime.airing_status == 1" color="success">Airing</ion-badge>
+            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing_status == 1" color="success">Airing
+            </ion-badge>
           </ion-item>
         </ion-item-sliding>
       </span>
     </span>
 
+    <div class="fillerDiv"></div>
     <span *ngIf="listView[2]">
-      <ion-item-divider button (click)="showDropped()"  class="shadows">
+      <ion-item-divider button (click)="showDropped()" class="shadows">
         <h2>
           Dropped ({{droppedList.length}})
         </h2>
@@ -440,23 +461,24 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item Lines="full" button
-            [routerLink]="['/','anime-detail-page', anime.mal_id]">
+          <ion-item Lines="full" button [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-label>
               {{anime.title}}
             </ion-label>
-            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf ="anime.airing_status == 1" color="success">Airing</ion-badge>
+            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing_status == 1" color="success">Airing
+            </ion-badge>
           </ion-item>
         </ion-item-sliding>
       </span>
     </span>
 
+    <div class="fillerDiv"></div>
     <span *ngIf="listView[2]">
       <ion-item-divider button (click)="showPlanToWatch()" class="shadows">
         <h2>
           Plan To Watch ({{planToWatchList.length}})
         </h2>
-        <ion-icon class="expandArrow"  slot="end" [name]="arrowStatusPlanToWatchList">
+        <ion-icon class="expandArrow" slot="end" [name]="arrowStatusPlanToWatchList">
         </ion-icon>
       </ion-item-divider>
       <span *ngIf="showPlanToWatchList">
@@ -466,12 +488,12 @@
               <ion-icon class="infoIconList" name="information-circle-outline"></ion-icon>
             </ion-item-option>
           </ion-item-options>
-          <ion-item Lines="full" button 
-            [routerLink]="['/','anime-detail-page', anime.mal_id]">
+          <ion-item Lines="full" button [routerLink]="['/','anime-detail-page', anime.mal_id]">
             <ion-label>
               {{anime.title}}
             </ion-label>
-            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf ="anime.airing_status == 1" color="success">Airing</ion-badge>
+            <ion-badge class="animeBadgeDetailed" slot="end" *ngIf="anime.airing_status == 1" color="success">Airing
+            </ion-badge>
           </ion-item>
         </ion-item-sliding>
       </span>

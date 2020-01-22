@@ -1,9 +1,7 @@
 ion-title{
     font-size: 1.5rem;
 }
-.shadow{
-    box-shadow: -4px -4px 12px 0 var(--ion-highlight-neumorphisme),
-    4px 4px 12px 0 rgba(0,0,0,0.15);
+.settingItem{
     margin-top:1rem;
     margin-left:auto;
     margin-right:auto;
@@ -16,7 +14,3 @@ ion-title{
     --ion-toolbar-background: var(--ion-color-neumorphisme);
     --ion-item-background: var(--ion-color-neumorphisme);
   }
-  .toolbarShadows{
-    box-shadow: -4px -4px 12px 0 var(--ion-highlight-neumorphisme),
-    4px 4px 12px 0 rgba(0,0,0,0.15);
-}

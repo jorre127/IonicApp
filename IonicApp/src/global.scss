@@ -38,3 +38,13 @@
         border-radius: 1rem;
     }
 }
+.sc-ion-card-ios-h{
+    box-shadow: none;
+}
+.shadows {
+    box-shadow: -3px -3px 12px 0 var(--ion-highlight-neumorphisme), 5px 5px 8px 0 rgba(0, 0, 0, 0.15);
+}
+.toolbarShadows{
+    box-shadow: -4px -4px 12px 0 var(--ion-highlight-neumorphisme),
+    4px 4px 12px 0 rgba(0,0,0,0.15);
+  }

@@ -29,6 +29,11 @@ export class AppComponent {
 		{
 			title: 'Top Anime',
 			url: '/top-anime/tv',
+			icon: 'star'
+		},
+		{
+			title: 'Stats',
+			url: '/statistics',
 			icon: 'analytics'
 		},
 		{
@@ -49,32 +54,32 @@ export class AppComponent {
 		});
 	}
 }
-export class Episodes{
-    "request_hash": "request:anime:c3b5c243bf4f5bb79e88226aa4eb303264352b24";
-    "request_cached": true;
-    "request_cache_expiry": 20734;
-    "episodes_last_page": 1;
-    "episodes": [
-        {
-            "episode_id": 1,
-            "title": "A Prince Appears",
-            "title_japanese": "王子様現る",
-            "title_romanji": "Ouji-sama Arawaru ",
-            "aired": "2001-10-10T00:00:00+00:00",
-            "filler": false,
-            "recap": false,
-            "video_url": null,
-            "forum_url": "https://myanimelist.net/forum/?topicid=39261"
-        }
-    ];
+export class Episodes {
+	request_hash: 'request:anime:c3b5c243bf4f5bb79e88226aa4eb303264352b24';
+	request_cached: true;
+	request_cache_expiry: 20734;
+	episodes_last_page: 1;
+	episodes: [
+		{
+			'episode_id': 1;
+			'title': 'A Prince Appears';
+			'title_japanese': '王子様現る';
+			'title_romanji': 'Ouji-sama Arawaru ';
+			'aired': '2001-10-10T00:00:00+00:00';
+			'filler': false;
+			'recap': false;
+			'video_url': null;
+			'forum_url': 'https://myanimelist.net/forum/?topicid=39261';
+		}
+	];
 }
-export class MalAnime{
+export class MalAnime {
 	mal_id: number;
 	title: string;
-	video_url: "https://myanimelist.net/anime/34572/Black_Clover/video";
-	url: "https://myanimelist.net/anime/34572/Black_Clover";
+	video_url: 'https://myanimelist.net/anime/34572/Black_Clover/video';
+	url: 'https://myanimelist.net/anime/34572/Black_Clover';
 	image_url: string;
-	type: "TV";
+	type: 'TV';
 	watching_status: number;
 	score: number;
 	watched_episodes: number = 0;
@@ -87,14 +92,14 @@ export class MalAnime{
 	has_video: true;
 	is_rewatching: false;
 	tags: null;
-	rating: "PG-13";
-	start_date: "2017-10-03T00:00:00+00:00";
+	rating: 'PG-13';
+	start_date: '2017-10-03T00:00:00+00:00';
 	end_date: null;
 	watch_start_date: null;
 	watch_end_date: null;
 	days: null;
 	storage: null;
-	priority: "Low";
+	priority: 'Low';
 	added_to_list: false;
 	studios: [];
 	licensors: [];
@@ -289,4 +294,41 @@ export class Anime {
 	];
 	opening_themes: ['"Tank!" by The Seatbelts (eps 1-25)'];
 	ending_themes: ['"The Real Folk Blues" by The Seatbelts feat. Mai Yamane (eps 1-12, 14-25)', '"Space Lion" by The Seatbelts (ep 13)', '"Blue" by The Seatbelts feat. Mai Yamane (ep 26)'];
+}
+
+export class profile {
+	anime_stats: {
+		days_watched: number;
+		mean_score: number;
+		watching: number;
+		completed: number;
+		on_hold: number;
+		dropped: number;
+		plan_to_watch: number;
+		total_entries: number;
+		rewatched: number;
+		episodes_watched: number;
+	}
+	Favorites: {
+        anime: Anime[];
+        manga: any[];
+        characters: any[];
+        people: any[];
+	}
+	misc: {
+        request_hash: string;
+        request_cached: boolean;
+        request_cache_expiry: number;
+        user_id: number;
+        username: string;
+        url: string;
+        image_url?: any;
+        last_online: Date;
+        gender?: any;
+        birthday?: any;
+        location?: any;
+        joined: Date;
+        about?: any;
+    }
+	
 }

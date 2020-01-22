@@ -80,13 +80,6 @@ ion-skeleton-text {
 	--ion-toolbar-background: var(--ion-color-neumorphisme);
 	--ion-item-background: var(--ion-color-neumorphisme);
 }
-.shadows {
-	box-shadow: -4px -4px 12px 0 var(--ion-highlight-neumorphisme), 10px 10px 12px 0 rgba(0, 0, 0, 0.15);
-}
-.toolbarShadows {
-	box-shadow: -4px -4px 12px 0 var(--ion-highlight-neumorphisme), 4px 4px 12px 0 rgba(0, 0, 0, 0.15);
-}
-
 .seasonalAnimeGrid {
 	height: fit-content;
 	padding-left: 0rem;
